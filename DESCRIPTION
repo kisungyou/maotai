@@ -1,0 +1,14 @@
+Package: maotai
+Type: Package
+Title: Matrix Optimization and Inference Problems
+Version: 1.0
+Date: 2019-03-18
+Author: ksyou496@gmail.com
+Maintainer: Kisung You <ksyou496@gmail.com>
+Description: selected casket of matrix optimization problems. 
+Encoding: UTF-8
+License: GPL (>= 2)
+Imports: Rcpp, Rdpack, RSpectra, Matrix
+LinkingTo: Rcpp, RcppArmadillo
+RdMacros: Rdpack
+RoxygenNote: 6.1.1
