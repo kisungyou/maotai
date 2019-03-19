@@ -1,6 +1,6 @@
 Package: maotai
 Type: Package
-Title: Matrix Optimization and Inference Problems
+Title: Tools for Matrix Algebra, Optimization and Inference Problems
 Version: 1.0
 Date: 2019-03-18
 Author: ksyou496@gmail.com

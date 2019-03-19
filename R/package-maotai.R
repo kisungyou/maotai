@@ -1,4 +1,4 @@
-#' Matrix Optimization and Inference Problems
+#' Tools for Matrix Algebra, Optimization and Inference Problems
 #'
 #' @docType package
 #' @name maotai

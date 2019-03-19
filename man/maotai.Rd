@@ -4,7 +4,7 @@
 \name{maotai}
 \alias{maotai}
 \alias{maotai-package}
-\title{Matrix Optimization and Inference Problems}
+\title{Tools for Matrix Algebra, Optimization and Inference Problems}
 \description{
-Matrix Optimization and Inference Problems
+Tools for Matrix Algebra, Optimization and Inference Problems
 }

@@ -3,7 +3,7 @@
         "definitions" : [
             {
                 "column" : 11,
-                "file" : "/home/kisung/Desktop/maotai/src/trio_2007Wang.cpp",
+                "file" : "/home/kisung/Desktop/maotai/src/cpp_trio_2007Wang.cpp",
                 "kind" : 6,
                 "line" : 8,
                 "name" : "cppsub_2007Wang(arma::mat, int, int, arma::mat, arma::mat, int, double)",
@@ -11,7 +11,7 @@
                 "usr" : "c:@F@cppsub_2007Wang#$@N@arma@C@Mat>#d#I#I#S0_#S0_#I#d#"
             }
         ],
-        "file" : "/home/kisung/Desktop/maotai/src/trio_2007Wang.cpp",
+        "file" : "/home/kisung/Desktop/maotai/src/cpp_trio_2007Wang.cpp",
         "file_last_write" : 1552858346
     }
 ]
