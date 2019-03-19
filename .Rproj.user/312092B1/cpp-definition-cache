@@ -3,6 +3,21 @@
         "definitions" : [
             {
                 "column" : 11,
+                "file" : "/home/kisung/Desktop/maotai/src/cpp_gradF.cpp",
+                "kind" : 6,
+                "line" : 9,
+                "name" : "gradF(Function, arma::mat)",
+                "parent_name" : "",
+                "usr" : "c:@F@gradF#$@N@Rcpp@C@Function_Impl>#@N@Rcpp@CT>1#T@PreserveStorage#$@N@arma@C@Mat>#d#"
+            }
+        ],
+        "file" : "/home/kisung/Desktop/maotai/src/cpp_gradF.cpp",
+        "file_last_write" : 1552963373
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 11,
                 "file" : "/home/kisung/Desktop/maotai/src/cpp_trio_2007Wang.cpp",
                 "kind" : 6,
                 "line" : 8,

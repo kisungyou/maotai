@@ -6,6 +6,18 @@
 
 using namespace Rcpp;
 
+// gradF
+arma::mat gradF(Function func, arma::mat xnow);
+RcppExport SEXP _maotai_gradF(SEXP funcSEXP, SEXP xnowSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Function >::type func(funcSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type xnow(xnowSEXP);
+    rcpp_result_gen = Rcpp::wrap(gradF(func, xnow));
+    return rcpp_result_gen;
+END_RCPP
+}
 // cppsub_2007Wang
 arma::mat cppsub_2007Wang(arma::mat V0, int mm, int d, arma::mat Spu, arma::mat Stu, int maxiter, double eps);
 RcppExport SEXP _maotai_cppsub_2007Wang(SEXP V0SEXP, SEXP mmSEXP, SEXP dSEXP, SEXP SpuSEXP, SEXP StuSEXP, SEXP maxiterSEXP, SEXP epsSEXP) {
@@ -25,6 +37,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_maotai_gradF", (DL_FUNC) &_maotai_gradF, 2},
     {"_maotai_cppsub_2007Wang", (DL_FUNC) &_maotai_cppsub_2007Wang, 7},
     {NULL, NULL, 0}
 };

@@ -240,3 +240,4 @@ trio2012Ngo <- function(A, B, dim, eps, maxiter){
 # st.V2 = optStiefel(F2,dF2, Vinit=rustiefel(p,mydim), method="curvilinear",
 #                   searchParams=list(rho1=0.1, rho2=0.9, tau=1),tol=1009*.Machine$double.eps)
 # st.val2 = sum(diag(t(st.V2)%*%A%*%st.V2))/sum(diag(t(st.V2)%*%B%*%st.V2))
+
