@@ -207,7 +207,7 @@ trio2012Ngo <- function(A, B, dim, eps, maxiter){
 }
 
 
-
+# 
 # # simple test
 # p = 100
 # mydim = 10
@@ -229,15 +229,28 @@ trio2012Ngo <- function(A, B, dim, eps, maxiter){
 # 
 #  # try rstiefel's optimization
 # library(rstiefel)
-# F2  = function(V){sum(diag(t(V)%*%B%*%V))/sum(diag(t(V)%*%A%*%V))} # top/bottom switch; can we speed up
-# dF2 = function(V){
-# aa = sum(diag(t(V)%*%A%*%V))
-# bb = sum(diag(t(V)%*%B%*%V))
-# t1 = 2*aa*(B%*%V) - 2*bb*(A%*%V)
-# t2 = aa^2
-# return(t1/t2)
+# f1 = function(w){
+#   trA = sum(diag(t(w)%*%A%*%w)); trB = sum(diag(t(w)%*%B%*%w));
+#   return(-trA/trB)
 # }
-# st.V2 = optStiefel(F2,dF2, Vinit=rustiefel(p,mydim), method="curvilinear",
-#                   searchParams=list(rho1=0.1, rho2=0.9, tau=1),tol=1009*.Machine$double.eps)
-# st.val2 = sum(diag(t(st.V2)%*%A%*%st.V2))/sum(diag(t(st.V2)%*%B%*%st.V2))
+# df1 = function(w){
+#   trA = sum(diag(t(w)%*%A%*%w)); trB = sum(diag(t(w)%*%B%*%w));
+#   t1 = -2*(A%*%w)*trB + trA*2*(B%*%w);
+#   t2 = trB^2;
+#   return(t1/t2)
+# }
+# f2 = function(w){
+#   trA = sum(diag(t(w)%*%A%*%w)); trB = sum(diag(t(w)%*%B%*%w));
+#   return(trB/trA)
+# }
+# df2 = function(w){
+#   trA = sum(diag(t(w)%*%A%*%w)); trB = sum(diag(t(w)%*%B%*%w));
+#   t1 = 2*trA*(B%*%w) - 2*trB*(A%*%w);
+#   t2 = trA^2;
+#   return(t1/t2)
+# }
+# V1 <- optStiefel(f1, df1, Vinit=rustiefel(p,mydim), maxIters = 999, tol=1e-10, verbose=TRUE)
+# V2 <- optStiefel(f2, df2, Vinit=rustiefel(p,mydim), maxIters = 999, tol=1e-10, verbose=TRUE)
+# print(sprintf("result of (2) inverse  : %f", 1/f2(V2)))
+
 
