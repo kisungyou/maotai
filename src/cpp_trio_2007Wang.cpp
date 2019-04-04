@@ -40,6 +40,7 @@ arma::mat cppsub_2007Wang(arma::mat V0, int mm, int d, arma::mat Spu, arma::mat 
     if (incV < abstol){
       break;
     }
+    Rcpp::Rcout << "* iteration " << i+1 << " complete.." << std::endl;
   }
   
   // 3. return the value
