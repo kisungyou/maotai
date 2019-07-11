@@ -19,6 +19,7 @@ pdeterminant <- function(A){ ## wrapped-up function
     del.old = 1
     det.old = det(A+del.old*diag(n))/(del.old^(n-k))
     for (i in 1:496){
+      print(paste("iteration ",i," initiated...",sep=""))
       del.new = del.old*multccc
       det.new = det(A+del.new*diag(n))/(del.new^(n-k))
       if ((abs(det.new-det.old)/abs(det.old))<1e-5){
