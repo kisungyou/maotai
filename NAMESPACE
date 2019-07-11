@@ -2,6 +2,7 @@
 
 export(aux.shortestpath)
 export(mygradF)
+export(pdeterminant)
 export(trio)
 import(Rdpack)
 importFrom(Matrix,rankMatrix)
