@@ -1,5 +1,62 @@
 #' Trace Ratio Optimation
 #' 
+#' This function provides several algorithms to solve the following problem
+#' \deqn{\textrm{max} \frac{tr(V^\top A V)}{tr(V^\top B V)} \textrm{ such that } V^\top C V = I}
+#' where \eqn{V} is a projection matrix, i.e., \eqn{V^\top V = I}. Trace ratio optimization 
+#' is pertained to various linear dimension reduction methods. It should be noted that 
+#' when \eqn{C = I}, the above problem is often reformulated as a generalized eigenvalue problem 
+#' since it's an easier proxy with faster computation.
+#' 
+#' @param A a \eqn{(p\times p)} symmetric matrix in the numerator term.
+#' @param B a \eqn{(p\times p)} symmetric matrix in the denomiator term.
+#' @param C a \eqn{(p\times p)} symmetric constraint matrix. If not provided, it is set as identical matrix automatically.
+#' @param dim an integer for target dimension. It can be considered as the number of loadings.
+#' @param method the name of algorithm to be used. Default is \code{2003Guo}.
+#' @param maxiter maximum number of iterations to be performed.
+#' @param eps stopping criterion for iterative algorithms. 
+#' 
+#' @return a named list containing
+#' \describe{
+#' \item{V}{a \eqn{(p\times dim)} projection matrix.}
+#' \item{tr.val}{an attained maximum scalar value.}
+#' }
+#' 
+#' @examples 
+#' ## simple test
+#' #  problem setting
+#' p = 5
+#' mydim = 2
+#' A = matrix(rnorm(p^2),nrow=p); A=A%*%t(A)
+#' B = matrix(runif(p^2),nrow=p); B=B%*%t(B)
+#' C = diag(p)
+#' 
+#' #  approximate solution via determinant ratio problem formulation
+#' eigAB  = eigen(solve(B,A)) 
+#' V      = eigAB$vectors[,1:mydim]
+#' eigval = sum(diag(t(V)%*%A%*%V))/sum(diag(t(V)%*%B%*%V))
+#' 
+#' #  solve using 4 algorithms
+#' m12 = trio(A,B,dim=mydim, method="2012Ngo")
+#' m09 = trio(A,B,dim=mydim, method="2009Jia")
+#' m07 = trio(A,B,dim=mydim, method="2007Wang")
+#' m03 = trio(A,B,dim=mydim, method="2003Guo")
+#' 
+#' #  print the results
+#' cat('* Evaluation of the cost function ')
+#' cat(paste("* approx. via determinant : ",eigval,sep=""))
+#' cat(paste("* trio by 2012Ngo         : ",m12$tr.val, sep=""))
+#' cat(paste("* trio by 2009Jia         : ",m09$tr.val, sep=""))
+#' cat(paste("* trio by 2007Wang        : ",m07$tr.val, sep=""))
+#' cat(paste("* trio by 2003Guo         : ",m03$tr.val, sep=""))
+#' 
+#' @references 
+#' \insertRef{guo_generalized_2003}{maotai}
+#' 
+#' \insertRef{wang_trace_2007}{maotai}
+#' 
+#' \insertRef{yangqing_jia_trace_2009}{maotai}
+#' 
+#' \insertRef{ngo_trace_2012}{maotai}
 #' 
 #' @export
 trio <- function(A, B, C, dim=2, method=c("2003Guo","2007Wang","2009Jia","2012Ngo"), maxiter=1000, eps=1e-10){
@@ -7,13 +64,35 @@ trio <- function(A, B, C, dim=2, method=c("2003Guo","2007Wang","2009Jia","2012Ng
   # not completed yet.
   if (missing(C)){
     C = diag(nrow(A))
-  } 
+    myflag = TRUE
+  } else {
+    myflag = FALSE
+  }
   
-  eigC  = eigen(C)
-  Cinv2 = eigC$vectors%*%diag(1/sqrt(eigC$values))%*%t(eigC$vectors)
-  A = Cinv2%*%A%*%Cinv2
-  B = Cinv2%*%B%*%Cinv2
+  if (!check_symm(A)){
+    stop("* trio : an input matrix 'A' should be a square, symmetric matrix.")
+  }
+  if (!check_symm(B)){
+    stop("* trio : an input matrix 'B' should be a square, symmetric matrix.")
+  }
+  if (!check_symm(C)){
+    stop("* trio : an input matrix 'C' should be a square, symmetric matrix.")
+  }
+  sizes = rep(0,3)
+  sizes[1] = nrow(A)
+  sizes[2] = nrow(B)
+  sizes[3] = nrow(C)
   
+  if (length(unique(sizes))!=1){
+    stop("* trio : all input matrices should be of same size.")
+  }
+  
+  if (!myflag){
+    eigC  = eigen(C)
+    Cinv2 = eigC$vectors%*%diag(1/sqrt(eigC$values))%*%t(eigC$vectors)
+    A = Cinv2%*%A%*%Cinv2
+    B = Cinv2%*%B%*%Cinv2  
+  }
   
   # 2009 Jia's note : B should have rank >= (m-d)
   if (as.integer(Matrix::rankMatrix(B))<(nrow(B)-dim)){
@@ -207,7 +286,7 @@ trio2012Ngo <- function(A, B, dim, eps, maxiter){
 }
 
 
-# 
+# # 
 # # simple test
 # p = 100
 # mydim = 10

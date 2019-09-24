@@ -1,32 +1,43 @@
-#' Find shortest path using Floyd-Warshall algorithm
+#' Find Shortest Path using Floyd-Warshall Algorithm
 #'
 #' This is a fast implementation of Floyd-Warshall algorithm to find the
-#' shortest path in a pairwise sense using 'RcppArmadillo'. A logical input
-#' is also accepted.
+#' shortest path in a pairwise sense using \code{RcppArmadillo}. A logical input
+#' is also accepted. The given matrix should contain pairwise distance values \eqn{d_{i,j}} where 
+#' \eqn{0} means there exists no path for node \eqn{i} and {j}.
 #'
 #' @param dist either an \eqn{(n\times n)} matrix or a \code{dist} class object.
-#' @return an \eqn{(n\times n)} matrix containing pairwise shortest path.
+#' 
+#' @return an \eqn{(n\times n)} matrix containing pairwise shortest path length.
+#' 
 #' @examples
-#' \dontrun{
-#' ## Generate 10-sample data
-#' X = aux.gensamples(n=10)
-#'
-#' ## Find knn graph with k=3
-#' Xgraph = aux.graphnbd(X,type=c("knn",3))
-#'
-#' ## Separately use binarized and real distance matrices
-#' W1 = aux.shortestpath(Xgraph$mask)
-#' W2 = aux.shortestpath(Xgraph$dist)
-#'
-#' par(mfrow=c(1,2))
-#' image(W1); title("from binarized")
-#' image(W2); title("from Euclidean distance")
+#' ## simple example : a ring graph
+#' #  edges exist for pairs
+#' A = array(0,c(10,10))
+#' for (i in 1:9){
+#'   A[i,i+1] = 1
+#'   A[i+1,i] = 1
 #' }
+#' A[10,1] <- A[1,10] <- 1
+#' 
+#' # compute shortest-path and show the matrix
+#' sdA <- shortestpath(A)
+#' image(sdA, main="shortest path length for ring graph")
+#' 
+#' \dontrun{
+#' # show the graph
+#' library(igraph)
+#' gA = graph_from_adjacency_matrix(A)
+#' plot(gA, main="ring graph")
+#' }
+#' 
 #'
-#' @author Kisung You
-#' @references Floyd, R.W. (1962) \emph{Algorithm 97: Shortest Path}. Commincations of the ACMS, Vol.5(6):345.
+#' @references 
+#' \insertRef{floyd_algorithm_1962}{maotai}
+#' 
+#' \insertRef{warshall_theorem_1962}{maotai}
+#' 
 #' @export
-aux.shortestpath <- function(input){
+shortestpath <- function(dist){
   input = dist
   # class determination
   if (class(dist)=="matrix"){
@@ -34,7 +45,7 @@ aux.shortestpath <- function(input){
   } else if (class(dist)=="dist"){
     distnaive = as.matrix(dist)
   } else {
-    stop("* aux.shortestpath : input 'dist' should be either (n*n) matrix or 'dist' class object.")
+    stop("* shortestpath : input 'dist' should be either (n*n) matrix or 'dist' class object.")
   }
   # consider logical input
   if (any(is.logical(distnaive))){

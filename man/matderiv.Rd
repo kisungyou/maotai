@@ -17,7 +17,7 @@ matderiv(fn, x, h = 0.001)
 an approximate numerical gradient matrix of size \eqn{(n\times p)}.
 }
 \description{
-For a given function \eqn{fn:\mathbb{R}^{n\times p} \rightarrow \mathbb{R}}, 
+For a given function \eqn{f:\mathbf{R}^{n\times p} \rightarrow \mathbf{R}}, 
 we use finite difference scheme that approximates a gradient at a given point \eqn{x}. 
 In Riemannian optimization, this can be used as a proxy for 
 ambient gradient. Use with care since it may accumulate numerical error.

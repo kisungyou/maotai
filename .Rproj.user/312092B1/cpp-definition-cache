@@ -6,13 +6,67 @@
                 "file" : "/home/kisung/Desktop/maotai/src/cpp_gradF.cpp",
                 "kind" : 6,
                 "line" : 9,
-                "name" : "gradF(Function, arma::mat)",
+                "name" : "gradF(Function, arma::mat, double)",
                 "parent_name" : "",
-                "usr" : "c:@F@gradF#$@N@Rcpp@C@Function_Impl>#@N@Rcpp@CT>1#T@PreserveStorage#$@N@arma@C@Mat>#d#"
+                "usr" : "c:@F@gradF#$@N@Rcpp@C@Function_Impl>#@N@Rcpp@CT>1#T@PreserveStorage#$@N@arma@C@Mat>#d#d#"
             }
         ],
         "file" : "/home/kisung/Desktop/maotai/src/cpp_gradF.cpp",
-        "file_last_write" : 1552963373
+        "file_last_write" : 1569344717
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 11,
+                "file" : "/home/kisung/Desktop/maotai/src/cpp_lyapunov.cpp",
+                "kind" : 6,
+                "line" : 9,
+                "name" : "solve_lyapunov(arma::mat, arma::mat, arma::mat)",
+                "parent_name" : "",
+                "usr" : "c:@F@solve_lyapunov#$@N@arma@C@Mat>#d#S0_#S0_#"
+            }
+        ],
+        "file" : "/home/kisung/Desktop/maotai/src/cpp_lyapunov.cpp",
+        "file_last_write" : 1569352058
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 15,
+                "file" : "/home/kisung/Desktop/maotai/src/cpp_shortestpath.cpp",
+                "kind" : 6,
+                "line" : 8,
+                "name" : "isweird(NumericMatrix)",
+                "parent_name" : "",
+                "usr" : "c:@F@isweird#$@N@Rcpp@C@Matrix>#VI14#@N@Rcpp@CT>1#T@PreserveStorage#"
+            },
+            {
+                "column" : 21,
+                "file" : "/home/kisung/Desktop/maotai/src/cpp_shortestpath.cpp",
+                "kind" : 6,
+                "line" : 21,
+                "name" : "aux_shortestpath(NumericMatrix &)",
+                "parent_name" : "",
+                "usr" : "c:@F@aux_shortestpath#&$@N@Rcpp@C@Matrix>#VI14#@N@Rcpp@CT>1#T@PreserveStorage#"
+            }
+        ],
+        "file" : "/home/kisung/Desktop/maotai/src/cpp_shortestpath.cpp",
+        "file_last_write" : 1569345781
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 11,
+                "file" : "/home/kisung/Desktop/maotai/src/cpp_sylvester.cpp",
+                "kind" : 6,
+                "line" : 9,
+                "name" : "cpp_sylvester(arma::mat, arma::mat, arma::mat)",
+                "parent_name" : "",
+                "usr" : "c:@F@cpp_sylvester#$@N@arma@C@Mat>#d#S0_#S0_#"
+            }
+        ],
+        "file" : "/home/kisung/Desktop/maotai/src/cpp_sylvester.cpp",
+        "file_last_write" : 1569357344
     },
     {
         "definitions" : [
@@ -27,6 +81,6 @@
             }
         ],
         "file" : "/home/kisung/Desktop/maotai/src/cpp_trio_2007Wang.cpp",
-        "file_last_write" : 1553304556
+        "file_last_write" : 1569350036
     }
 ]

@@ -7,6 +7,71 @@
 trio(A, B, C, dim = 2, method = c("2003Guo", "2007Wang", "2009Jia",
   "2012Ngo"), maxiter = 1000, eps = 1e-10)
 }
+\arguments{
+\item{A}{a \eqn{(p\times p)} symmetric matrix in the numerator term.}
+
+\item{B}{a \eqn{(p\times p)} symmetric matrix in the denomiator term.}
+
+\item{C}{a \eqn{(p\times p)} symmetric constraint matrix. If not provided, it is set as identical matrix automatically.}
+
+\item{dim}{an integer for target dimension. It can be considered as the number of loadings.}
+
+\item{method}{the name of algorithm to be used. Default is \code{2003Guo}.}
+
+\item{maxiter}{maximum number of iterations to be performed.}
+
+\item{eps}{stopping criterion for iterative algorithms.}
+}
+\value{
+a named list containing
+\describe{
+\item{V}{a \eqn{(p\times dim)} projection matrix.}
+\item{tr.val}{an attained maximum scalar value.}
+}
+}
 \description{
-Trace Ratio Optimation
+This function provides several algorithms to solve the following problem
+\deqn{\textrm{max} \frac{tr(V^\top A V)}{tr(V^\top B V)} \textrm{ such that } V^\top C V = I}
+where \eqn{V} is a projection matrix, i.e., \eqn{V^\top V = I}. Trace ratio optimization 
+is pertained to various linear dimension reduction methods. It should be noted that 
+when \eqn{C = I}, the above problem is often reformulated as a generalized eigenvalue problem 
+since it's an easier proxy with faster computation.
+}
+\examples{
+## simple test
+#  problem setting
+p = 5
+mydim = 2
+A = matrix(rnorm(p^2),nrow=p); A=A\%*\%t(A)
+B = matrix(runif(p^2),nrow=p); B=B\%*\%t(B)
+C = diag(p)
+
+#  approximate solution via determinant ratio problem formulation
+eigAB  = eigen(solve(B,A)) 
+V      = eigAB$vectors[,1:mydim]
+eigval = sum(diag(t(V)\%*\%A\%*\%V))/sum(diag(t(V)\%*\%B\%*\%V))
+
+#  solve using 4 algorithms
+m12 = trio(A,B,dim=mydim, method="2012Ngo")
+m09 = trio(A,B,dim=mydim, method="2009Jia")
+m07 = trio(A,B,dim=mydim, method="2007Wang")
+m03 = trio(A,B,dim=mydim, method="2003Guo")
+
+#  print the results
+cat('* Evaluation of the cost function ')
+cat(paste("* approx. via determinant : ",eigval,sep=""))
+cat(paste("* trio by 2012Ngo         : ",m12$tr.val, sep=""))
+cat(paste("* trio by 2009Jia         : ",m09$tr.val, sep=""))
+cat(paste("* trio by 2007Wang        : ",m07$tr.val, sep=""))
+cat(paste("* trio by 2003Guo         : ",m03$tr.val, sep=""))
+
+}
+\references{
+\insertRef{guo_generalized_2003}{maotai}
+
+\insertRef{wang_trace_2007}{maotai}
+
+\insertRef{yangqing_jia_trace_2009}{maotai}
+
+\insertRef{ngo_trace_2012}{maotai}
 }

@@ -1,6 +1,6 @@
 #' Numerical Approximation to Gradient of a Function with Matrix Argument
 #' 
-#' For a given function \eqn{fn:\mathbb{R}^{n\times p} \rightarrow \mathbb{R}}, 
+#' For a given function \eqn{f:\mathbf{R}^{n\times p} \rightarrow \mathbf{R}}, 
 #' we use finite difference scheme that approximates a gradient at a given point \eqn{x}. 
 #' In Riemannian optimization, this can be used as a proxy for 
 #' ambient gradient. Use with care since it may accumulate numerical error.

@@ -5,6 +5,18 @@ gradF <- function(func, xnow, h) {
     .Call('_maotai_gradF', PACKAGE = 'maotai', func, xnow, h)
 }
 
+solve_lyapunov <- function(A, B, C) {
+    .Call('_maotai_solve_lyapunov', PACKAGE = 'maotai', A, B, C)
+}
+
+aux_shortestpath <- function(wmat) {
+    .Call('_maotai_aux_shortestpath', PACKAGE = 'maotai', wmat)
+}
+
+cpp_sylvester <- function(A, B, C) {
+    .Call('_maotai_cpp_sylvester', PACKAGE = 'maotai', A, B, C)
+}
+
 cppsub_2007Wang <- function(V0, mm, d, Spu, Stu, maxiter, eps) {
     .Call('_maotai_cppsub_2007Wang', PACKAGE = 'maotai', V0, mm, d, Spu, Stu, maxiter, eps)
 }

@@ -6,5 +6,15 @@
 \alias{maotai-package}
 \title{Tools for Matrix Algebra, Optimization and Inference Problems}
 \description{
-Tools for Matrix Algebra, Optimization and Inference Problems
+Matrix is an universal and sometimes primary object/unit in applied mathematics and statistics. We provide a number of algorithms for selected problems in optimization and statistical inference.
+This package contains following functions, 
+\tabular{ll}{
+FUNCTION \tab DESCRIPTION \cr
+\code{\link{lyapunov}} \tab Solve Lyapunov Equation \cr
+\code{\link{matderiv}} \tab Numerical Approximation to Gradient of a Function with Matrix Argument \cr
+\code{\link{pdeterminant}} \tab Calculate the Pseudo-Determinant of a Matrix \cr
+\code{\link{shortestpath}} \tab Find Shortest Path using Floyd-Warshall Algorithm \cr
+\code{\link{sylvester}} \tab Solve Sylvester Equation \cr
+\code{\link{trio}} \tab Trace Ratio Optimation
+}
 }
