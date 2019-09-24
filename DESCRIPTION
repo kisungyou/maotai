@@ -2,12 +2,10 @@ Package: maotai
 Type: Package
 Title: Tools for Matrix Algebra, Optimization and Inference Problems
 Version: 1.0
-Date: 2019-03-18
-Author: ksyou496@gmail.com
-Maintainer: Kisung You <ksyou496@gmail.com>
+Authors@R: c(person("Kisung", "You", role = c("aut", "cre"),email = "ksyou496@gmail.com",comment=c(ORCID="0000-0002-8584-459X")))
 Description: selected casket of matrix optimization problems. 
 Encoding: UTF-8
-License: GPL (>= 2)
+License: GPL (>= 3)
 Imports: Rcpp, Rdpack, RSpectra, Matrix
 LinkingTo: Rcpp, RcppArmadillo
 RdMacros: Rdpack

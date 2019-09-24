@@ -6,8 +6,7 @@ using namespace Rcpp;
 using namespace arma;
 
 // [[Rcpp::export]]
-arma::mat gradF(Function func, arma::mat xnow){
-  double h = 0.001;
+arma::mat gradF(Function func, arma::mat xnow, double h){
   int m = xnow.n_rows;
   int n = xnow.n_cols;
   arma::mat dX(m,n,fill::zeros);

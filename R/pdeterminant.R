@@ -2,6 +2,10 @@
 #' # (1) Holbrook's Note on Pseudo-Determinant -------------------------------
 #     title : Differentiating The Pseudo Determinant
 #' 
+#' 
+#' @references 
+#' \insertRef{holbrook_differentiating_2018}{maotai}
+#' 
 #' @export
 pdeterminant <- function(A){ ## wrapped-up function
   if (!is.matrix(A)){
@@ -19,7 +23,7 @@ pdeterminant <- function(A){ ## wrapped-up function
     del.old = 1
     det.old = det(A+del.old*diag(n))/(del.old^(n-k))
     for (i in 1:496){
-      print(paste("iteration ",i," initiated...",sep=""))
+      # print(paste("iteration ",i," initiated...",sep=""))
       del.new = del.old*multccc
       det.new = det(A+del.new*diag(n))/(del.new^(n-k))
       if ((abs(det.new-det.old)/abs(det.old))<1e-5){
@@ -29,12 +33,13 @@ pdeterminant <- function(A){ ## wrapped-up function
         det.old = det.new
       }
     }
+    return(det.old)
   }
 }
 
 
 
-# # personal tests ----------------------------------------------------------
+# # # personal tests ----------------------------------------------------------
 # n = 10
 # A = cov(matrix(rnorm(5*n),ncol=n))
 # k = as.double(Matrix::rankMatrix(A))

@@ -2,7 +2,10 @@
 #' 
 #' 
 #' @export
-mygradF <- function(fn, x){
+matderiv <- function(fn, x, h=0.001){
+  if (h <= 0){
+    stop("* matderiv : 'h' should be a nonnegative real number.")
+  }
   return(gradF(fn,x))
 }
 # h = 0.001
