@@ -22,14 +22,6 @@
 #' # compute shortest-path and show the matrix
 #' sdA <- shortestpath(A)
 #' image(sdA, main="shortest path length for ring graph")
-#' 
-#' \dontrun{
-#' # show the graph
-#' library(igraph)
-#' gA = graph_from_adjacency_matrix(A)
-#' plot(gA, main="ring graph")
-#' }
-#' 
 #'
 #' @references 
 #' \insertRef{floyd_algorithm_1962}{maotai}
