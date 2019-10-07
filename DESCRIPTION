@@ -3,7 +3,7 @@ Type: Package
 Title: Tools for Matrix Algebra, Optimization and Inference Problems
 Version: 0.1.0
 Authors@R: c(person("Kisung", "You", role = c("aut", "cre"),email = "kyoustat@gmail.com",comment=c(ORCID="0000-0002-8584-459X")))
-Description: Matrix is an universal and sometimes primary object/unit in applied mathematics and statistics. We provide a number of algorithms for selected problems in optimization and statistical inference. For general exposition to the topic with focus on statistical context, see the book by Banerjee and Roy (2014, ISBN:978-1-4200-9538-8).
+Description: Matrix is an universal and sometimes primary object/unit in applied mathematics and statistics. We provide a number of algorithms for selected problems in optimization and statistical inference. For general exposition to the topic with focus on statistical context, see the book by Banerjee and Roy (2014, ISBN:9781420095388).
 Encoding: UTF-8
 License: GPL (>= 3)
 Suggests: igraph, rstiefel
