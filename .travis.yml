@@ -4,4 +4,11 @@ language: R
 sudo: false
 cache: packages
 apt_packages:
- - libmpfr-dev, libfreetype6-dev, libxml2-dev, libglu1-mesa-dev, freeglut3-dev, mesa-common-dev, xorg, libx11-dev
+ - libmpfr-dev
+ - libfreetype6-dev
+ - libxml2-dev
+ - libglu1-mesa-dev
+ - freeglut3-dev
+ - mesa-common-dev
+ - xorg
+ - libx11-dev
