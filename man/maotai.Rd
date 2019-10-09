@@ -4,7 +4,7 @@
 \name{maotai}
 \alias{maotai}
 \alias{maotai-package}
-\title{Tools for Matrix Algebra, Optimization and Inference Problems}
+\title{Tools for Matrix Algebra, Optimization and Inference}
 \description{
 Matrix is an universal and sometimes primary object/unit in applied mathematics and statistics. We provide a number of algorithms for selected problems in optimization and statistical inference.
 This package contains following functions, 
