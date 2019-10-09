@@ -1,14 +1,26 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+# sudo: false is removed
 
 language: R
-sudo: false
+warnings_are_errors: true
 cache: packages
-apt_packages:
- - libmpfr-dev
- - libfreetype6-dev
- - libxml2-dev
- - libglu1-mesa-dev
- - freeglut3-dev
- - mesa-common-dev
- - xorg
- - libx11-dev
+r: release
+
+os:
+  - linux
+  - osx
+
+env:
+  global: RGL_USE_NULL=TRUE
+
+r_check_args: "--as-cran --install-args=--build"
+
+before_install:
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install libmpfr-dev libxml2-dev libcgal-dev libglu1-mesa-dev mesa-common-dev; fi
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; 
+      then 
+        sudo apt-get update -qq ;
+        sudo apt-get install -y libmng2 ; 
+        sudo apt-get install -y libmng1 ; 
+        sudo updatedb;
+    fi
