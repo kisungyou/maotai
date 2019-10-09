@@ -37,7 +37,7 @@
 #' image(sol.num1, main="h=1e-1")
 #' image(sol.num2, main="h=1e-5")
 #' image(sol.num3, main="h=1e-9")
-#' on.exit(par(expar))
+#' par(expar)
 #' 
 #' ntrue = norm(sol.true,"f")
 #' cat('* Relative Errors in Frobenius Norm ')
