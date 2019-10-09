@@ -11,8 +11,6 @@ language: R
 cache: packages
 r: release
 
-
-
 env:
   global: RGL_USE_NULL=TRUE
 
