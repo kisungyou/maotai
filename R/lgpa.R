@@ -8,6 +8,7 @@
 #' @param x a \eqn{(k\times m\times n)} 3d array, where \eqn{k} is the number of points, \eqn{m} the number of dimensions, and \eqn{n} the number of samples.
 #' @param sub.id a vector of indices for defining anchor points.
 #' @param scale a logical; \code{TRUE} if scaling is applied, \code{FALSE} otherwise.
+#' @param reflect a logical; \code{TRUE} if reflection is required, \code{FALSE} otherwise.
 #' 
 #' @return a \eqn{(k\times m\times n)} 3d array of aligned samples.
 #' 
@@ -44,7 +45,7 @@
 #' 
 #' @author Kisung You
 #' @export
-lgpa <- function(x, sub.id = 1:(dim(x)[1]), scale=TRUE){
+lgpa <- function(x, sub.id = 1:(dim(x)[1]), scale=TRUE, reflect=FALSE){
   ###################################################################
   # check : x
   if ((!is.array(x))||(length(dim(x))!=3)){
@@ -61,7 +62,8 @@ lgpa <- function(x, sub.id = 1:(dim(x)[1]), scale=TRUE){
   if ((max(sub.id) > k)||(!is.vector(sub.id))){
     stop("* lgpa : an input 'sub.id' should be a vector containing indices in [1,nrow(x)].")
   }
-  
+  par.scale = scale
+  par.reflect = reflect
   ###################################################################
   # computation
   #   1. select out the subarray and compute means
@@ -75,18 +77,20 @@ lgpa <- function(x, sub.id = 1:(dim(x)[1]), scale=TRUE){
     xsub[,,i] = xsub[,,i] - matrix(rep(meanvecs[[i]],nsubid), ncol=m, byrow = TRUE)
   }
   #   2. compute PGA
-  if (scale){
-    xout = shapes::procGPA(xsub, scale=TRUE)$rotated  
-  } else {
-    xout = shapes::procGPA(xsub, scale=FALSE)$rotated  
-  }
+  xout = shapes::procGPA(xsub, scale=par.scale, reflect = par.reflect)$rotated
+   
+#   if (scale){
+#     xout = shapes::procGPA(xsub, scale=TRUE)$rotated  
+#   } else {
+#     xout = shapes::procGPA(xsub, scale=FALSE)$rotated  
+#   }
   
   #   3. compute rotation matrix
   rotmats = list()
   for (i in 1:n){
     tgt1 = xsub[,,i]
     tgt2 = xout[,,i]
-    rotmats[[i]] = base::solve(t(tgt1)%*%tgt1, t(tgt1)%*%tgt2)
+    rotmats[[i]] = aux_pinv((t(tgt1)%*%tgt1))%*%(t(tgt1)%*%tgt2)
   }
   #   4. final computation
   output = array(0,dim(x))
