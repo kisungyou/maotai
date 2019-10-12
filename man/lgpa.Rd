@@ -4,7 +4,7 @@
 \alias{lgpa}
 \title{Large-scale Generalized Procrustes Analysis}
 \usage{
-lgpa(x, sub.id = 1:(dim(x)[1]), scale = TRUE)
+lgpa(x, sub.id = 1:(dim(x)[1]), scale = TRUE, reflect = FALSE)
 }
 \arguments{
 \item{x}{a \eqn{(k\times m\times n)} 3d array, where \eqn{k} is the number of points, \eqn{m} the number of dimensions, and \eqn{n} the number of samples.}
@@ -12,6 +12,8 @@ lgpa(x, sub.id = 1:(dim(x)[1]), scale = TRUE)
 \item{sub.id}{a vector of indices for defining anchor points.}
 
 \item{scale}{a logical; \code{TRUE} if scaling is applied, \code{FALSE} otherwise.}
+
+\item{reflect}{a logical; \code{TRUE} if reflection is required, \code{FALSE} otherwise.}
 }
 \value{
 a \eqn{(k\times m\times n)} 3d array of aligned samples.

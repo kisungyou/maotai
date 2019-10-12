@@ -19,6 +19,7 @@
 #' @import Rdpack
 #' @importFrom stats rnorm
 #' @importFrom shapes procGPA
+#' @importFrom mclust Mclust
 #' @importFrom utils packageVersion
 #' @importFrom RSpectra eigs
 #' @importFrom Matrix rankMatrix
