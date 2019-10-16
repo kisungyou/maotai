@@ -20,6 +20,18 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// dat2centers
+arma::vec dat2centers(arma::rowvec data, arma::mat& centers);
+RcppExport SEXP _maotai_dat2centers(SEXP dataSEXP, SEXP centersSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::rowvec >::type data(dataSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type centers(centersSEXP);
+    rcpp_result_gen = Rcpp::wrap(dat2centers(data, centers));
+    return rcpp_result_gen;
+END_RCPP
+}
 // gradF
 arma::mat gradF(Function func, arma::mat xnow, double h);
 RcppExport SEXP _maotai_gradF(SEXP funcSEXP, SEXP xnowSEXP, SEXP hSEXP) {
@@ -144,6 +156,7 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_maotai_cpp_pairwise_L2", (DL_FUNC) &_maotai_cpp_pairwise_L2, 4},
+    {"_maotai_dat2centers", (DL_FUNC) &_maotai_dat2centers, 2},
     {"_maotai_gradF", (DL_FUNC) &_maotai_gradF, 3},
     {"_maotai_solve_lyapunov", (DL_FUNC) &_maotai_solve_lyapunov, 3},
     {"_maotai_aux_shortestpath", (DL_FUNC) &_maotai_aux_shortestpath, 1},

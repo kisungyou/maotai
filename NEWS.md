@@ -1,5 +1,9 @@
 # News for Package maotai
 ### Version 0.1.0
+  * Following functions are added:
+    - `dpmeans`      : DP-means algorithm for clustering Euclidean data.
+    - `gmmdist`      : Distance measures between multiple samples using Gaussian mixture models.
+### Version 0.1.0
   * Package is first deployed.
   * Initialize the following documentation:
     - NEWS for keeping record of updates.

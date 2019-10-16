@@ -5,7 +5,7 @@ Tools for Matrix Algebra, Optimization and Inference Problems
 
 [![Travis build status](https://travis-ci.org/kyoustat/maotai.svg?branch=master)](https://travis-ci.org/kyoustat/maotai)
 
-`maotai` is an acronym for Matrix Algebra, OpTimization, and Inference problems - though I can't deny motivation from one of [my father's favorite](https://en.wikipedia.org/wiki/Maotai) for the namesake. More detailed introduction will be added later.
+`maotai` is an acronym for **M**atrix **A**lgebra, **O**p**T**imization, **A**nd **I**nference problems - though I can't deny motivation from one of [my father's favorite](https://en.wikipedia.org/wiki/Maotai) for the namesake. More detailed introduction will be added later.
 
 Installation
 ------------

@@ -1,5 +1,4 @@
-.pkgenv <- new.env(parent = emptyenv())
-
+# .pkgenv <- new.env(parent = emptyenv())
 .onAttach <- function(...){
   ## Retrieve Year Information
   date <- date()
@@ -10,12 +9,14 @@
   this.version = packageVersion("maotai")
   
   ## Print on Screen
+  packageStartupMessage("---------------------------------------------------------------------")
   packageStartupMessage("** maotai")
   packageStartupMessage("**  - Tools for Matrix Algebra, Optimization and Inference Problems")
   packageStartupMessage("** Version    : ",this.version,"      (",this.year,")",sep="")
   packageStartupMessage("** Maintainer : Kisung You (kyoustat@gmail.com)")
   packageStartupMessage("**")
   packageStartupMessage("** Please share any bugs or suggestions to the maintainer.")
+  packageStartupMessage("---------------------------------------------------------------------")
 }
 
 .onUnload <- function(libpath) {

@@ -5,6 +5,10 @@ cpp_pairwise_L2 <- function(muA, muB, covA, covB) {
     .Call('_maotai_cpp_pairwise_L2', PACKAGE = 'maotai', muA, muB, covA, covB)
 }
 
+dat2centers <- function(data, centers) {
+    .Call('_maotai_dat2centers', PACKAGE = 'maotai', data, centers)
+}
+
 gradF <- function(func, xnow, h) {
     .Call('_maotai_gradF', PACKAGE = 'maotai', func, xnow, h)
 }

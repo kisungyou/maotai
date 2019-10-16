@@ -2,6 +2,36 @@
     {
         "definitions" : [
             {
+                "column" : 12,
+                "file" : "/home/kisung/Desktop/maotai/src/cpp_L2.cpp",
+                "kind" : 6,
+                "line" : 10,
+                "name" : "cpp_pairwise_L2(arma::mat, arma::mat, arma::cube, arma::cube)",
+                "parent_name" : "",
+                "usr" : "c:@F@cpp_pairwise_L2#$@N@arma@C@Mat>#d#S0_#$@N@arma@C@Cube>#d#S1_#"
+            }
+        ],
+        "file" : "/home/kisung/Desktop/maotai/src/cpp_L2.cpp",
+        "file_last_write" : 1571256537
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 11,
+                "file" : "/home/kisung/Desktop/maotai/src/cpp_dpmeans.cpp",
+                "kind" : 6,
+                "line" : 9,
+                "name" : "dat2centers(arma::rowvec, arma::mat &)",
+                "parent_name" : "",
+                "usr" : "c:@F@dat2centers#$@N@arma@C@Row>#d#&$@N@arma@C@Mat>#d#"
+            }
+        ],
+        "file" : "/home/kisung/Desktop/maotai/src/cpp_dpmeans.cpp",
+        "file_last_write" : 1571257972
+    },
+    {
+        "definitions" : [
+            {
                 "column" : 11,
                 "file" : "/home/kisung/Desktop/maotai/src/cpp_gradF.cpp",
                 "kind" : 6,
@@ -12,7 +42,7 @@
             }
         ],
         "file" : "/home/kisung/Desktop/maotai/src/cpp_gradF.cpp",
-        "file_last_write" : 1570590094
+        "file_last_write" : 1571256537
     },
     {
         "definitions" : [
@@ -27,7 +57,7 @@
             }
         ],
         "file" : "/home/kisung/Desktop/maotai/src/cpp_lyapunov.cpp",
-        "file_last_write" : 1570590094
+        "file_last_write" : 1571256537
     },
     {
         "definitions" : [
@@ -51,7 +81,7 @@
             }
         ],
         "file" : "/home/kisung/Desktop/maotai/src/cpp_shortestpath.cpp",
-        "file_last_write" : 1570590094
+        "file_last_write" : 1571256537
     },
     {
         "definitions" : [
@@ -66,7 +96,7 @@
             }
         ],
         "file" : "/home/kisung/Desktop/maotai/src/cpp_sylvester.cpp",
-        "file_last_write" : 1570590094
+        "file_last_write" : 1571256537
     },
     {
         "definitions" : [
@@ -81,6 +111,54 @@
             }
         ],
         "file" : "/home/kisung/Desktop/maotai/src/cpp_trio_2007Wang.cpp",
-        "file_last_write" : 1570590094
+        "file_last_write" : 1571256537
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 8,
+                "file" : "/home/kisung/Desktop/maotai/src/evaluations.cpp",
+                "kind" : 6,
+                "line" : 17,
+                "name" : "eval_gaussian(arma::vec, arma::vec, arma::mat)",
+                "parent_name" : "",
+                "usr" : "c:@F@eval_gaussian#$@N@arma@C@Col>#d#S0_#$@N@arma@C@Mat>#d#"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/kisung/Desktop/maotai/src/evaluations.cpp",
+                "kind" : 6,
+                "line" : 33,
+                "name" : "eval_gaussian_data(arma::mat, arma::vec, arma::mat)",
+                "parent_name" : "",
+                "usr" : "c:@F@eval_gaussian_data#$@N@arma@C@Mat>#d#$@N@arma@C@Col>#d#S0_#"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/kisung/Desktop/maotai/src/evaluations.cpp",
+                "kind" : 6,
+                "line" : 69,
+                "name" : "eval_gmm_data(arma::mat, arma::mat, arma::cube, arma::vec)",
+                "parent_name" : "",
+                "usr" : "c:@F@eval_gmm_data#$@N@arma@C@Mat>#d#S0_#$@N@arma@C@Cube>#d#$@N@arma@C@Col>#d#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/kisung/Desktop/maotai/src/evaluations.cpp",
+                "kind" : 6,
+                "line" : 93,
+                "name" : "eval_gmm(arma::vec, arma::mat, arma::cube, arma::vec)",
+                "parent_name" : "",
+                "usr" : "c:@F@eval_gmm#$@N@arma@C@Col>#d#$@N@arma@C@Mat>#d#$@N@arma@C@Cube>#d#S0_#"
+            }
+        ],
+        "file" : "/home/kisung/Desktop/maotai/src/evaluations.cpp",
+        "file_last_write" : 1571256537
+    },
+    {
+        "definitions" : [
+        ],
+        "file" : "/home/kisung/Desktop/maotai/src/evaluations.h",
+        "file_last_write" : 1571256537
     }
 ]

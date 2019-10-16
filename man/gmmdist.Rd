@@ -2,10 +2,54 @@
 % Please edit documentation in R/gmmdist.R
 \name{gmmdist}
 \alias{gmmdist}
-\title{Distance Measures between Multisets using Gaussian Mixture Models}
+\title{Distance Measures between Multiple Samples using Gaussian Mixture Models}
 \usage{
 gmmdist(datalist, maxk = 5, method = c("L2"), as.dist = FALSE)
 }
+\arguments{
+\item{datalist}{a length \eqn{N} list of samples. All elements of the list should be of same type, either \code{vector} or \code{matrix} of same dimension (number of columns).}
+
+\item{maxk}{maximum number of clusters to be fitted using GMM.}
+
+\item{method}{name of the distance/dissimilarity measure.}
+
+\item{as.dist}{a logical; \code{TRUE} to return \code{dist} object, \code{FALSE} to return an \eqn{(N\times N)} symmetric matrix of pairwise distances.}
+}
+\value{
+either \code{dist} object of an \eqn{(N\times N)} symmetric matrix of pairwise distances by \code{as.dist} argument.
+}
 \description{
-Distance Measures between Multisets using Gaussian Mixture Models
+Taking multiple observations (a sample) as a unit of analysis requires 
+a measure of discrepancy between samples. \code{gmmdist} fits finite 
+Gaussian mixture models to each sample and use the fitted model as 
+a representation of a single sample. A single model is selected via 
+Bayesian Information Criterion (BIC).
+}
+\examples{
+## let's try two-dimensional data of 30 samples
+## single or mixture of two and three gaussian distributions.
+dlist = list()
+for (i in 1:10){
+  dlist[[i]] = matrix(rnorm(120),ncol=2) 
+}
+for (i in 11:20){
+  A = matrix(rnorm(60,mean=-4),ncol=2)
+  B = matrix(rnorm(60,mean= 4),ncol=2)
+  dlist[[i]] = rbind(A,B)
+}
+for (i in 21:30){
+  A = matrix(rnorm(40,mean=-4),ncol=2)
+  B = matrix(rnorm(40),ncol=2)
+  C = matrix(rnorm(40,mean= 4),ncol=2)
+  dlist[[i]] = rbind(A,B,C)
+}
+
+## compute pairwise distances, expecting (3 x 3) block structure.
+mm = gmmdist(dlist, maxk=5)
+
+## visualize
+opar <- par(pty="s")
+image(mm[,nrow(mm):1], main="3-block pattern as expected")
+par(opar)
+
 }
