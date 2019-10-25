@@ -6,6 +6,14 @@
 using namespace Rcpp;
 using namespace arma;
 
+
+/*
+ * 1. cpp_pairwise_L2 : L2 distance between GMM's.
+ * 2. integrate_1d    : 1d integration, generic but used in distance computation
+ */
+
+///////////////////////////////////////////////////////////////////
+// 1. cpp_pairwise_L2
 // [[Rcpp::export]]
 Rcpp::List cpp_pairwise_L2(arma::mat muA, arma::mat muB, arma::cube covA, arma::cube covB){
   // parameters
@@ -77,4 +85,21 @@ Rcpp::List cpp_pairwise_L2(arma::mat muA, arma::mat muB, arma::cube covA, arma::
   return Rcpp::List::create(Rcpp::Named("A")=matA,
                             Rcpp::Named("B")=matB,
                             Rcpp::Named("C")=matC);
+}
+
+///////////////////////////////////////////////////////////////////
+// 2. integrate_1d
+// [[Rcpp::export]]
+double integrate_1d(arma::vec &tseq, arma::vec &fval){
+  // parameters
+  int N = tseq.n_elem;
+  double output = 0.0;
+  double dt = 0.0;
+  
+  // iteration
+  for (int i=0;i<(N-1);i++){
+    dt = tseq(i+1)-tseq(i);
+    output += (fval(i) + fval(i+1))*dt/2.0;
+  }
+  return(output);
 }

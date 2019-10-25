@@ -1,14 +1,14 @@
 #' Distance Measures between Multiple Samples using Gaussian Mixture Models
 #' 
 #' Taking multiple observations (a sample) as a unit of analysis requires 
-#' a measure of discrepancy between samples. \code{gmmdist} fits finite 
+#' a measure of discrepancy between samples. \code{distgmm} fits finite 
 #' Gaussian mixture models to each sample and use the fitted model as 
 #' a representation of a single sample. A single model is selected via 
 #' Bayesian Information Criterion (BIC). 
 #' 
 #' @param datalist a length \eqn{N} list of samples. All elements of the list should be of same type, either \code{vector} or \code{matrix} of same dimension (number of columns).
-#' @param maxk maximum number of clusters to be fitted using GMM.
 #' @param method name of the distance/dissimilarity measure.
+#' @param maxk maximum number of clusters to be fitted using GMM.
 #' @param as.dist a logical; \code{TRUE} to return \code{dist} object, \code{FALSE} to return an \eqn{(N\times N)} symmetric matrix of pairwise distances.
 #' 
 #' @return either \code{dist} object of an \eqn{(N\times N)} symmetric matrix of pairwise distances by \code{as.dist} argument.
@@ -33,7 +33,7 @@
 #' }
 #' 
 #' ## compute pairwise distances, expecting (3 x 3) block structure.
-#' mm = gmmdist(dlist, maxk=5)
+#' mm = distgmm(dlist, maxk=5)
 #' 
 #' ## visualize
 #' opar <- par(pty="s")
@@ -41,11 +41,11 @@
 #' par(opar)
 #' 
 #' @export
-gmmdist <- function(datalist, maxk=5, method=c("L2"), as.dist=FALSE){
+distgmm <- function(datalist, method=c("L2"), maxk=5, as.dist=FALSE){
   #######################################################
   # Preprocessing : checkers
   if (!check_datalist(datalist)){
-    stop("* gmmdist : an input should be a list containing samples of same dimension.")
+    stop("* distgmm : an input should be a list containing samples of same dimension.")
   }
   maxk   = round(maxk)
   method = match.arg(method)
@@ -75,11 +75,11 @@ gmmdist <- function(datalist, maxk=5, method=c("L2"), as.dist=FALSE){
       objB = list.gmm[[j]]
       if (vec.flag){
         theval = switch(method, 
-                        "L2" = gmmdist_l2_1d(objA, objB))
+                        "L2" = distgmm_l2_1d(objA, objB))
         output[i,j] <- output[j,i] <- theval
       } else {
         theval = switch(method,
-                        "L2" = gmmdist_l2_nd(objA, objB))
+                        "L2" = distgmm_l2_nd(objA, objB))
         output[i,j] <- output[j,i] <- theval
       }
     }
@@ -97,7 +97,7 @@ gmmdist <- function(datalist, maxk=5, method=c("L2"), as.dist=FALSE){
 # use Mclust 'parameters' object ------------------------------------------
 #' @keywords internal
 #' @noRd
-gmmdist_l2_1d <- function(objA, objB){
+distgmm_l2_1d <- function(objA, objB){
   weightA = as.vector(objA$pro)
   muA     = matrix(objA$mean, ncol=1)
   covA    = array(0,c(1,1,length(weightA)))
@@ -127,7 +127,7 @@ gmmdist_l2_1d <- function(objA, objB){
 }
 #' @keywords internal
 #' @noRd
-gmmdist_l2_nd <- function(objA, objB){
+distgmm_l2_nd <- function(objA, objB){
   weightA = as.vector(objA$pro)
   muA     = t(objA$mean)
   covA    = objA$variance$sigma
@@ -175,7 +175,7 @@ gmmdist_l2_nd <- function(objA, objB){
 # for (i in 41:60){
 #   x[[i]] = rbind(matrix(rnorm(100*2,mean=-4),ncol=2), matrix(rnorm(100*2),ncol=2), matrix(rnorm(150*2,mean=4),ncol=2))
 # }
-# mm = gmmdist(x, maxk=10)
+# mm = distgmm(x, maxk=10)
 # image(mm[,nrow(mm):1])
 
 # bestgmm <- function(dat){

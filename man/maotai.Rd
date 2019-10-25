@@ -10,7 +10,9 @@ Matrix is an universal and sometimes primary object/unit in applied mathematics 
 This package contains following functions, 
 \tabular{ll}{
 FUNCTION \tab DESCRIPTION \cr
-\code{\link{gmmdist}} \tab Distance Measures between Multisets using Gaussian Mixture Models \cr
+\code{\link{distgmm}} \tab Distance Measures between Multisets using Gaussian Mixture Models \cr
+\code{\link{distecdf}} \tab Distance Measures between Multiple Empirical CDFs \cr
+\code{\link{dpmeans}} \tab DP-means Algorithm for Clustering Euclidean Data \cr
 \code{\link{lgpa}} \tab Large-scale Generalized Procrustes Analysis \cr
 \code{\link{lyapunov}} \tab Solve Lyapunov Equation \cr
 \code{\link{matderiv}} \tab Numerical Approximation to Gradient of a Function with Matrix Argument \cr

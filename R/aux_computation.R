@@ -1,9 +1,6 @@
 # auxiliary functions for computation -------------------------------------
-# (1) aux_pinv  : pseudo-inverse
-
-
-
-
+# (1) aux_pinv    : pseudo-inverse
+ 
 # (1) aux_pinv ------------------------------------------------------------
 #' @keywords internal
 #' @noRd

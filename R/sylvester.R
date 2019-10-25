@@ -21,9 +21,10 @@
 #' 
 #' #  solve using 'sylvester' function
 #' solX = sylvester(A,B,C)
-#' cat("* Experiment with Sylvester Solver")
-#' cat(paste("* Absolute Error  : ",norm(solX-X,"f"),sep=""))
-#' cat(paste("* Relative Error  : ",norm(solX-X,"f")/norm(X,"f"),sep=""))
+#' pm1 = "* Experiment with Sylvester Solver"
+#' pm2 = paste("* Absolute Error  : ",norm(solX-X,"f"),sep="")
+#' pm3 = paste("* Relative Error  : ",norm(solX-X,"f")/norm(X,"f"),sep="")
+#' cat(paste(pm1,"\n",pm2,"\n",pm3,sep=""))
 #' 
 #' 
 #' @references 
