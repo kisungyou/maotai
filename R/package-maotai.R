@@ -20,7 +20,7 @@
 #' @name maotai
 #' @aliases maotai-package
 #' @import Rdpack
-#' @importFrom stats as.dist knots ecdf rnorm runif quantile
+#' @importFrom stats as.dist knots ecdf rnorm runif quantile dist
 #' @importFrom shapes procGPA
 #' @importFrom mclust Mclust mclustBIC
 #' @importFrom utils packageVersion
