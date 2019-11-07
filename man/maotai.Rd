@@ -16,6 +16,7 @@ FUNCTION \tab DESCRIPTION \cr
 \code{\link{lgpa}} \tab Large-scale Generalized Procrustes Analysis \cr
 \code{\link{lyapunov}} \tab Solve Lyapunov Equation \cr
 \code{\link{matderiv}} \tab Numerical Approximation to Gradient of a Function with Matrix Argument \cr
+\code{\link{mmd2test}} \tab Kernel Two-sample Test with Maximum Mean Discrepancy \cr
 \code{\link{pdeterminant}} \tab Calculate the Pseudo-Determinant of a Matrix \cr
 \code{\link{shortestpath}} \tab Find Shortest Path using Floyd-Warshall Algorithm \cr
 \code{\link{sylvester}} \tab Solve Sylvester Equation \cr
