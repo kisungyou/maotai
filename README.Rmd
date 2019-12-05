@@ -34,6 +34,3 @@ or the up-to-date development version from github:
 ## library(devtools)
 devtools::install_github("kyoustat/maotai")
 ```
-
-## Code of Conduct
-Please note that the 'maotai' project is released with a **Contributor Code of Conduct**. By contributing to this project, you agree to abide by its terms.

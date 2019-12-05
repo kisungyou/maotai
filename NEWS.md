@@ -6,7 +6,7 @@
   * Following functions are added,
     - `dpmeans`      : DP-means algorithm for clustering Euclidean data.
     - `distgmm`      : distance measures between multiple samples using Gaussian mixture models.
-    - `distecdf`     : distance measures between multiple empirical cumulative distribution functions.
+    - `ecdfdist`     : distance measures between multiple empirical cumulative distribution functions.
     
 ### Version 0.1.0
   * Package is first deployed.

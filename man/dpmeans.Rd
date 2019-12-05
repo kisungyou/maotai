@@ -4,8 +4,13 @@
 \alias{dpmeans}
 \title{DP-means Algorithm for Clustering Euclidean Data}
 \usage{
-dpmeans(data, lambda = 1, maxiter = 1234, abstol = 1e-06,
-  permute.order = FALSE)
+dpmeans(
+  data,
+  lambda = 1,
+  maxiter = 1234,
+  abstol = 1e-06,
+  permute.order = FALSE
+)
 }
 \arguments{
 \item{data}{an \eqn{(n\times p)} data matrix for each row being an observation.}

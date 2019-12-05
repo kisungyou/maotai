@@ -23,7 +23,7 @@
 #' }
 #' 
 #' ## compute Kolmogorov-Smirnov distance
-#' dm = distecdf(mylist, method="KS")
+#' dm = ecdfdist(mylist, method="KS")
 #' 
 #' ## visualize
 #' opar = par(pty="s")
@@ -31,18 +31,18 @@
 #' par(opar)
 #' 
 #' @export
-distecdf <- function(elist, method=c("KS","Lp","Wasserstein"), p=2, as.dist=FALSE){
+ecdfdist <- function(elist, method=c("KS","Lp","Wasserstein"), p=2, as.dist=FALSE){
   ###############################################
   # Preprocessing
   if (!elist_check(elist)){
-    stop("* distecdf : input 'elist' should be a list of 'ecdf' objects.")
+    stop("* ecdfdist : input 'elist' should be a list of 'ecdf' objects.")
   }
   methodss = c("ks","wasserstein","lp")
   mymethod = tolower(method)
   mymethod = match.arg(mymethod, methodss)
   myp      = round(p)
   if (myp <= 0){
-    stop("* distecdf : exponent 'p' should be a nonnegative number.")
+    stop("* ecdfdist : exponent 'p' should be a nonnegative number.")
   }
   
   ###############################################

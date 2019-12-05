@@ -4,8 +4,15 @@
 \alias{trio}
 \title{Trace Ratio Optimation}
 \usage{
-trio(A, B, C, dim = 2, method = c("2003Guo", "2007Wang", "2009Jia",
-  "2012Ngo"), maxiter = 1000, eps = 1e-10)
+trio(
+  A,
+  B,
+  C,
+  dim = 2,
+  method = c("2003Guo", "2007Wang", "2009Jia", "2012Ngo"),
+  maxiter = 1000,
+  eps = 1e-10
+)
 }
 \arguments{
 \item{A}{a \eqn{(p\times p)} symmetric matrix in the numerator term.}
