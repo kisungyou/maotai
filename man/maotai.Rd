@@ -13,6 +13,8 @@ FUNCTION \tab DESCRIPTION \cr
 \code{\link{distgmm}} \tab Distance Measures between Multisets using Gaussian Mixture Models \cr
 \code{\link{dpmeans}} \tab DP-means Algorithm for Clustering Euclidean Data \cr
 \code{\link{ecdfdist}} \tab Distance Measures between Multiple Empirical CDFs \cr
+\code{\link{ecdfdist2}} \tab Pairwise Measures for Two Sets of Empirical CDFs \cr
+\code{\link{epmeans}} \tab EP-means Algorithm for Clustering Empirical Distributions \cr
 \code{\link{lgpa}} \tab Large-scale Generalized Procrustes Analysis \cr
 \code{\link{lyapunov}} \tab Solve Lyapunov Equation \cr
 \code{\link{matderiv}} \tab Numerical Approximation to Gradient of a Function with Matrix Argument \cr

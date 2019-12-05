@@ -111,6 +111,18 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// cpp_kmeans
+Rcpp::List cpp_kmeans(arma::mat data, int k);
+RcppExport SEXP _maotai_cpp_kmeans(SEXP dataSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type data(dataSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_kmeans(data, k));
+    return rcpp_result_gen;
+END_RCPP
+}
 // eval_gaussian
 double eval_gaussian(arma::vec x, arma::vec mu, arma::mat cov);
 RcppExport SEXP _maotai_eval_gaussian(SEXP xSEXP, SEXP muSEXP, SEXP covSEXP) {
@@ -175,6 +187,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_maotai_solve_lyapunov", (DL_FUNC) &_maotai_solve_lyapunov, 3},
     {"_maotai_cpp_pairwise_L2", (DL_FUNC) &_maotai_cpp_pairwise_L2, 4},
     {"_maotai_integrate_1d", (DL_FUNC) &_maotai_integrate_1d, 2},
+    {"_maotai_cpp_kmeans", (DL_FUNC) &_maotai_cpp_kmeans, 2},
     {"_maotai_eval_gaussian", (DL_FUNC) &_maotai_eval_gaussian, 3},
     {"_maotai_eval_gaussian_data", (DL_FUNC) &_maotai_eval_gaussian_data, 3},
     {"_maotai_eval_gmm_data", (DL_FUNC) &_maotai_eval_gmm_data, 4},

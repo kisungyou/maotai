@@ -10,6 +10,6 @@ Suggests: igraph, rstiefel
 Imports: Rcpp, Rdpack, RSpectra, Matrix, mclust, shapes, stats, utils
 LinkingTo: Rcpp, RcppArmadillo
 RdMacros: Rdpack
-RoxygenNote: 7.0.0
+RoxygenNote: 7.0.2
 URL: http://github.com/kyoustat/maotai
 BugReports: http://github.com/kyoustat/maotai/issues

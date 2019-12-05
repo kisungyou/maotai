@@ -32,13 +32,14 @@
 shortestpath <- function(dist){
   input = dist
   # class determination
-  if (class(dist)=="matrix"){
+  if (inherits(dist,"matrix")){
     distnaive = dist
-  } else if (class(dist)=="dist"){
+  } else if (inherits(dist, "dist")){
     distnaive = as.matrix(dist)
   } else {
     stop("* shortestpath : input 'dist' should be either (n*n) matrix or 'dist' class object.")
   }
+   
   # consider logical input
   if (any(is.logical(distnaive))){
     distnaive = distnaive*1

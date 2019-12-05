@@ -33,6 +33,10 @@ integrate_1d <- function(tseq, fval) {
     .Call('_maotai_integrate_1d', PACKAGE = 'maotai', tseq, fval)
 }
 
+cpp_kmeans <- function(data, k) {
+    .Call('_maotai_cpp_kmeans', PACKAGE = 'maotai', data, k)
+}
+
 eval_gaussian <- function(x, mu, cov) {
     .Call('_maotai_eval_gaussian', PACKAGE = 'maotai', x, mu, cov)
 }
