@@ -11,6 +11,7 @@
   ## Print on Screen
   packageStartupMessage("**-----------------------------------------------------------------**")
   packageStartupMessage("** maotai")
+  packageStartupMessage("**")
   packageStartupMessage("**  - Tools for Matrix Algebra, Optimization and Inference Problems")
   packageStartupMessage("** Version    : ",this.version,"      (",this.year,")",sep="")
   packageStartupMessage("** Maintainer : Kisung You (kyoustat@gmail.com)")

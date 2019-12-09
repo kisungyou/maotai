@@ -37,7 +37,8 @@
 #'   idk = which(epout$cluster==k)
 #'   for (i in 1:length(idk)){
 #'     if (i<2){
-#'       plot(elist[[idk[i]]], verticals=TRUE, lwd=0.25, do.points=FALSE, main=paste("class",k))
+#'       pm = paste("class ",k," (size=",length(idk),")",sep="")
+#'       plot(elist[[idk[i]]], verticals=TRUE, lwd=0.25, do.points=FALSE, main=pm)
 #'     } else {
 #'       plot(elist[[idk[i]]], add=TRUE, verticals=TRUE, lwd=0.25, do.points=FALSE)
 #'     }
