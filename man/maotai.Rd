@@ -10,6 +10,8 @@ Matrix is an universal and sometimes primary object/unit in applied mathematics 
 This package contains following functions, 
 \tabular{ll}{
 FUNCTION \tab DESCRIPTION \cr
+\code{\link{boot.mblock}} \tab Generate Index for Moving Block Bootstrapping \cr
+\code{\link{boot.stationary}} \tab Generate Index for Stationary Bootstrapping \cr
 \code{\link{distgmm}} \tab Distance Measures between Multisets using Gaussian Mixture Models \cr
 \code{\link{dpmeans}} \tab DP-means Algorithm for Clustering Euclidean Data \cr
 \code{\link{ecdfdist}} \tab Distance Measures between Multiple Empirical CDFs \cr

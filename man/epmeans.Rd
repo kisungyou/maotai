@@ -25,7 +25,7 @@ induced by Earth Mover's Distance.
 \examples{
 ## two sets of 1d samples, 10 each and add some noise
 #    set 1 : mixture of two gaussians
-#    set 2 : gamma 
+#    set 2 : single gamma distribution
 
 # generate data
 elist = list()

@@ -4,6 +4,8 @@
 #' This package contains following functions, 
 #' \tabular{ll}{
 #' FUNCTION \tab DESCRIPTION \cr
+#' \code{\link{boot.mblock}} \tab Generate Index for Moving Block Bootstrapping \cr
+#' \code{\link{boot.stationary}} \tab Generate Index for Stationary Bootstrapping \cr
 #' \code{\link{distgmm}} \tab Distance Measures between Multisets using Gaussian Mixture Models \cr
 #' \code{\link{dpmeans}} \tab DP-means Algorithm for Clustering Euclidean Data \cr
 #' \code{\link{ecdfdist}} \tab Distance Measures between Multiple Empirical CDFs \cr
@@ -23,7 +25,7 @@
 #' @name maotai
 #' @aliases maotai-package
 #' @import Rdpack
-#' @importFrom stats as.dist knots ecdf rnorm runif quantile dist rgamma
+#' @importFrom stats as.dist knots ecdf rnorm runif quantile dist rgamma rgeom var
 #' @importFrom shapes procGPA
 #' @importFrom mclust Mclust mclustBIC
 #' @importFrom utils packageVersion
