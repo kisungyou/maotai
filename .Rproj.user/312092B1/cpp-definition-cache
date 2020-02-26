@@ -154,5 +154,164 @@
         ],
         "file" : "/home/kisung/Desktop/gitgit/maotai/src/evaluations.h",
         "file_last_write" : 1572976279
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 15,
+                "file" : "/home/kisung/Desktop/maotai/src/cpp_casket.cpp",
+                "kind" : 6,
+                "line" : 21,
+                "name" : "isweird(NumericMatrix)",
+                "parent_name" : "",
+                "usr" : "c:@F@isweird#$@N@Rcpp@C@Matrix>#VI14#@N@Rcpp@CT>1#T@PreserveStorage#"
+            },
+            {
+                "column" : 21,
+                "file" : "/home/kisung/Desktop/maotai/src/cpp_casket.cpp",
+                "kind" : 6,
+                "line" : 34,
+                "name" : "aux_shortestpath(NumericMatrix &)",
+                "parent_name" : "",
+                "usr" : "c:@F@aux_shortestpath#&$@N@Rcpp@C@Matrix>#VI14#@N@Rcpp@CT>1#T@PreserveStorage#"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/kisung/Desktop/maotai/src/cpp_casket.cpp",
+                "kind" : 6,
+                "line" : 77,
+                "name" : "cppsub_2007Wang(arma::mat, int, int, arma::mat, arma::mat, int, double)",
+                "parent_name" : "",
+                "usr" : "c:@F@cppsub_2007Wang#$@N@arma@C@Mat>#d#I#I#S0_#S0_#I#d#"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/kisung/Desktop/maotai/src/cpp_casket.cpp",
+                "kind" : 6,
+                "line" : 122,
+                "name" : "gradF(Function, arma::mat, double)",
+                "parent_name" : "",
+                "usr" : "c:@F@gradF#$@N@Rcpp@C@Function_Impl>#@N@Rcpp@CT>1#T@PreserveStorage#$@N@arma@C@Mat>#d#d#"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/kisung/Desktop/maotai/src/cpp_casket.cpp",
+                "kind" : 6,
+                "line" : 144,
+                "name" : "dat2centers(arma::rowvec, arma::mat &)",
+                "parent_name" : "",
+                "usr" : "c:@F@dat2centers#$@N@arma@C@Row>#d#&$@N@arma@C@Mat>#d#"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/kisung/Desktop/maotai/src/cpp_casket.cpp",
+                "kind" : 6,
+                "line" : 164,
+                "name" : "cpp_sylvester(arma::mat, arma::mat, arma::mat)",
+                "parent_name" : "",
+                "usr" : "c:@F@cpp_sylvester#$@N@arma@C@Mat>#d#S0_#S0_#"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/kisung/Desktop/maotai/src/cpp_casket.cpp",
+                "kind" : 6,
+                "line" : 171,
+                "name" : "solve_lyapunov(arma::mat, arma::mat, arma::mat)",
+                "parent_name" : "",
+                "usr" : "c:@F@solve_lyapunov#$@N@arma@C@Mat>#d#S0_#S0_#"
+            },
+            {
+                "column" : 14,
+                "file" : "/home/kisung/Desktop/maotai/src/cpp_casket.cpp",
+                "kind" : 6,
+                "line" : 181,
+                "name" : "cpp_weiszfeld(arma::mat, double, int, arma::rowvec, arma::vec, double)",
+                "parent_name" : "",
+                "usr" : "c:@F@cpp_weiszfeld#$@N@arma@C@Mat>#d#d#I#$@N@arma@C@Row>#d#$@N@arma@C@Col>#d#d#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/kisung/Desktop/maotai/src/cpp_casket.cpp",
+                "kind" : 6,
+                "line" : 230,
+                "name" : "cpp_kmeans(arma::mat, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@cpp_kmeans#$@N@arma@C@Mat>#d#I#"
+            }
+        ],
+        "file" : "/home/kisung/Desktop/maotai/src/cpp_casket.cpp",
+        "file_last_write" : 1582757189
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 12,
+                "file" : "/home/kisung/Desktop/maotai/src/cpp_distances.cpp",
+                "kind" : 6,
+                "line" : 18,
+                "name" : "cpp_pairwise_L2(arma::mat, arma::mat, arma::cube, arma::cube)",
+                "parent_name" : "",
+                "usr" : "c:@F@cpp_pairwise_L2#$@N@arma@C@Mat>#d#S0_#$@N@arma@C@Cube>#d#S1_#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/kisung/Desktop/maotai/src/cpp_distances.cpp",
+                "kind" : 6,
+                "line" : 93,
+                "name" : "integrate_1d(arma::vec &, arma::vec &)",
+                "parent_name" : "",
+                "usr" : "c:@F@integrate_1d#&$@N@arma@C@Col>#d#S0_#"
+            }
+        ],
+        "file" : "/home/kisung/Desktop/maotai/src/cpp_distances.cpp",
+        "file_last_write" : 1582754501
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 8,
+                "file" : "/home/kisung/Desktop/maotai/src/evaluations.cpp",
+                "kind" : 6,
+                "line" : 17,
+                "name" : "eval_gaussian(arma::vec, arma::vec, arma::mat)",
+                "parent_name" : "",
+                "usr" : "c:@F@eval_gaussian#$@N@arma@C@Col>#d#S0_#$@N@arma@C@Mat>#d#"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/kisung/Desktop/maotai/src/evaluations.cpp",
+                "kind" : 6,
+                "line" : 33,
+                "name" : "eval_gaussian_data(arma::mat, arma::vec, arma::mat)",
+                "parent_name" : "",
+                "usr" : "c:@F@eval_gaussian_data#$@N@arma@C@Mat>#d#$@N@arma@C@Col>#d#S0_#"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/kisung/Desktop/maotai/src/evaluations.cpp",
+                "kind" : 6,
+                "line" : 69,
+                "name" : "eval_gmm_data(arma::mat, arma::mat, arma::cube, arma::vec)",
+                "parent_name" : "",
+                "usr" : "c:@F@eval_gmm_data#$@N@arma@C@Mat>#d#S0_#$@N@arma@C@Cube>#d#$@N@arma@C@Col>#d#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/kisung/Desktop/maotai/src/evaluations.cpp",
+                "kind" : 6,
+                "line" : 93,
+                "name" : "eval_gmm(arma::vec, arma::mat, arma::cube, arma::vec)",
+                "parent_name" : "",
+                "usr" : "c:@F@eval_gmm#$@N@arma@C@Col>#d#$@N@arma@C@Mat>#d#$@N@arma@C@Cube>#d#S0_#"
+            }
+        ],
+        "file" : "/home/kisung/Desktop/maotai/src/evaluations.cpp",
+        "file_last_write" : 1582754501
+    },
+    {
+        "definitions" : [
+        ],
+        "file" : "/home/kisung/Desktop/maotai/src/evaluations.h",
+        "file_last_write" : 1582754501
     }
 ]

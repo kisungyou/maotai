@@ -85,6 +85,34 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// cpp_weiszfeld
+arma::rowvec cpp_weiszfeld(arma::mat X, double abstol, int maxiter, arma::rowvec xinit, arma::vec weights, double epsnum);
+RcppExport SEXP _maotai_cpp_weiszfeld(SEXP XSEXP, SEXP abstolSEXP, SEXP maxiterSEXP, SEXP xinitSEXP, SEXP weightsSEXP, SEXP epsnumSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type X(XSEXP);
+    Rcpp::traits::input_parameter< double >::type abstol(abstolSEXP);
+    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
+    Rcpp::traits::input_parameter< arma::rowvec >::type xinit(xinitSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type weights(weightsSEXP);
+    Rcpp::traits::input_parameter< double >::type epsnum(epsnumSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_weiszfeld(X, abstol, maxiter, xinit, weights, epsnum));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_kmeans
+Rcpp::List cpp_kmeans(arma::mat data, int k);
+RcppExport SEXP _maotai_cpp_kmeans(SEXP dataSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type data(dataSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_kmeans(data, k));
+    return rcpp_result_gen;
+END_RCPP
+}
 // cpp_pairwise_L2
 Rcpp::List cpp_pairwise_L2(arma::mat muA, arma::mat muB, arma::cube covA, arma::cube covB);
 RcppExport SEXP _maotai_cpp_pairwise_L2(SEXP muASEXP, SEXP muBSEXP, SEXP covASEXP, SEXP covBSEXP) {
@@ -108,18 +136,6 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< arma::vec& >::type tseq(tseqSEXP);
     Rcpp::traits::input_parameter< arma::vec& >::type fval(fvalSEXP);
     rcpp_result_gen = Rcpp::wrap(integrate_1d(tseq, fval));
-    return rcpp_result_gen;
-END_RCPP
-}
-// cpp_kmeans
-Rcpp::List cpp_kmeans(arma::mat data, int k);
-RcppExport SEXP _maotai_cpp_kmeans(SEXP dataSEXP, SEXP kSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::mat >::type data(dataSEXP);
-    Rcpp::traits::input_parameter< int >::type k(kSEXP);
-    rcpp_result_gen = Rcpp::wrap(cpp_kmeans(data, k));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -185,9 +201,10 @@ static const R_CallMethodDef CallEntries[] = {
     {"_maotai_dat2centers", (DL_FUNC) &_maotai_dat2centers, 2},
     {"_maotai_cpp_sylvester", (DL_FUNC) &_maotai_cpp_sylvester, 3},
     {"_maotai_solve_lyapunov", (DL_FUNC) &_maotai_solve_lyapunov, 3},
+    {"_maotai_cpp_weiszfeld", (DL_FUNC) &_maotai_cpp_weiszfeld, 6},
+    {"_maotai_cpp_kmeans", (DL_FUNC) &_maotai_cpp_kmeans, 2},
     {"_maotai_cpp_pairwise_L2", (DL_FUNC) &_maotai_cpp_pairwise_L2, 4},
     {"_maotai_integrate_1d", (DL_FUNC) &_maotai_integrate_1d, 2},
-    {"_maotai_cpp_kmeans", (DL_FUNC) &_maotai_cpp_kmeans, 2},
     {"_maotai_eval_gaussian", (DL_FUNC) &_maotai_eval_gaussian, 3},
     {"_maotai_eval_gaussian_data", (DL_FUNC) &_maotai_eval_gaussian_data, 3},
     {"_maotai_eval_gmm_data", (DL_FUNC) &_maotai_eval_gmm_data, 4},

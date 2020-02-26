@@ -25,16 +25,20 @@ solve_lyapunov <- function(A, B, C) {
     .Call('_maotai_solve_lyapunov', PACKAGE = 'maotai', A, B, C)
 }
 
+cpp_weiszfeld <- function(X, abstol, maxiter, xinit, weights, epsnum) {
+    .Call('_maotai_cpp_weiszfeld', PACKAGE = 'maotai', X, abstol, maxiter, xinit, weights, epsnum)
+}
+
+cpp_kmeans <- function(data, k) {
+    .Call('_maotai_cpp_kmeans', PACKAGE = 'maotai', data, k)
+}
+
 cpp_pairwise_L2 <- function(muA, muB, covA, covB) {
     .Call('_maotai_cpp_pairwise_L2', PACKAGE = 'maotai', muA, muB, covA, covB)
 }
 
 integrate_1d <- function(tseq, fval) {
     .Call('_maotai_integrate_1d', PACKAGE = 'maotai', tseq, fval)
-}
-
-cpp_kmeans <- function(data, k) {
-    .Call('_maotai_cpp_kmeans', PACKAGE = 'maotai', data, k)
 }
 
 eval_gaussian <- function(x, mu, cov) {

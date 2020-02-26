@@ -4,6 +4,7 @@
     - `boot.mblock`     : generate index for Moving Block Bootstrapping.
     - `boot.stationary` : generate index for Stationary Bootstrapping.
     - `epmeans`         : EP-means algorithm for clustering empirical distributions.
+    - `weiszfeld`       : Weiszfeld algorithm for computing L1-median.
     
 ### changes in version 0.1.2
   * Following functions are added,

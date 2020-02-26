@@ -11,6 +11,8 @@ using namespace arma;
  * 4. dat2centers       : 'dpmeans'
  * 5. cpp_sylvester &
  *    cpp_lyapunov
+ * 6. cpp_weiszfeld     : 'weiszfeld'
+ * 7. cpp_kmeans        : 'kmeans' for testing only
  */
 
 ///////////////////////////////////////////////////////////////////
@@ -171,4 +173,74 @@ arma::mat solve_lyapunov(arma::mat A, arma::mat B, arma::mat C){
   arma::mat solution;
   arma::syl(solution, A, B, C);
   return(solution);
+}
+
+///////////////////////////////////////////////////////////////////
+// 6. weiszfeld
+// [[Rcpp::export]]
+arma::rowvec cpp_weiszfeld(arma::mat X, double abstol, int maxiter, arma::rowvec xinit, arma::vec weights, double epsnum){
+  // parameters
+  int N = X.n_rows;
+  int P = X.n_cols;
+  
+  // prepare
+  arma::rowvec xold = xinit;
+  arma::rowvec xtmp(P,fill::zeros);
+  arma::rowvec xnew(P,fill::zeros);
+  arma::vec dists(N,fill::zeros);
+  double xtmp2 = 0.0;
+  double xinc  = 0.0;
+  double norm2 = 0.0;
+  
+  // iteration
+  for (int it=0;it<maxiter;it++){
+    // step 1. compute distance
+    for (int n=0;n<N;n++){
+      norm2 = arma::norm(X.row(n)-xold, 2);
+      if (norm2 < epsnum){
+        dists(n) = norm2 + epsnum;
+      } else {
+        dists(n) = norm2;
+      }
+    }
+    // step 2. compute numerator and denominator
+    xtmp.fill(0.0);
+    xtmp2 = 0.0;
+    for (int n=0;n<N;n++){
+      xtmp  += weights(n)*X.row(n)/dists(n);
+      xtmp2 += weights(n)/dists(n);
+    }
+    xnew = xtmp/xtmp2;
+    
+    // step 3. updating information
+    xinc = arma::norm(xold-xnew,2);
+    xold = xnew;
+    if (xinc < abstol){
+      break;
+    }
+  }
+  
+  // return
+  return(xold);
+}
+
+///////////////////////////////////////////////////////////////////
+// 7. kmeans test from RcppArmadillo implementation
+// [[Rcpp::export]]
+Rcpp::List cpp_kmeans(arma::mat data, int k){ // rows are stacked observations
+  // parameters
+  int N = data.n_rows;
+  int p = data.n_cols;
+  int csub = 10; // cardinality of a random subset
+  if (N/2 < 10){
+    csub = N/2;
+  }
+  
+  // prepare for kmeans
+  arma::mat means(p,k,fill::zeros); // armadillo reference
+  bool status = arma::kmeans(means, data.t(), k, random_subset, csub, false);
+  if (status==false){
+    Rcpp::stop("* epmeans : k-means failed.");
+  }
+  return Rcpp::List::create(Rcpp::Named("means")=means.t());
 }

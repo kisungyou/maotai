@@ -24,6 +24,7 @@ FUNCTION \tab DESCRIPTION \cr
 \code{\link{pdeterminant}} \tab Calculate the Pseudo-Determinant of a Matrix \cr
 \code{\link{shortestpath}} \tab Find Shortest Path using Floyd-Warshall Algorithm \cr
 \code{\link{sylvester}} \tab Solve Sylvester Equation \cr
-\code{\link{trio}} \tab Trace Ratio Optimation
+\code{\link{trio}} \tab Trace Ratio Optimation \cr
+\code{\link{weiszfeld}} \tab Weiszfeld Algorithm for L1-median 
 }
 }
