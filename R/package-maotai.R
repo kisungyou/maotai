@@ -35,3 +35,7 @@
 #' @importFrom Rcpp evalCpp
 #' @useDynLib maotai
 NULL
+# pack <- "maotai"
+# path <- find.package(pack)
+# system(paste(shQuote(file.path(R.home("bin"), "R")),
+#              "CMD", "Rd2pdf", shQuote(path)))
