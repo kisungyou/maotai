@@ -37,7 +37,7 @@ dm = ecdfdist(mylist, method="KS")
 
 ## visualize
 mks  =" KS distances of 2 Types"
-opar = par(pty="s")
+opar = par(pty="s", no.readonly=TRUE)
 image(dm[,nrow(dm):1], axes=FALSE, main=mks)
 par(opar)
 

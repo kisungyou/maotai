@@ -31,7 +31,7 @@
 #' nrs   = nrow(dm2ks)
 #' 
 #' ## visualize
-#' opar = par(mfrow=c(1,3))
+#' opar = par(mfrow=c(1,3), no.readonly=TRUE)
 #' image(dm2ks[,nrs:1], axes=FALSE, main="Kolmogorov-Smirnov")
 #' image(dm2lp[,nrs:1], axes=FALSE, main="L2")
 #' image(dm2wa[,nrs:1], axes=FALSE, main="Wasserstein")

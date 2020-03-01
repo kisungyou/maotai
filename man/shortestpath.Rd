@@ -30,7 +30,11 @@ A[10,1] <- A[1,10] <- 1
 
 # compute shortest-path and show the matrix
 sdA <- shortestpath(A)
+
+# visualize
+opar <- par(no.readonly=TRUE, pty="s")
 image(sdA, main="shortest path length for ring graph")
+par(opar)
 
 }
 \references{

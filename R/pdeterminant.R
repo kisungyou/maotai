@@ -27,9 +27,10 @@
 #' }
 #' 
 #' # visualize the results
+#' opar <- par(no.readonly=TRUE)
 #' plot(1:ntry, det.vec, main=paste("true rank is ",k," out of ",n,sep=""),"b", xlab="iterations")
 #' abline(h=pdeterminant(A),col="red",lwd=1.2)
-#' 
+#' par(opar)
 #' 
 #' @references 
 #' \insertRef{holbrook_differentiating_2018}{maotai}

@@ -36,7 +36,7 @@
 #' mm = distgmm(dlist, maxk=5)
 #' 
 #' ## visualize
-#' opar <- par(pty="s")
+#' opar <- par(pty="s", no.readonly=TRUE)
 #' image(mm[,nrow(mm):1], main="3-block pattern as expected")
 #' par(opar)
 #' 

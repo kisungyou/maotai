@@ -24,7 +24,7 @@
 #' out.anc7 = lgpa(gorf.dat, sub.id=1:7, scale=TRUE)        # use all but 1 point as anchors
 #' 
 #' ## visualize
-#' opar = par(mfrow=c(3,4), pty="s")
+#' opar = par(mfrow=c(3,4), pty="s", no.readonly=TRUE)
 #' plot(out.proc[,,1], main="procGPA No.1", pch=18)
 #' plot(out.proc[,,2], main="procGPA No.2", pch=18)
 #' plot(out.proc[,,3], main="procGPA No.3", pch=18)

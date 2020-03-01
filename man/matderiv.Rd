@@ -43,18 +43,20 @@ sol.num2 <- matderiv(ftn, myX, h=1e-5) #             1e-3
 sol.num3 <- matderiv(ftn, myX, h=1e-9) #             1e-5
 
 ## visualize/print the results
-expar = par(mfrow=c(2,2),pty="s")
+expar = par(mfrow=c(2,2),pty="s", no.readonly=TRUE)
 image(sol.true, main="true solution")
 image(sol.num1, main="h=1e-1")
 image(sol.num2, main="h=1e-5")
 image(sol.num3, main="h=1e-9")
 par(expar)
 
+\dontrun{
 ntrue = norm(sol.true,"f")
 cat('* Relative Errors in Frobenius Norm ')
 cat(paste("*  h=1e-1   : ",norm(sol.true-sol.num1,"f")/ntrue,sep=""))
 cat(paste("*  h=1e-5   : ",norm(sol.true-sol.num2,"f")/ntrue,sep=""))
 cat(paste("*  h=1e-9   : ",norm(sol.true-sol.num3,"f")/ntrue,sep=""))
+}
 
 }
 \references{

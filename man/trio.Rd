@@ -65,12 +65,13 @@ m07 = trio(A,B,dim=mydim, method="2007Wang")
 m03 = trio(A,B,dim=mydim, method="2003Guo")
 
 #  print the results
-cat('* Evaluation of the cost function ')
-cat(paste("* approx. via determinant : ",eigval,sep=""))
-cat(paste("* trio by 2012Ngo         : ",m12$tr.val, sep=""))
-cat(paste("* trio by 2009Jia         : ",m09$tr.val, sep=""))
-cat(paste("* trio by 2007Wang        : ",m07$tr.val, sep=""))
-cat(paste("* trio by 2003Guo         : ",m03$tr.val, sep=""))
+line1 = '* Evaluation of the cost function'
+line2 = paste("* approx. via determinant : ",eigval,sep="")
+line3 = paste("* trio by 2012Ngo         : ",m12$tr.val, sep="")
+line4 = paste("* trio by 2009Jia         : ",m09$tr.val, sep="")
+line5 = paste("* trio by 2007Wang        : ",m07$tr.val, sep="")
+line6 = paste("* trio by 2003Guo         : ",m03$tr.val, sep="")
+cat(line1,"\n",line2,"\n",line3,"\n",line4,"\n",line5,"\n",line6)
 
 }
 \references{
