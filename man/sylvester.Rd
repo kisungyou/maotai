@@ -40,7 +40,7 @@ cat(paste(pm1,"\n",pm2,"\n",pm3,sep=""))
 
 }
 \references{
-\insertRef{sanderson_armadillo:_2016}{maotai}
+\insertRef{sanderson_armadillo_2016}{maotai}
 
-\insertRef{eddelbuettel_rcpparmadillo:_2014}{maotai}
+\insertRef{eddelbuettel_rcpparmadillo_2014}{maotai}
 }

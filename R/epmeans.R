@@ -48,7 +48,7 @@
 #' par(opar)
 #' 
 #' @references 
-#' \insertRef{henderson_ep-means:_2015}{maotai}
+#' \insertRef{henderson_epmeans_2015}{maotai}
 #' 
 #' @export
 epmeans <- function(elist, k=2){

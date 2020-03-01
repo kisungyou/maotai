@@ -79,7 +79,7 @@ cat(line1,"\n",line2,"\n",line3,"\n",line4,"\n",line5,"\n",line6)
 
 \insertRef{wang_trace_2007}{maotai}
 
-\insertRef{yangqing_jia_trace_2009}{maotai}
+\insertRef{yangqingjia_trace_2009}{maotai}
 
 \insertRef{ngo_trace_2012}{maotai}
 }
