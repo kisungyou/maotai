@@ -40,7 +40,8 @@ for (i in 1:nreps){
 }
 
 ## visualize
-opar <- par(mfrow=c(1,3), pty="s", no.readonly=TRUE)
+opar <- par(no.readonly=TRUE)
+par(mfrow=c(1,3), pty="s")
 plot(vec.x, vec.y, type="l", main="1d signal")  # 1d signal
 hist(vec.mu, main="mean CI", xlab="mu")         # mean
 abline(v=data.mu, col="red", lwd=4)

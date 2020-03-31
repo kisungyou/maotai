@@ -27,7 +27,8 @@
 #' 
 #' ## visualize
 #' mks  =" KS distances of 2 Types"
-#' opar = par(pty="s", no.readonly=TRUE)
+#' opar = par(no.readonly=TRUE)
+#' par(pty="s")
 #' image(dm[,nrow(dm):1], axes=FALSE, main=mks)
 #' par(opar)
 #' 

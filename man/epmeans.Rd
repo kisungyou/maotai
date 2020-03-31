@@ -42,7 +42,8 @@ myk   = 2
 epout = epmeans(elist, k=myk)
 
 # visualize
-opar = par(mfrow=c(1,myk), no.readonly=TRUE)
+opar = par(no.readonly=TRUE)
+par(mfrow=c(1,myk))
 for (k in 1:myk){
   idk = which(epout$cluster==k)
   for (i in 1:length(idk)){

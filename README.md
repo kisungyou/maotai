@@ -25,7 +25,86 @@ or the up-to-date development version from github:
 devtools::install_github("kyoustat/maotai")
 ```
 
-Code of Conduct
----------------
+Available Functions
+-------------------
 
-Please note that the 'maotai' project is released with a **Contributor Code of Conduct**. By contributing to this project, you agree to abide by its terms.
+Current version of `maotai` supports following functions in the table.
+
+<table style="width:83%;">
+<colgroup>
+<col width="19%" />
+<col width="63%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>boot.mblock</code></td>
+<td>Generate Index for Moving Block Bootstrapping</td>
+</tr>
+<tr class="even">
+<td><code>boot.stationary</code></td>
+<td>Generate Index for Stationary Bootstrapping</td>
+</tr>
+<tr class="odd">
+<td><code>distgmm</code></td>
+<td>Distance Measures between Multisets using Gaussian Mixture Models</td>
+</tr>
+<tr class="even">
+<td><code>dpmeans</code></td>
+<td>DP-means Algorithm for Clustering Euclidean Data</td>
+</tr>
+<tr class="odd">
+<td><code>ecdfdist</code></td>
+<td>Distance Measures between Multiple Empirical CDFs</td>
+</tr>
+<tr class="even">
+<td><code>ecdfdist2</code></td>
+<td>Pairwise Measures for Two Sets of Empirical CDFs</td>
+</tr>
+<tr class="odd">
+<td><code>epmeans</code></td>
+<td>EP-means Algorithm for Clustering Empirical Distributions</td>
+</tr>
+<tr class="even">
+<td><code>lgpa</code></td>
+<td>Large-scale Generalized Procrustes Analysis</td>
+</tr>
+<tr class="odd">
+<td><code>lyapunov</code></td>
+<td>Solve Lyapunov Equation</td>
+</tr>
+<tr class="even">
+<td><code>matderiv</code></td>
+<td>Numerical Approximation to Gradient of a Function with Matrix Argument</td>
+</tr>
+<tr class="odd">
+<td><code>mmd2test</code></td>
+<td>Kernel Two-sample Test with Maximum Mean Discrepancy</td>
+</tr>
+<tr class="even">
+<td><code>pdeterminant</code></td>
+<td>Calculate the Pseudo-Determinant of a Matrix</td>
+</tr>
+<tr class="odd">
+<td><code>shortestpath</code></td>
+<td>Find Shortest Path using Floyd-Warshall Algorithm</td>
+</tr>
+<tr class="even">
+<td><code>sylvester</code></td>
+<td>Solve Sylvester Equation</td>
+</tr>
+<tr class="odd">
+<td><code>trio</code></td>
+<td>Trace Ratio Optimization</td>
+</tr>
+<tr class="even">
+<td><code>weiszfeld</code></td>
+<td>Weiszfeld Algorithm for L1-median</td>
+</tr>
+</tbody>
+</table>

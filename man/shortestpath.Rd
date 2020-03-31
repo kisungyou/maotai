@@ -32,8 +32,9 @@ A[10,1] <- A[1,10] <- 1
 sdA <- shortestpath(A)
 
 # visualize
-opar <- par(no.readonly=TRUE, pty="s")
-image(sdA, main="shortest path length for ring graph")
+opar <- par(no.readonly=TRUE)
+par(pty="s")
+image(sdA, main="shortest path length for a ring graph")
 par(opar)
 
 }

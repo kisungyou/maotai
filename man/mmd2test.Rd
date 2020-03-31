@@ -66,7 +66,8 @@ for (i in 1:100){
    errors2[i] = sum(pvals2<=alphas[i])/niter
 }
 
-opar <- par(mfrow=c(1,2), pty="s", no.readonly=TRUE)
+opar <- par(no.readonly=TRUE)
+par(mfrow=c(1,2), pty="s")
 plot(alphas, errors1, "b", main="Biased Estimator Error", 
      xlab="alpha", ylab="error", cex=0.5)
 abline(a=0,b=1, lwd=1.5, col="red")

@@ -23,7 +23,8 @@
 #' vecL1 = weiszfeld(X)
 #' 
 #' ## visualize
-#' opar <- par(mfrow=c(1,3), no.readonly=TRUE, pty="s")
+#' opar <- par(no.readonly=TRUE)
+#' par(mfrow=c(1,3), pty="s")
 #' matplot(t(X[1:5,]), type="l", main="5 generated data", ylim=c(-2,2))
 #' plot(t, vecL2, type="l", col="blue", main="L2-mean",   ylim=c(-2,2))
 #' plot(t, vecL1, type="l", col="red",  main="L1-median", ylim=c(-2,2))

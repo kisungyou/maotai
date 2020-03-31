@@ -41,7 +41,8 @@ dm2wa = ecdfdist2(mylist1, mylist2, method="wasserstein")
 nrs   = nrow(dm2ks)
 
 ## visualize
-opar = par(mfrow=c(1,3), no.readonly=TRUE)
+opar = par(no.readonly=TRUE)
+par(mfrow=c(1,3), pty="s")
 image(dm2ks[,nrs:1], axes=FALSE, main="Kolmogorov-Smirnov")
 image(dm2lp[,nrs:1], axes=FALSE, main="L2")
 image(dm2wa[,nrs:1], axes=FALSE, main="Wasserstein")

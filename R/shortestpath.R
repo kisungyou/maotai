@@ -23,8 +23,9 @@
 #' sdA <- shortestpath(A)
 #' 
 #' # visualize
-#' opar <- par(no.readonly=TRUE, pty="s")
-#' image(sdA, main="shortest path length for ring graph")
+#' opar <- par(no.readonly=TRUE)
+#' par(pty="s")
+#' image(sdA, main="shortest path length for a ring graph")
 #' par(opar)
 #'
 #' @references 

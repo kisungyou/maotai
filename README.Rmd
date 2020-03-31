@@ -34,3 +34,25 @@ or the up-to-date development version from github:
 ## library(devtools)
 devtools::install_github("kyoustat/maotai")
 ```
+## Available Functions
+
+Current version of `maotai` supports following functions in the table.
+
+| Function      | Description                                   |
+| ------------- | --------------------------------------------- |
+| `boot.mblock` | Generate Index for Moving Block Bootstrapping |
+| `boot.stationary` | Generate Index for Stationary Bootstrapping |
+| `distgmm` | Distance Measures between Multisets using Gaussian Mixture Models |
+| `dpmeans`   | DP-means Algorithm for Clustering Euclidean Data |
+| `ecdfdist`  | Distance Measures between Multiple Empirical CDFs |
+| `ecdfdist2` | Pairwise Measures for Two Sets of Empirical CDFs |
+| `epmeans`   | EP-means Algorithm for Clustering Empirical Distributions |
+| `lgpa`      | Large-scale Generalized Procrustes Analysis |
+| `lyapunov`  | Solve Lyapunov Equation |
+| `matderiv`  | Numerical Approximation to Gradient of a Function with Matrix Argument |
+| `mmd2test`  | Kernel Two-sample Test with Maximum Mean Discrepancy |
+| `pdeterminant` | Calculate the Pseudo-Determinant of a Matrix |
+| `shortestpath` | Find Shortest Path using Floyd-Warshall Algorithm |
+| `sylvester`    | Solve Sylvester Equation |
+| `trio`         | Trace Ratio Optimization |
+| `weiszfeld`    | Weiszfeld Algorithm for L1-median |

@@ -1,4 +1,10 @@
 # News for Package maotai
+
+### changes in version 0.1.4
+  * Update `README` for listing the available functions in the package.
+  * Corrected an Armadillo type-casting error.
+  * Corrected example visualization parameter settings.
+  
 ### changes in version 0.1.3
   * Following functions are added,
     - `boot.mblock`     : generate index for Moving Block Bootstrapping.
