@@ -10,6 +10,7 @@ using namespace arma;
 /*
  * 1. cpp_pairwise_L2 : L2 distance between GMM's.
  * 2. integrate_1d    : 1d integration, generic but used in distance computation
+ * 3. cpp_pdist       : compute pairwise distance
  */
 
 ///////////////////////////////////////////////////////////////////
@@ -100,6 +101,27 @@ double integrate_1d(arma::vec &tseq, arma::vec &fval){
   for (int i=0;i<(N-1);i++){
     dt = tseq(i+1)-tseq(i);
     output += (fval(i) + fval(i+1))*dt/2.0;
+  }
+  return(output);
+}
+///////////////////////////////////////////////////////////////////
+// 3. cpp_pdist
+// [[Rcpp::export]]
+arma::mat cpp_pdist(arma::mat X){
+  // parameters
+  int N = X.n_rows;
+  int d = X.n_cols;
+  
+  // prepare
+  arma::mat output(N,N,fill::zeros);
+  arma::rowvec xdiff(d,fill::zeros);
+  // iteration
+  for (int i=0;i<(N-1);i++){
+    for (int j=(i+1);j<N;j++){
+      xdiff = X.row(i)-X.row(j);
+      output(i,j) = arma::norm(xdiff, 2);
+      output(j,i) = output(i,j);
+    }
   }
   return(output);
 }

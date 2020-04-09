@@ -6,6 +6,49 @@
 
 using namespace Rcpp;
 
+// compute_SSR
+double compute_SSR(arma::mat& D, arma::mat& Delta);
+RcppExport SEXP _maotai_compute_SSR(SEXP DSEXP, SEXP DeltaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type D(DSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type Delta(DeltaSEXP);
+    rcpp_result_gen = Rcpp::wrap(compute_SSR(D, Delta));
+    return rcpp_result_gen;
+END_RCPP
+}
+// compute_stress
+double compute_stress(arma::mat& D, arma::mat& Dhat);
+RcppExport SEXP _maotai_compute_stress(SEXP DSEXP, SEXP DhatSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type D(DSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type Dhat(DhatSEXP);
+    rcpp_result_gen = Rcpp::wrap(compute_stress(D, Dhat));
+    return rcpp_result_gen;
+END_RCPP
+}
+// main_bmds
+Rcpp::List main_bmds(arma::mat D, arma::mat X0, double sigg0, double a, double alpha, int maxiter, double constant, bool verbose, arma::vec betas);
+RcppExport SEXP _maotai_main_bmds(SEXP DSEXP, SEXP X0SEXP, SEXP sigg0SEXP, SEXP aSEXP, SEXP alphaSEXP, SEXP maxiterSEXP, SEXP constantSEXP, SEXP verboseSEXP, SEXP betasSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type D(DSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type X0(X0SEXP);
+    Rcpp::traits::input_parameter< double >::type sigg0(sigg0SEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< double >::type alpha(alphaSEXP);
+    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
+    Rcpp::traits::input_parameter< double >::type constant(constantSEXP);
+    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type betas(betasSEXP);
+    rcpp_result_gen = Rcpp::wrap(main_bmds(D, X0, sigg0, a, alpha, maxiter, constant, verbose, betas));
+    return rcpp_result_gen;
+END_RCPP
+}
 // aux_shortestpath
 Rcpp::NumericMatrix aux_shortestpath(NumericMatrix& wmat);
 RcppExport SEXP _maotai_aux_shortestpath(SEXP wmatSEXP) {
@@ -139,6 +182,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// cpp_pdist
+arma::mat cpp_pdist(arma::mat X);
+RcppExport SEXP _maotai_cpp_pdist(SEXP XSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type X(XSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_pdist(X));
+    return rcpp_result_gen;
+END_RCPP
+}
 // eval_gaussian
 double eval_gaussian(arma::vec x, arma::vec mu, arma::mat cov);
 RcppExport SEXP _maotai_eval_gaussian(SEXP xSEXP, SEXP muSEXP, SEXP covSEXP) {
@@ -195,6 +249,9 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_maotai_compute_SSR", (DL_FUNC) &_maotai_compute_SSR, 2},
+    {"_maotai_compute_stress", (DL_FUNC) &_maotai_compute_stress, 2},
+    {"_maotai_main_bmds", (DL_FUNC) &_maotai_main_bmds, 9},
     {"_maotai_aux_shortestpath", (DL_FUNC) &_maotai_aux_shortestpath, 1},
     {"_maotai_cppsub_2007Wang", (DL_FUNC) &_maotai_cppsub_2007Wang, 7},
     {"_maotai_gradF", (DL_FUNC) &_maotai_gradF, 3},
@@ -205,6 +262,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_maotai_cpp_kmeans", (DL_FUNC) &_maotai_cpp_kmeans, 2},
     {"_maotai_cpp_pairwise_L2", (DL_FUNC) &_maotai_cpp_pairwise_L2, 4},
     {"_maotai_integrate_1d", (DL_FUNC) &_maotai_integrate_1d, 2},
+    {"_maotai_cpp_pdist", (DL_FUNC) &_maotai_cpp_pdist, 1},
     {"_maotai_eval_gaussian", (DL_FUNC) &_maotai_eval_gaussian, 3},
     {"_maotai_eval_gaussian_data", (DL_FUNC) &_maotai_eval_gaussian_data, 3},
     {"_maotai_eval_gmm_data", (DL_FUNC) &_maotai_eval_gmm_data, 4},

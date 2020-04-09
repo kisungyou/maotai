@@ -40,13 +40,16 @@ Current version of `maotai` supports following functions in the table.
 
 | Function      | Description                                   |
 | ------------- | --------------------------------------------- |
+| `bmds`        | Bayesian Multidimensional Scaling             |
 | `boot.mblock` | Generate Index for Moving Block Bootstrapping |
 | `boot.stationary` | Generate Index for Stationary Bootstrapping |
-| `distgmm` | Distance Measures between Multisets using Gaussian Mixture Models |
+| `cmds`      | Classical Multidimensional Scaling                |
+| `distgmm`   | Distance Measures between Multisets using Gaussian Mixture Models |
 | `dpmeans`   | DP-means Algorithm for Clustering Euclidean Data |
 | `ecdfdist`  | Distance Measures between Multiple Empirical CDFs |
 | `ecdfdist2` | Pairwise Measures for Two Sets of Empirical CDFs |
 | `epmeans`   | EP-means Algorithm for Clustering Empirical Distributions |
+| `kmeanspp`  | K-Means++ Clustering Algorithm |
 | `lgpa`      | Large-scale Generalized Procrustes Analysis |
 | `lyapunov`  | Solve Lyapunov Equation |
 | `matderiv`  | Numerical Approximation to Gradient of a Function with Matrix Argument |
