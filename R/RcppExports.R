@@ -45,6 +45,10 @@ cpp_kmeans <- function(data, k) {
     .Call('_maotai_cpp_kmeans', PACKAGE = 'maotai', data, k)
 }
 
+emds_gamma0 <- function(dmat) {
+    .Call('_maotai_emds_gamma0', PACKAGE = 'maotai', dmat)
+}
+
 cpp_pairwise_L2 <- function(muA, muB, covA, covB) {
     .Call('_maotai_cpp_pairwise_L2', PACKAGE = 'maotai', muA, muB, covA, covB)
 }

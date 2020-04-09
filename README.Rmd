@@ -54,8 +54,11 @@ Current version of `maotai` supports following functions in the table.
 | `lyapunov`  | Solve Lyapunov Equation |
 | `matderiv`  | Numerical Approximation to Gradient of a Function with Matrix Argument |
 | `mmd2test`  | Kernel Two-sample Test with Maximum Mean Discrepancy |
+| `nem`          | Negative Eigenvalue Magnitude |
+| `nef`          | Negative Eigenfraction |
 | `pdeterminant` | Calculate the Pseudo-Determinant of a Matrix |
 | `shortestpath` | Find Shortest Path using Floyd-Warshall Algorithm |
 | `sylvester`    | Solve Sylvester Equation |
+| `tsne`         | t-Stochastic Neighbor Embedding |
 | `trio`         | Trace Ratio Optimization |
 | `weiszfeld`    | Weiszfeld Algorithm for L1-median |

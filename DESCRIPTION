@@ -7,7 +7,7 @@ Description: Matrix is an universal and sometimes primary object/unit in applied
 Encoding: UTF-8
 License: GPL (>= 3)
 Suggests: igraph, rstiefel
-Imports: Matrix, Rcpp, Rdpack, RSpectra, Rtsne, cluster, mclust, shapes, stats, utils
+Imports: Matrix, Rcpp, Rdpack, RSpectra, Rtsne, cluster, labdsv, mclust, shapes, stats, utils
 LinkingTo: Rcpp, RcppArmadillo, RcppDist
 RdMacros: Rdpack
 RoxygenNote: 7.1.0

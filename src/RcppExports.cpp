@@ -156,6 +156,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// emds_gamma0
+double emds_gamma0(arma::mat dmat);
+RcppExport SEXP _maotai_emds_gamma0(SEXP dmatSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type dmat(dmatSEXP);
+    rcpp_result_gen = Rcpp::wrap(emds_gamma0(dmat));
+    return rcpp_result_gen;
+END_RCPP
+}
 // cpp_pairwise_L2
 Rcpp::List cpp_pairwise_L2(arma::mat muA, arma::mat muB, arma::cube covA, arma::cube covB);
 RcppExport SEXP _maotai_cpp_pairwise_L2(SEXP muASEXP, SEXP muBSEXP, SEXP covASEXP, SEXP covBSEXP) {
@@ -260,6 +271,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_maotai_solve_lyapunov", (DL_FUNC) &_maotai_solve_lyapunov, 3},
     {"_maotai_cpp_weiszfeld", (DL_FUNC) &_maotai_cpp_weiszfeld, 6},
     {"_maotai_cpp_kmeans", (DL_FUNC) &_maotai_cpp_kmeans, 2},
+    {"_maotai_emds_gamma0", (DL_FUNC) &_maotai_emds_gamma0, 1},
     {"_maotai_cpp_pairwise_L2", (DL_FUNC) &_maotai_cpp_pairwise_L2, 4},
     {"_maotai_integrate_1d", (DL_FUNC) &_maotai_integrate_1d, 2},
     {"_maotai_cpp_pdist", (DL_FUNC) &_maotai_cpp_pdist, 1},

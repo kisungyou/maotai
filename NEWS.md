@@ -4,7 +4,9 @@
   * Following functions are added,
     - `bmds`     : Bayesian Multidimensional Scaling.
     - `cmds`     : Classical Multidimensional Scaling.
-    - `kmeanspp` : k-means++ algorithm for clustering.
+    - `kmeanspp` : k-means++ Algorithm for Clustering.
+    - `nem`      : Negative Eigenvalue Magnitude.
+    - `nef`      : Negative Eigenfraction.
     - `tsne`     : t-Stochastic Neighbor Embedding.
 
 ### changes in version 0.1.4
