@@ -4,14 +4,15 @@
 # 
 # Here, all the functions require 'diss' object from 'stats' package.
 #
-# 01. hidden_kmedoids : PAM algorithm 
-# 02. hidden_bmds     : Bayesian Multidimensional Scaling
-# 03. hidden_cmds     : Classical Multidimensional Scaling
-# 04. hidden_kmeanspp : k-means++ algorithm.
-# 05. hidden_tsne     : t-SNE visualization.
-# 06. hidden_nem      : Negative Eigenvalue Magnitude
-# 07. hidden_nef      : Negative Eigenfraction
-# 08. hidden_emds     : Euclified Multidimensional Scaling
+# 01. hidden_kmedoids      : PAM algorithm 
+#     hidden_kmedoids_best : PAM algorithm + use Silhouette (maximum)
+# 02. hidden_bmds          : Bayesian Multidimensional Scaling
+# 03. hidden_cmds          : Classical Multidimensional Scaling
+# 04. hidden_kmeanspp      : k-means++ algorithm.
+# 05. hidden_tsne          : t-SNE visualization.
+# 06. hidden_nem           : Negative Eigenvalue Magnitude
+# 07. hidden_nef           : Negative Eigenfraction
+# 08. hidden_emds          : Euclified Multidimensional Scaling
 
 
 
@@ -34,12 +35,33 @@ hidden_checker <- function(xobj){
   }
 }
 
-# 01. hidden_kmedoids -----------------------------------------------------
+# 01. hidden_kmedoids & hidden_kmedoids_best ------------------------------
 #' @keywords internal
 hidden_kmedoids <- function(distobj, nclust=2){
   distobj = stats::as.dist(hidden_checker(distobj))
   myk     = round(nclust)
   return(cluster::pam(distobj, k = myk))
+}
+#' @keywords internal
+hidden_kmedoids_best <- function(distobj, mink=2, maxk=10){
+  # prepare
+  kvec = seq(from=round(mink),to=round(maxk), by = 1)
+  knum = length(kvec)
+  svec = rep(0,knum)
+  nobj = nrow(as.matrix(distobj))
+  clut = array(0,c(nobj,knum))
+  
+  for (k in 1:knum){
+    pamx      = hidden_kmedoids(distobj, nclust=kvec[k])
+    svec[k]   = pamx$silinfo$avg.width
+    clust[,k] = pamx$clustering
+  }
+  # return the output
+  output = list()
+  output$opt.k = kvec[which.max(svec)]
+  output$score = svec     # knum-vector of silhouette scores
+  output$label = clust    # (n,knum) cluster labels
+  return(output)
 }
 
 # 02. hidden_bmds ---------------------------------------------------------

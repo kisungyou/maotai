@@ -4,7 +4,6 @@
  
 # (1) aux_pinv ------------------------------------------------------------
 #' @keywords internal
-#' @noRd
 aux_pinv <- function(A){
   svdA      = base::svd(A)
   tolerance = (.Machine$double.eps)*max(c(nrow(A),ncol(A)))*as.double(max(svdA$d))
@@ -20,7 +19,6 @@ aux_pinv <- function(A){
 
 # (2) aux_pseudomean ------------------------------------------------------
 #' @keywords internal
-#' @noRd
 aux_pseudomean <- function(dmat){
   # we need embedding .. umm .. automatic dimension selection
   if (nrow(dmat)==1){
