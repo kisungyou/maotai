@@ -44,7 +44,6 @@ Current version of `maotai` supports following functions in the table.
 | `boot.mblock` | Generate Index for Moving Block Bootstrapping |
 | `boot.stationary` | Generate Index for Stationary Bootstrapping |
 | `cmds`      | Classical Multidimensional Scaling                |
-| `distgmm`   | Distance Measures between Multisets using Gaussian Mixture Models |
 | `dpmeans`   | DP-means Algorithm for Clustering Euclidean Data |
 | `ecdfdist`  | Distance Measures between Multiple Empirical CDFs |
 | `ecdfdist2` | Pairwise Measures for Two Sets of Empirical CDFs |

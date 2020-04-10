@@ -9,7 +9,6 @@
 #' @importFrom stats as.dist knots ecdf rnorm runif quantile dist rgamma rgeom var cov
 #' @importFrom shapes procGPA
 #' @importFrom Rtsne Rtsne
-#' @importFrom mclust Mclust mclustBIC
 #' @importFrom utils packageVersion
 #' @importFrom RSpectra eigs
 #' @importFrom Matrix rankMatrix

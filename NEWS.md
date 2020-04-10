@@ -8,6 +8,7 @@
     - `nem`      : Negative Eigenvalue Magnitude.
     - `nef`      : Negative Eigenfraction.
     - `tsne`     : t-Stochastic Neighbor Embedding.
+  * `distgmm` is removed for better composition of the package.
 
 ### changes in version 0.1.4
   * Update `README` for listing the available functions in the package.

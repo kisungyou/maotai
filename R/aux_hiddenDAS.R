@@ -52,15 +52,21 @@ hidden_kmedoids_best <- function(distobj, mink=2, maxk=10){
   clut = array(0,c(nobj,knum))
   
   for (k in 1:knum){
-    pamx      = hidden_kmedoids(distobj, nclust=kvec[k])
-    svec[k]   = pamx$silinfo$avg.width
-    clust[,k] = pamx$clustering
+    know = kvec[k]
+    if (know < 2){
+      svec[k]  = 0
+      clut[,k] = rep(1,nobj)
+    } else {
+      pamx     = hidden_kmedoids(distobj, nclust=kvec[k])
+      svec[k]  = pamx$silinfo$avg.width
+      clut[,k] = pamx$clustering  
+    }
   }
   # return the output
   output = list()
   output$opt.k = kvec[which.max(svec)]
   output$score = svec     # knum-vector of silhouette scores
-  output$label = clust    # (n,knum) cluster labels
+  output$label = clut     # (n,knum) cluster labels
   return(output)
 }
 

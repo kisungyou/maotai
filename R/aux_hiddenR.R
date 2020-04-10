@@ -7,6 +7,8 @@
 #     hidden_ivech         diagonal inclusion is also taken care. 
 # 03. hidden_lab2ind     : create an index list from a label vector
 #     hidden_ind2lab       given an index list, create a label vector
+# 04. hidden_subsetid    : generate split of the subset id
+# 05. hidden_geigen      : do 'geigen' operation
 
 
 # 01. hidden_pinv ---------------------------------------------------------
@@ -64,5 +66,33 @@ hidden_ind2lab <- function(index){
   for (k in 1:K){
     output[index[[k]]] = k
   }
+  return(output)
+}
+
+# 04. hidden_subsetid -----------------------------------------------------
+#' @keywords internal
+hidden_subsetid <- function(n, k){
+  return(base::split(base::sample(n), base::sort(n%%k)))
+}
+
+# 05. hidden_geigen -------------------------------------------------------
+#' It mimics the behavior of 'geigen' function with normalization added
+#' @keywords internal
+hidden_geigen <- function(A, B, normalize=TRUE){
+  n    = nrow(A)
+  runs = cpp_geigen(A,B)
+  
+  tval = as.vector(base::Re(runs$values))[n:1]
+  tvec = base::Re(runs$vectors)[,n:1]
+  if (normalize){
+    for (i in 1:n){
+      tgt = as.vector(tvec[,i])
+      tvec[,i] = tgt/sqrt(sum(tgt^2))
+    }  
+  }
+
+  output = list()
+  output$values  = tval
+  output$vectors = tvec
   return(output)
 }

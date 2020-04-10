@@ -19,6 +19,7 @@ using namespace arma;
  * 9. cpp_pairwise_L2 : L2 distance between GMM's.
  * 10. integrate_1d    : 1d integration, generic but used in distance computation
  * 11. cpp_pdist       : compute pairwise distance
+ * 12. cpp_geigen      : do 'geigen' pairwise eigendecomposition
  */
 
 ///////////////////////////////////////////////////////////////////
@@ -387,4 +388,16 @@ arma::mat cpp_pdist(arma::mat X){
     }
   }
   return(output);
+}
+
+///////////////////////////////////////////////////////////////////
+// 12. cpp_geigen
+// [[Rcpp::export]]
+Rcpp::List cpp_geigen(arma::mat& A, arma::mat& B){
+  arma::cx_vec eigval;
+  arma::cx_mat eigmat;
+  
+  eig_pair(eigval, eigmat, A, B);
+  return Rcpp::List::create(Rcpp::Named("values")=eigval,
+                            Rcpp::Named("vectors")=eigmat);
 }
