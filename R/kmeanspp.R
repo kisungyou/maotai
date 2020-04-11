@@ -52,6 +52,6 @@ kmeanspp <- function(data, k=2){
   
   ############################################################
   # Run and Return
-  output = hidden_kmeanspp(xdiss,k=myk)
+  output = hidden_kmeanspp(xdiss,k=myk)$cluster
   return(output)
 }

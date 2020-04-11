@@ -191,7 +191,10 @@ hidden_kmeanspp <- function(x, k=2){
   
   ##################################################
   # Return
-  return(cluster)
+  output = list()
+  output$center  = id.center
+  output$cluster = cluster
+  return(output)
 }
 
 
