@@ -8,7 +8,7 @@
 # 03. hidden_lab2ind     : create an index list from a label vector
 #     hidden_ind2lab       given an index list, create a label vector
 # 04. hidden_subsetid    : generate split of the subset id
-# 05. hidden_geigen      : do 'geigen' operation
+# 05. hidden_geigen      : do 'geigen' operation; Decreasing order
 
 
 # 01. hidden_pinv ---------------------------------------------------------
