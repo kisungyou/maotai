@@ -1,5 +1,20 @@
 url: https://kyoustat.com/maotai
 
-title: maotai
+template:
+  opengraph:
+    twitter:
+      creator: "@kyoustat"
+      card: summary_large_image
+  params:
+    bootswatch: spacelab
+    ganalytics: UA-163713603-1
+
+authors:
+  Kisung You:
+    href: https://kyoustat.com
+
+home:
+  title: maotai
+  description: Discover and add pool-noodles to your growing collection.
 
 destination: docs

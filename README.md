@@ -4,7 +4,7 @@ Tools for Matrix Algebra, Optimization and Inference Problems
 =============================================================
 
 <!-- badges: start -->
-[![CRAN status](https://www.r-pkg.org/badges/version/maotai)](https://CRAN.R-project.org/package=maotai) [![Travis build status](https://travis-ci.org/kyoustat/maotai.svg?branch=master)](https://travis-ci.org/kyoustat/maotai) <!-- badges: end -->
+[![Travis build status](https://travis-ci.org/kyoustat/maotai.svg?branch=master)](https://travis-ci.org/kyoustat/maotai) [![CRAN status](https://www.r-pkg.org/badges/version/maotai)](https://CRAN.R-project.org/package=maotai) <!-- badges: end -->
 
 `maotai` is an acronym for **M**atrix **A**lgebra, **O**p**T**imization, **A**nd **I**nference problems - though I can't deny motivation from one of [my father's favorite](https://en.wikipedia.org/wiki/Maotai) for the namesake. More detailed introduction will be added later.
 
@@ -43,32 +43,40 @@ Current version of `maotai` supports following functions in the table.
 </thead>
 <tbody>
 <tr class="odd">
+<td><code>bmds</code></td>
+<td>Bayesian Multidimensional Scaling</td>
+</tr>
+<tr class="even">
 <td><code>boot.mblock</code></td>
 <td>Generate Index for Moving Block Bootstrapping</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>boot.stationary</code></td>
 <td>Generate Index for Stationary Bootstrapping</td>
 </tr>
-<tr class="odd">
-<td><code>distgmm</code></td>
-<td>Distance Measures between Multisets using Gaussian Mixture Models</td>
-</tr>
 <tr class="even">
+<td><code>cmds</code></td>
+<td>Classical Multidimensional Scaling</td>
+</tr>
+<tr class="odd">
 <td><code>dpmeans</code></td>
 <td>DP-means Algorithm for Clustering Euclidean Data</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>ecdfdist</code></td>
 <td>Distance Measures between Multiple Empirical CDFs</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>ecdfdist2</code></td>
 <td>Pairwise Measures for Two Sets of Empirical CDFs</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>epmeans</code></td>
 <td>EP-means Algorithm for Clustering Empirical Distributions</td>
+</tr>
+<tr class="odd">
+<td><code>kmeanspp</code></td>
+<td>K-Means++ Clustering Algorithm</td>
 </tr>
 <tr class="even">
 <td><code>lgpa</code></td>
@@ -87,6 +95,14 @@ Current version of `maotai` supports following functions in the table.
 <td>Kernel Two-sample Test with Maximum Mean Discrepancy</td>
 </tr>
 <tr class="even">
+<td><code>nem</code></td>
+<td>Negative Eigenvalue Magnitude</td>
+</tr>
+<tr class="odd">
+<td><code>nef</code></td>
+<td>Negative Eigenfraction</td>
+</tr>
+<tr class="even">
 <td><code>pdeterminant</code></td>
 <td>Calculate the Pseudo-Determinant of a Matrix</td>
 </tr>
@@ -99,10 +115,14 @@ Current version of `maotai` supports following functions in the table.
 <td>Solve Sylvester Equation</td>
 </tr>
 <tr class="odd">
+<td><code>tsne</code></td>
+<td>t-Stochastic Neighbor Embedding</td>
+</tr>
+<tr class="even">
 <td><code>trio</code></td>
 <td>Trace Ratio Optimization</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>weiszfeld</code></td>
 <td>Weiszfeld Algorithm for L1-median</td>
 </tr>
