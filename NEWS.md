@@ -1,6 +1,9 @@
+<!-- See http://style.tidyverse.org/news.html for advice on writing news -->
+
 # maotai version 0.1.5
 
 * Functions `bmds()`, `cmds()`, `kmeanspp()`, `nem()`, `nef()`, `tsne()` are added.
+
 * `distgmm()` is removed for better composition of the package.
 
 # maotai version 0.1.4
@@ -8,6 +11,7 @@
 ## Bug fixes
 
 * Armadillo type-casting errors are fixed.
+
 * example visualization `par` settings are corrected.
 
 # maotai version 0.1.3  
