@@ -15,6 +15,7 @@
   packageStartupMessage("**")
   packageStartupMessage("** Version    : ",this.version,"      (",this.year,")",sep="")
   packageStartupMessage("** Maintainer : Kisung You (kyoustat@gmail.com)")
+  packageStartupMessage("** Website    : https://kyoustat.com/maotai")
   packageStartupMessage("**")
   packageStartupMessage("** Please share any bugs or suggestions to the maintainer.")
   packageStartupMessage("**-----------------------------------------------------------------**")

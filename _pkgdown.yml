@@ -1,10 +1,13 @@
+# themes: https://bootswatch.com/ {flatly, united}
+# icons:  https://fontawesome.com/
+
 url: https://kyoustat.com/maotai
 
 destination: docs
 
 template:
   params:
-    bootswatch: cosmo
+    bootswatch: united
     ganalytics: UA-163713603-1
 
 navbar:
@@ -19,6 +22,5 @@ navbar:
       href: https://twitter.com/kyoustat
     - icon: fa-github
       href: https://github.com/kyoustat/maotai
-
-
-## destination: docs
+    - icon: fa-envelope
+      href: mailto:kyoustat@gmail.com

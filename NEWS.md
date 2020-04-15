@@ -1,6 +1,4 @@
-<!-- See http://style.tidyverse.org/news.html for advice on writing news -->
-
-# maotai version 0.1.5
+# maotai 0.1.5
 
 * Functions `bmds()`, `cmds()`, `kmeanspp()`, `nem()`, `nef()`, `tsne()` are added.
 
@@ -8,7 +6,7 @@
 
 
 
-# maotai version 0.1.4
+# maotai 0.1.4
 
 ## Bug fixes
 
@@ -18,25 +16,25 @@
 
 
 
-# maotai version 0.1.3  
+# maotai 0.1.3  
 
 * Functions `boot.mblock()`, `boot.stationary()`, `epmeans()`, `weiszfeld()` are added.
 
 
 
-# maotai version 0.1.2
+# maotai 0.1.2
 
 * `mmd2test()` function added.
 
 
 
-# maotai version 0.1.1
+# maotai 0.1.1
 
 * Fuctions `dpmean()`, `dpmeans()`, `ecdfdist()` are added.
     
     
 
-# maotai version 0.1.0
+# maotai 0.1.0
 
 ## Major changes
 

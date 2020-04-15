@@ -6,7 +6,7 @@ Tools for Matrix Algebra, Optimization and Inference Problems
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/kyoustat/maotai.svg?branch=master)](https://travis-ci.org/kyoustat/maotai) [![CRAN status](https://www.r-pkg.org/badges/version/maotai)](https://CRAN.R-project.org/package=maotai) <!-- badges: end -->
 
-`maotai` is an acronym for **M**atrix **A**lgebra, **O**p**T**imization, **A**nd **I**nference problems - though I can't deny motivation from one of [my father's favorite](https://en.wikipedia.org/wiki/Maotai) for the namesake. More detailed introduction will be added later.
+**maotai** is an R package whose name is an acronym for **M**atrix **A**lgebra, **O**p**T**imization, **A**nd **I**nference problems - though I can't deny motivation from one of [my father's favorite](https://en.wikipedia.org/wiki/Maotai) for the namesake. More detailed introduction will be added later.
 
 Installation
 ------------
@@ -20,6 +20,8 @@ install.packages("maotai")
 or the up-to-date development version from github:
 
 ``` r
-## install.packages("devtools")
+if (!require("devtools")) {
+  install.packages("devtools")
+}
 devtools::install_github("kyoustat/maotai")
 ```
