@@ -20,8 +20,6 @@ install.packages("maotai")
 or the up-to-date development version from github:
 
 ``` r
-if (!require("devtools")) {
-  install.packages("devtools")
-}
+# install.packages("devtools")
 devtools::install_github("kyoustat/maotai")
 ```
