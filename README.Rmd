@@ -24,40 +24,12 @@ knitr::opts_chunk$set(
 
 ## Installation
 
-`maotai` released version can be obtained from [CRAN](https://CRAN.R-project.org/package=maotai) with:
+Install the latest release from [CRAN](https://CRAN.R-project.org/package=maotai) with:
 ```r
 install.packages("maotai")
 ```
 or the up-to-date development version from github:
 ```r
 ## install.packages("devtools")
-## library(devtools)
 devtools::install_github("kyoustat/maotai")
 ```
-## Available Functions
-
-Current version of `maotai` supports following functions in the table.
-
-| Function      | Description                                   |
-| ------------- | --------------------------------------------- |
-| `bmds`        | Bayesian Multidimensional Scaling             |
-| `boot.mblock` | Generate Index for Moving Block Bootstrapping |
-| `boot.stationary` | Generate Index for Stationary Bootstrapping |
-| `cmds`      | Classical Multidimensional Scaling                |
-| `dpmeans`   | DP-means Algorithm for Clustering Euclidean Data |
-| `ecdfdist`  | Distance Measures between Multiple Empirical CDFs |
-| `ecdfdist2` | Pairwise Measures for Two Sets of Empirical CDFs |
-| `epmeans`   | EP-means Algorithm for Clustering Empirical Distributions |
-| `kmeanspp`  | K-Means++ Clustering Algorithm |
-| `lgpa`      | Large-scale Generalized Procrustes Analysis |
-| `lyapunov`  | Solve Lyapunov Equation |
-| `matderiv`  | Numerical Approximation to Gradient of a Function with Matrix Argument |
-| `mmd2test`  | Kernel Two-sample Test with Maximum Mean Discrepancy |
-| `nem`          | Negative Eigenvalue Magnitude |
-| `nef`          | Negative Eigenfraction |
-| `pdeterminant` | Calculate the Pseudo-Determinant of a Matrix |
-| `shortestpath` | Find Shortest Path using Floyd-Warshall Algorithm |
-| `sylvester`    | Solve Sylvester Equation |
-| `tsne`         | t-Stochastic Neighbor Embedding |
-| `trio`         | Trace Ratio Optimization |
-| `weiszfeld`    | Weiszfeld Algorithm for L1-median |
