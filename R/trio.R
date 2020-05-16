@@ -332,5 +332,3 @@ trio2012Ngo <- function(A, B, dim, eps, maxiter){
 # V1 <- optStiefel(f1, df1, Vinit=rustiefel(p,mydim), maxIters = 999, tol=1e-10, verbose=TRUE)
 # V2 <- optStiefel(f2, df2, Vinit=rustiefel(p,mydim), maxIters = 999, tol=1e-10, verbose=TRUE)
 # print(sprintf("result of (2) inverse  : %f", 1/f2(V2)))
-
-

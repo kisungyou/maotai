@@ -9,6 +9,7 @@
 #     hidden_ind2lab       given an index list, create a label vector
 # 04. hidden_subsetid    : generate split of the subset id
 # 05. hidden_geigen      : do 'geigen' operation; Decreasing order
+# 06. hidden_knn
 
 
 # 01. hidden_pinv ---------------------------------------------------------
@@ -96,3 +97,11 @@ hidden_geigen <- function(A, B, normalize=TRUE){
   output$vectors = tvec
   return(output)
 }
+
+# 06. hidden_knn ----------------------------------------------------------
+#' @keywords internal
+hidden_knn <- function(dat, nnbd=2, ...){
+  nnbd = round(nnbd)
+  return(nabor::knn(dat, k=nnbd, ...))
+}
+

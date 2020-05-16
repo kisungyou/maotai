@@ -5,6 +5,7 @@
 #' @docType package
 #' @name package-maotai
 #' @import Rdpack
+#' @importFrom nabor knn
 #' @importFrom cluster pam
 #' @importFrom stats as.dist knots ecdf rnorm runif quantile dist rgamma rgeom var cov
 #' @importFrom shapes procGPA

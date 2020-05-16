@@ -65,6 +65,10 @@ cpp_geigen <- function(A, B) {
     .Call('_maotai_cpp_geigen', PACKAGE = 'maotai', A, B)
 }
 
+cpp_triangle <- function(D) {
+    .Call('_maotai_cpp_triangle', PACKAGE = 'maotai', D)
+}
+
 eval_gaussian <- function(x, mu, cov) {
     .Call('_maotai_eval_gaussian', PACKAGE = 'maotai', x, mu, cov)
 }

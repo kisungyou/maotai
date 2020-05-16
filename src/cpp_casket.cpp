@@ -20,6 +20,7 @@ using namespace arma;
  * 10. integrate_1d    : 1d integration, generic but used in distance computation
  * 11. cpp_pdist       : compute pairwise distance
  * 12. cpp_geigen      : do 'geigen' pairwise eigendecomposition
+ * 13. cpp_triangle    : check triangle inequality
  */
 
 ///////////////////////////////////////////////////////////////////
@@ -400,4 +401,26 @@ Rcpp::List cpp_geigen(arma::mat& A, arma::mat& B){
   eig_pair(eigval, eigmat, A, B);
   return Rcpp::List::create(Rcpp::Named("values")=eigval,
                             Rcpp::Named("vectors")=eigmat);
+}
+
+///////////////////////////////////////////////////////////////////
+// 13. cpp_triangle
+// [[Rcpp::export]]
+bool cpp_triangle(arma::mat& D){
+  int N = D.n_rows;
+  
+  double term1 = 0.0;
+  double term2 = 0.0;
+  for (int i=0;i<N;i++){
+    for (int j=0;j<N;j++){
+      term1 = D(i,j);
+      for (int k=0;k<N;k++){
+        term2 = D(i,k) + D(k,j) + arma::datum::eps;
+        if (!(term1 <= term2)){
+          return(false);
+        }
+      }
+    }
+  }
+  return(true);
 }

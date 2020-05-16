@@ -1,11 +1,13 @@
 # maotai 0.1.6
 
   * NEWS reformatted and [package website](https://kyoustat.com/maotai) is now available.
+  
+  * Added functions : `checkdist()` and `checkmetric()`.
 
 
 # maotai 0.1.5
 
-* Added Functions : `bmds()`, `cmds()`, `kmeanspp()`, `nem()`, `nef()`, `tsne()`.
+* Added functions : `bmds()`, `cmds()`, `kmeanspp()`, `nem()`, `nef()`, `tsne()`.
 
 * `distgmm()` is removed for better composition of the package.
 

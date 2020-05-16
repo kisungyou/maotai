@@ -6,8 +6,8 @@ Authors@R: c(person("Kisung", "You", role = c("aut", "cre"),email = "kyoustat@gm
 Description: Matrix is an universal and sometimes primary object/unit in applied mathematics and statistics. We provide a number of algorithms for selected problems in optimization and statistical inference. For general exposition to the topic with focus on statistical context, see the book by Banerjee and Roy (2014, ISBN:9781420095388).
 Encoding: UTF-8
 License: MIT + file LICENSE
-Suggests: igraph, rstiefel
-Imports: Matrix, Rcpp, Rdpack, RSpectra, Rtsne, cluster, labdsv, shapes, stats, utils
+Suggests: igraph
+Imports: Matrix, Rcpp, Rdpack, RSpectra, Rtsne, cluster, labdsv, nabor, shapes, stats, utils
 LinkingTo: Rcpp, RcppArmadillo, RcppDist
 RdMacros: Rdpack
 RoxygenNote: 7.1.0
