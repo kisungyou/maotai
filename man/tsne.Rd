@@ -26,6 +26,7 @@ t-Stochastic Neighbor Embedding for finding low-dimensional structure of
 the data embedded in the high-dimensional space.
 }
 \examples{
+\donttest{
 ## use simple example of iris dataset 
 data(iris) 
 mydat = as.matrix(iris[,1:4])
@@ -46,9 +47,10 @@ mt = paste("tSNE with STRESS=",round(iris.tsne$stress,4),sep="")
 
 #  draw a figure
 opar <- par(no.readonly=TRUE)
-par(mfrow=c(2,1))
+par(mfrow=c(1,2))
 plot(cx, col=mylab, pch=19, main=mc)
 plot(tx, col=mylab, pch=19, main=mt)
 par(opar)
+}
 
 }

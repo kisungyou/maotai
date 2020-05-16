@@ -19,7 +19,7 @@
 #' \item{centers}{a list containing information for out-of-sample prediction.}
 #' }
 #' 
-#' @examples 
+#' @examples
 #' ## define data matrix of two clusters
 #' x1  = matrix(rnorm(50*3,mean= 2), ncol=3)
 #' x2  = matrix(rnorm(50*3,mean=-2), ncol=3)

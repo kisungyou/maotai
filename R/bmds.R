@@ -19,7 +19,8 @@
 #' \item{stress}{discrepancy between embedded and origianl data as a measure of error.}
 #' }
 #' 
-#' @examples 
+#' @examples
+#' \donttest{
 #' ## use simple example of iris dataset
 #' data(iris) 
 #' idata = as.matrix(iris[,1:4])
@@ -27,7 +28,7 @@
 #' ## run Bayesian MDS
 #' #  let's run 10 iterations only.
 #' iris.cmds = cmds(idata, ndim=2)
-#' iris.bmds = bmds(idata, ndim=2, mc.iter=10, par.step=(2.38^2)) 
+#' iris.bmds = bmds(idata, ndim=2, mc.iter=5, par.step=(2.38^2)) 
 #' 
 #' ## extract coordinates and class information
 #' cx = iris.cmds$embed # embedded coordinates of CMDS
@@ -42,6 +43,7 @@
 #' plot(cx, col=icol,pch=19,main=mc)
 #' plot(bx, col=icol,pch=19,main=mb)
 #' par(opar)
+#' }
 #' 
 #' @references 
 #' \insertRef{oh_bayesian_2001a}{maotai}

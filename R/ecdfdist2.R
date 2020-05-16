@@ -13,6 +13,7 @@
 #' @seealso \code{\link[stats]{ecdf}} \code{\link{ecdfdist}}
 #' 
 #' @examples 
+#' \donttest{
 #' ## toy example
 #' #  first list : 10 of random and uniform distributions
 #' mylist1 = list()
@@ -37,6 +38,7 @@
 #' image(dm2lp[,nrs:1], axes=FALSE, main="L2")
 #' image(dm2wa[,nrs:1], axes=FALSE, main="Wasserstein")
 #' par(opar)
+#' }
 #' 
 #' @export
 ecdfdist2 <- function(elist1, elist2, method=c("KS","Lp","Wasserstein"), p=2){

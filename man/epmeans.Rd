@@ -23,6 +23,7 @@ multiple empirical cumulative distribution functions under metric structure
 induced by Earth Mover's Distance.
 }
 \examples{
+\donttest{
 ## two sets of 1d samples, 10 each and add some noise
 #    set 1 : mixture of two gaussians
 #    set 2 : single gamma distribution
@@ -57,6 +58,7 @@ for (k in 1:myk){
   }
 }
 par(opar)
+}
 
 }
 \references{

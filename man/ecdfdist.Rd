@@ -23,6 +23,7 @@ We measure distance between two empirical cumulative distribution functions (ECD
 simplicity, we only take an input of \code{\link[stats]{ecdf}} objects from \pkg{stats} package.
 }
 \examples{
+\donttest{
 ## toy example : 10 of random and uniform distributions
 mylist = list()
 for (i in 1:10){
@@ -41,6 +42,7 @@ opar = par(no.readonly=TRUE)
 par(pty="s")
 image(dm[,nrow(dm):1], axes=FALSE, main=mks)
 par(opar)
+}
 
 }
 \seealso{

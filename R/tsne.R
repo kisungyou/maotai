@@ -14,7 +14,8 @@
 #' \item{stress}{discrepancy between embedded and origianl data as a measure of error.}
 #' }
 #' 
-#' @examples 
+#' @examples
+#' \donttest{
 #' ## use simple example of iris dataset 
 #' data(iris) 
 #' mydat = as.matrix(iris[,1:4])
@@ -35,10 +36,11 @@
 #' 
 #' #  draw a figure
 #' opar <- par(no.readonly=TRUE)
-#' par(mfrow=c(2,1))
+#' par(mfrow=c(1,2))
 #' plot(cx, col=mylab, pch=19, main=mc)
 #' plot(tx, col=mylab, pch=19, main=mt)
 #' par(opar)
+#' }
 #' 
 #' @export
 tsne <- function(data, ndim=2, ...){

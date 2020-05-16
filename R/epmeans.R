@@ -12,7 +12,8 @@
 #' \item{centers}{a length \eqn{k} list of centroid \code{ecdf} objects.}
 #' }
 #' 
-#' @examples 
+#' @examples
+#' \donttest{
 #' ## two sets of 1d samples, 10 each and add some noise
 #' #    set 1 : mixture of two gaussians
 #' #    set 2 : single gamma distribution
@@ -47,6 +48,7 @@
 #'   }
 #' }
 #' par(opar)
+#' }
 #' 
 #' @references 
 #' \insertRef{henderson_epmeans_2015}{maotai}

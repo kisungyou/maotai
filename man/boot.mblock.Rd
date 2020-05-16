@@ -19,18 +19,19 @@ Assuming data being dependent with cardinality \code{N}, \code{boot.mblock} retu
 a vector of index that is used for moving block bootstrapping.
 }
 \examples{
+\donttest{
 ## example : bootstrap confidence interval of mean and variances
-vec.x = seq(from=0,to=10,length.out=1000)
-vec.y = sin(1.21*vec.x) + 2*cos(3.14*vec.x) + rnorm(1000,sd=1.5)
+vec.x = seq(from=0,to=10,length.out=100)
+vec.y = sin(1.21*vec.x) + 2*cos(3.14*vec.x) + rnorm(100,sd=1.5)
 data.mu  = mean(vec.y)
 data.var = var(vec.y)
 
 ## apply moving block bootstrapping
-nreps   = 496
+nreps   = 50
 vec.mu  = rep(0,nreps)
 vec.var = rep(0,nreps)
 for (i in 1:nreps){
-   sample.id = boot.mblock(1000, b=50)
+   sample.id = boot.mblock(100, b=10)
    sample.y  = vec.y[sample.id]
    vec.mu[i]  = mean(sample.y)
    vec.var[i] = var(sample.y)
@@ -46,6 +47,7 @@ abline(v=data.mu, col="red", lwd=4)
 hist(vec.var, main="variance CI", xlab="sigma") # variance
 abline(v=data.var, col="blue", lwd=4)
 par(opar)
+}
 
 }
 \references{
