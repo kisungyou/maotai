@@ -5,6 +5,8 @@
 #' @docType package
 #' @name package-maotai
 #' @import Rdpack
+#' @importFrom dbscan dbscan
+#' @importFrom fastcluster hclust
 #' @importFrom nabor knn
 #' @importFrom cluster pam
 #' @importFrom stats as.dist knots ecdf rnorm runif quantile dist rgamma rgeom var cov

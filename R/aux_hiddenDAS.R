@@ -13,6 +13,8 @@
 # 06. hidden_nem           : Negative Eigenvalue Magnitude
 # 07. hidden_nef           : Negative Eigenfraction
 # 08. hidden_emds          : Euclified Multidimensional Scaling
+# 09. hidden_hclust        : FASTCLUSTER - hclust function
+# 10. hidden_dbscan        : DBSCAN      - dbscan function
 
 
 
@@ -317,6 +319,22 @@ hidden_emds <- function(xdiss, ndim=2, method=c("closure","gram")){
   return(output)
 }
 
+# 09. hidden_hclust -------------------------------------------------------
+#' @keywords internal
+#' @noRd
+hidden_hclust <- function(xdiss, mymethod, mymembers){
+  return(fastcluster::hclust(xdiss, method=mymethod,
+                             members=mymembers))
+}
+
+# 10. hidden_dbscan -------------------------------------------------------
+#' @keywords internal
+#' @noRd
+hidden_dbscan <- function(Xdiss, myeps, myminPts=5, ...){
+  output = dbscan::dbscan(xdiss, eps = myeps, minPts=myminPts, ...)
+  return(output)
+}
+
 # # example -----------------------------------------------------------------
 # library(labdsv)
 # data(bryceveg) # returns a vegetation data.frame
@@ -331,3 +349,4 @@ hidden_emds <- function(xdiss, ndim=2, method=c("closure","gram")){
 # plot(out.cmds, main="cmds")
 # plot(out.emds1, main="emds::closure")
 # plot(out.emds2, main="emds::gram")
+

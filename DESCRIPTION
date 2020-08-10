@@ -7,9 +7,9 @@ Description: Matrix is an universal and sometimes primary object/unit in applied
 Encoding: UTF-8
 License: MIT + file LICENSE
 Suggests: igraph
-Imports: Matrix, Rcpp, Rdpack, RSpectra, Rtsne, cluster, labdsv, nabor, shapes, stats, utils
+Imports: Matrix, Rcpp, Rdpack, RSpectra, Rtsne, cluster, labdsv, nabor, shapes, stats, utils, fastcluster, dbscan
 LinkingTo: Rcpp, RcppArmadillo, RcppDist
 RdMacros: Rdpack
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 URL: http://github.com/kyoustat/maotai
 BugReports: http://github.com/kyoustat/maotai/issues
