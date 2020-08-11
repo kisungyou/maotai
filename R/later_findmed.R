@@ -1,7 +1,8 @@
 #' Find a median from the pairwise dissimilarity
 #' 
 #' 
-#' @export
+#' @keywords internal
+#' @noRd
 findmed <- function(d, method=c("geometric","metric")){
   ######################################################
   # Preprocessing

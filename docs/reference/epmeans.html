@@ -84,7 +84,7 @@ induced by Earth Mover's Distance." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">maotai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.7</span>
       </span>
     </div>
 
@@ -172,7 +172,8 @@ ISBN 978-1-4503-3196-8, doi: <a href='https://doi.org/10.1145/2695664.2695860'>1
 .</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## two sets of 1d samples, 10 each and add some noise</span>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='co'>## two sets of 1d samples, 10 each and add some noise</span>
 <span class='co'>#    set 1 : mixture of two gaussians</span>
 <span class='co'>#    set 2 : single gamma distribution</span>
 
@@ -204,7 +205,8 @@ ISBN 978-1-4503-3196-8, doi: <a href='https://doi.org/10.1145/2695664.2695860'>1
     }
     <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>epout</span>$<span class='no'>centers</span><span class='kw'>[[</span><span class='no'>k</span>]], <span class='kw'>add</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>verticals</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>lwd</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>col</span><span class='kw'>=</span><span class='st'>"red"</span>, <span class='kw'>do.points</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
   }
-}</div><div class='img'><img src='epmeans-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span>(<span class='no'>opar</span>)</div></pre>
+}</div><div class='img'><img src='epmeans-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span>(<span class='no'>opar</span>)
+<span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

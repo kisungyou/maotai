@@ -331,7 +331,7 @@ hidden_hclust <- function(xdiss, mymethod, mymembers){
 #' @keywords internal
 #' @noRd
 hidden_dbscan <- function(Xdiss, myeps, myminPts=5, ...){
-  output = dbscan::dbscan(xdiss, eps = myeps, minPts=myminPts, ...)
+  output = dbscan::dbscan(Xdiss, eps = myeps, minPts=myminPts, ...)
   return(output)
 }
 
