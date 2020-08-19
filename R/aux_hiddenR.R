@@ -14,12 +14,14 @@
 
 # 01. hidden_pinv ---------------------------------------------------------
 #' @keywords internal
+#' @noRd
 hidden_pinv <- function(A){
   return(aux_pinv(A))
 }
 
 # 02. hidden_vech & hidden_ivech ------------------------------------------
 #' @keywords internal
+#' @noRd
 hidden_vech <- function(A, diag=TRUE){
   if ((!is.matrix(A))||(nrow(A)!=ncol(A))){
     stop("* hidden_vech : input should be a square matrix.")
@@ -28,6 +30,7 @@ hidden_vech <- function(A, diag=TRUE){
   return(A[base::lower.tri(A, diag=mydiag)])
 }
 #' @keywords internal
+#' @noRd
 hidden_ivech <- function(a, diag=TRUE){
   k = length(a)
   if (diag){
@@ -48,6 +51,7 @@ hidden_ivech <- function(a, diag=TRUE){
 
 # 03. hidden_lab2ind & hidden_ind2lab -------------------------------------
 #' @keywords internal
+#' @noRd
 hidden_lab2ind <- function(label){
   ulabel = base::unique(label)
   nlabel = length(ulabel)
@@ -59,6 +63,7 @@ hidden_lab2ind <- function(label){
   return(index)
 }
 #' @keywords internal
+#' @noRd
 hidden_ind2lab <- function(index){
   K = length(index)
   N = sum(unlist(lapply(index, length)))
@@ -72,6 +77,7 @@ hidden_ind2lab <- function(index){
 
 # 04. hidden_subsetid -----------------------------------------------------
 #' @keywords internal
+#' @noRd
 hidden_subsetid <- function(n, k){
   return(base::split(base::sample(n), base::sort(n%%k)))
 }
@@ -79,6 +85,7 @@ hidden_subsetid <- function(n, k){
 # 05. hidden_geigen -------------------------------------------------------
 #' It mimics the behavior of 'geigen' function with normalization added
 #' @keywords internal
+#' @noRd
 hidden_geigen <- function(A, B, normalize=TRUE){
   n    = nrow(A)
   runs = cpp_geigen(A,B)
@@ -100,6 +107,7 @@ hidden_geigen <- function(A, B, normalize=TRUE){
 
 # 06. hidden_knn ----------------------------------------------------------
 #' @keywords internal
+#' @noRd
 hidden_knn <- function(dat, nnbd=2, ...){
   nnbd = round(nnbd)
   return(nabor::knn(dat, k=nnbd, ...))

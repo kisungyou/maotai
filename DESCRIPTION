@@ -11,5 +11,5 @@ Imports: Matrix, Rcpp, Rdpack, RSpectra, Rtsne, cluster, labdsv, nabor, shapes, 
 LinkingTo: Rcpp, RcppArmadillo, RcppDist
 RdMacros: Rdpack
 RoxygenNote: 7.1.1
-URL: http://github.com/kyoustat/maotai
-BugReports: http://github.com/kyoustat/maotai/issues
+URL: https://github.com/kyoustat/maotai
+BugReports: https://github.com/kyoustat/maotai/issues

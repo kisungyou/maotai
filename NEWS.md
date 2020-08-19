@@ -4,7 +4,7 @@
 
 # maotai 0.1.6
 
-* NEWS reformatted and [package website](https://kyoustat.com/maotai) is now available.
+* NEWS reformatted and [package website](https://kyoustat.com/maotai/) is now available.
   
 * Added functions : `checkdist()` and `checkmetric()`.
 
