@@ -15,6 +15,7 @@
 # 08. hidden_emds          : Euclified Multidimensional Scaling
 # 09. hidden_hclust        : FASTCLUSTER - hclust function
 # 10. hidden_dbscan        : DBSCAN      - dbscan function
+# 11. hidden_silhouette    : mimics that of cluster's silhouette
 
 
 
@@ -341,6 +342,19 @@ hidden_hclust <- function(xdiss, mymethod, mymembers){
 #' @noRd
 hidden_dbscan <- function(Xdiss, myeps, myminPts=5, ...){
   output = dbscan::dbscan(Xdiss, eps = myeps, minPts=myminPts, ...)
+  return(output)
+}
+
+# 11. hidden_silhouette --------------------------------------------------------
+#' @keywords internal
+#' @noRd
+hidden_silhouette <- function(xdiss, label){
+  x    = as.integer(as.factor(label))
+  hsil = cluster::silhouette(x, xdiss)
+  
+  output = list()
+  output$local  = as.vector(hsil[,3])
+  output$global = base::mean(as.vector(hsil[,3]))
   return(output)
 }
 
