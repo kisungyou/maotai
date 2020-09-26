@@ -140,7 +140,7 @@ four axioms to make itself a semimetric, which are (1) \(d_{ii} = 0\), (2) \(d_{
 (3) \(d_{ij} = d_{ji}\), and (4) \(d_{ij} \leq d_{ik} + d_{kj}\).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>checkmetric</span>(<span class='no'>d</span>)</pre>
+    <pre class="usage"><span class='fu'>checkmetric</span><span class='op'>(</span><span class='va'>d</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -160,15 +160,17 @@ four axioms to make itself a semimetric, which are (1) \(d_{ii} = 0\), (2) \(d_{
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Let's use L2 distance matrix of iris dataset</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>iris</span>)
-<span class='no'>dx</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/dist.html'>dist</a></span>(<span class='no'>iris</span>[,<span class='fl'>1</span>:<span class='fl'>4</span>]))
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
+<span class='va'>dx</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='fu'>stats</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/dist.html'>dist</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'># perturb d(i,j) </span>
-<span class='no'>dy</span> <span class='kw'>=</span> <span class='no'>dx</span>
-<span class='no'>dy</span>[<span class='fl'>1</span>,<span class='fl'>2</span>] <span class='kw'>&lt;-</span> <span class='no'>dy</span>[<span class='fl'>2</span>,<span class='fl'>1</span>] <span class='kw'>&lt;-</span> <span class='fl'>10</span>
+<span class='va'>dy</span> <span class='op'>=</span> <span class='va'>dx</span>  
+<span class='va'>dy</span><span class='op'>[</span><span class='fl'>1</span>,<span class='fl'>2</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='va'>dy</span><span class='op'>[</span><span class='fl'>2</span>,<span class='fl'>1</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fl'>10</span>
 
 <span class='co'># run the algorithm</span>
-<span class='fu'>checkmetric</span>(<span class='no'>dx</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>checkmetric</span>(<span class='no'>dy</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
+<span class='fu'>checkmetric</span><span class='op'>(</span><span class='va'>dx</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>checkmetric</span><span class='op'>(</span><span class='va'>dy</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -185,7 +187,7 @@ four axioms to make itself a semimetric, which are (1) \(d_{ii} = 0\), (2) \(d_{
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

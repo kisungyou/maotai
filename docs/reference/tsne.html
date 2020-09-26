@@ -140,7 +140,7 @@ t-Stochastic Neighbor Embedding for finding low-dimensional structure of
 the data embedded in the high-dimensional space.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tsne</span>(<span class='no'>data</span>, <span class='kw'>ndim</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>tsne</span><span class='op'>(</span><span class='va'>data</span>, ndim <span class='op'>=</span> <span class='fl'>2</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -161,7 +161,7 @@ the data embedded in the high-dimensional space.</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a named list containing</p><dl'>
+    <p>a named list containing</p><dl>
 <dt>embed</dt><dd><p>an \((n\times ndim)\) matrix whose rows are embedded observations.</p></dd>
 <dt>stress</dt><dd><p>discrepancy between embedded and origianl data as a measure of error.</p></dd>
 
@@ -171,29 +171,32 @@ the data embedded in the high-dimensional space.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='co'>## use simple example of iris dataset </span>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>iris</span>)
-<span class='no'>mydat</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>iris</span>[,<span class='fl'>1</span>:<span class='fl'>4</span>])
-<span class='no'>mylab</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='no'>iris</span>[,<span class='fl'>5</span>])
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span> 
+<span class='va'>mydat</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>]</span><span class='op'>)</span>
+<span class='va'>mylab</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>[</span>,<span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span>
 
 <span class='co'>## run t-SNE and MDS for comparison</span>
-<span class='no'>iris.cmds</span> <span class='kw'>=</span> <span class='fu'><a href='cmds.html'>cmds</a></span>(<span class='no'>mydat</span>, <span class='kw'>ndim</span><span class='kw'>=</span><span class='fl'>2</span>)
-<span class='no'>iris.tsne</span> <span class='kw'>=</span> <span class='fu'>tsne</span>(<span class='no'>mydat</span>, <span class='kw'>ndim</span><span class='kw'>=</span><span class='fl'>2</span>)
+<span class='va'>iris.cmds</span> <span class='op'>=</span> <span class='fu'><a href='cmds.html'>cmds</a></span><span class='op'>(</span><span class='va'>mydat</span>, ndim<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+<span class='va'>iris.tsne</span> <span class='op'>=</span> <span class='fu'>tsne</span><span class='op'>(</span><span class='va'>mydat</span>, ndim<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
 
 <span class='co'>## extract coordinates and class information</span>
-<span class='no'>cx</span> <span class='kw'>=</span> <span class='no'>iris.cmds</span>$<span class='no'>embed</span> <span class='co'># embedded coordinates of CMDS</span>
-<span class='no'>tx</span> <span class='kw'>=</span> <span class='no'>iris.tsne</span>$<span class='no'>embed</span> <span class='co'>#                         t-SNE</span>
+<span class='va'>cx</span> <span class='op'>=</span> <span class='va'>iris.cmds</span><span class='op'>$</span><span class='va'>embed</span> <span class='co'># embedded coordinates of CMDS</span>
+<span class='va'>tx</span> <span class='op'>=</span> <span class='va'>iris.tsne</span><span class='op'>$</span><span class='va'>embed</span> <span class='co'>#                         t-SNE</span>
 
 <span class='co'>## visualize</span>
 <span class='co'>#  main title</span>
-<span class='no'>mc</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"CMDS with STRESS="</span>,<span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>(<span class='no'>iris.cmds</span>$<span class='no'>stress</span>,<span class='fl'>4</span>),<span class='kw'>sep</span><span class='kw'>=</span><span class='st'>""</span>)
-<span class='no'>mt</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"tSNE with STRESS="</span>,<span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>(<span class='no'>iris.tsne</span>$<span class='no'>stress</span>,<span class='fl'>4</span>),<span class='kw'>sep</span><span class='kw'>=</span><span class='st'>""</span>)
+<span class='va'>mc</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='st'>"CMDS with STRESS="</span>,<span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>iris.cmds</span><span class='op'>$</span><span class='va'>stress</span>,<span class='fl'>4</span><span class='op'>)</span>,sep<span class='op'>=</span><span class='st'>""</span><span class='op'>)</span>
+<span class='va'>mt</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='st'>"tSNE with STRESS="</span>,<span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>iris.tsne</span><span class='op'>$</span><span class='va'>stress</span>,<span class='fl'>4</span><span class='op'>)</span>,sep<span class='op'>=</span><span class='st'>""</span><span class='op'>)</span>
 
 <span class='co'>#  draw a figure</span>
-<span class='no'>opar</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span>(<span class='kw'>no.readonly</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
-<span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span>(<span class='kw'>mfrow</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>))
-<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>cx</span>, <span class='kw'>col</span><span class='kw'>=</span><span class='no'>mylab</span>, <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>19</span>, <span class='kw'>main</span><span class='kw'>=</span><span class='no'>mc</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>tx</span>, <span class='kw'>col</span><span class='kw'>=</span><span class='no'>mylab</span>, <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>19</span>, <span class='kw'>main</span><span class='kw'>=</span><span class='no'>mt</span>)</div><div class='img'><img src='tsne-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span>(<span class='no'>opar</span>)
-<span class='co'># }</span></div></pre>
+<span class='va'>opar</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>no.readonly<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>mfrow<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>cx</span>, col<span class='op'>=</span><span class='va'>mylab</span>, pch<span class='op'>=</span><span class='fl'>19</span>, main<span class='op'>=</span><span class='va'>mc</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>tx</span>, col<span class='op'>=</span><span class='va'>mylab</span>, pch<span class='op'>=</span><span class='fl'>19</span>, main<span class='op'>=</span><span class='va'>mt</span><span class='op'>)</span>
+</div><div class='img'><img src='tsne-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span><span class='va'>opar</span><span class='op'>)</span>
+<span class='co'># }</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -209,7 +212,7 @@ the data embedded in the high-dimensional space.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

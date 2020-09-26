@@ -142,7 +142,7 @@ where \(X\) is the unknown and others are given. Though it's possible to have no
 we currently support square matrices only. This is a wrapper of <code>armadillo</code>'s <code>sylvester</code> function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>sylvester</span>(<span class='no'>A</span>, <span class='no'>B</span>, <span class='no'>C</span>)</pre>
+    <pre class="usage"><span class='fu'>sylvester</span><span class='op'>(</span><span class='va'>A</span>, <span class='va'>B</span>, <span class='va'>C</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -176,17 +176,18 @@ we currently support square matrices only. This is a wrapper of <code>armadillo<
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## simulated example</span>
 <span class='co'>#  generate square matrices</span>
-<span class='no'>A</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>25</span>),<span class='kw'>nrow</span><span class='kw'>=</span><span class='fl'>5</span>)
-<span class='no'>X</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>25</span>),<span class='kw'>nrow</span><span class='kw'>=</span><span class='fl'>5</span>)
-<span class='no'>B</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>25</span>),<span class='kw'>nrow</span><span class='kw'>=</span><span class='fl'>5</span>)
-<span class='no'>C</span> <span class='kw'>=</span> <span class='no'>A</span><span class='kw'>%*%</span><span class='no'>X</span> + <span class='no'>X</span><span class='kw'>%*%</span><span class='no'>B</span>
+<span class='va'>A</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>25</span><span class='op'>)</span>,nrow<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span>
+<span class='va'>X</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>25</span><span class='op'>)</span>,nrow<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span>
+<span class='va'>B</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>25</span><span class='op'>)</span>,nrow<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span>
+<span class='va'>C</span> <span class='op'>=</span> <span class='va'>A</span><span class='op'>%*%</span><span class='va'>X</span> <span class='op'>+</span> <span class='va'>X</span><span class='op'>%*%</span><span class='va'>B</span>
 
 <span class='co'>#  solve using 'sylvester' function</span>
-<span class='no'>solX</span> <span class='kw'>=</span> <span class='fu'>sylvester</span>(<span class='no'>A</span>,<span class='no'>B</span>,<span class='no'>C</span>)
-<span class='no'>pm1</span> <span class='kw'>=</span> <span class='st'>"* Experiment with Sylvester Solver"</span>
-<span class='no'>pm2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"* Absolute Error  : "</span>,<span class='fu'><a href='https://rdrr.io/r/base/norm.html'>norm</a></span>(<span class='no'>solX</span>-<span class='no'>X</span>,<span class='st'>"f"</span>),<span class='kw'>sep</span><span class='kw'>=</span><span class='st'>""</span>)
-<span class='no'>pm3</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"* Relative Error  : "</span>,<span class='fu'><a href='https://rdrr.io/r/base/norm.html'>norm</a></span>(<span class='no'>solX</span>-<span class='no'>X</span>,<span class='st'>"f"</span>)/<span class='fu'><a href='https://rdrr.io/r/base/norm.html'>norm</a></span>(<span class='no'>X</span>,<span class='st'>"f"</span>),<span class='kw'>sep</span><span class='kw'>=</span><span class='st'>""</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='no'>pm1</span>,<span class='st'>"\n"</span>,<span class='no'>pm2</span>,<span class='st'>"\n"</span>,<span class='no'>pm3</span>,<span class='kw'>sep</span><span class='kw'>=</span><span class='st'>""</span>))</div><div class='output co'>#&gt; * Experiment with Sylvester Solver
+<span class='va'>solX</span> <span class='op'>=</span> <span class='fu'>sylvester</span><span class='op'>(</span><span class='va'>A</span>,<span class='va'>B</span>,<span class='va'>C</span><span class='op'>)</span>
+<span class='va'>pm1</span> <span class='op'>=</span> <span class='st'>"* Experiment with Sylvester Solver"</span>
+<span class='va'>pm2</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='st'>"* Absolute Error  : "</span>,<span class='fu'><a href='https://rdrr.io/pkg/shapes/man/shapes-internal.html'>norm</a></span><span class='op'>(</span><span class='va'>solX</span><span class='op'>-</span><span class='va'>X</span>,<span class='st'>"f"</span><span class='op'>)</span>,sep<span class='op'>=</span><span class='st'>""</span><span class='op'>)</span>
+<span class='va'>pm3</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='st'>"* Relative Error  : "</span>,<span class='fu'><a href='https://rdrr.io/pkg/shapes/man/shapes-internal.html'>norm</a></span><span class='op'>(</span><span class='va'>solX</span><span class='op'>-</span><span class='va'>X</span>,<span class='st'>"f"</span><span class='op'>)</span><span class='op'>/</span><span class='fu'><a href='https://rdrr.io/pkg/shapes/man/shapes-internal.html'>norm</a></span><span class='op'>(</span><span class='va'>X</span>,<span class='st'>"f"</span><span class='op'>)</span>,sep<span class='op'>=</span><span class='st'>""</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>pm1</span>,<span class='st'>"\n"</span>,<span class='va'>pm2</span>,<span class='st'>"\n"</span>,<span class='va'>pm3</span>,sep<span class='op'>=</span><span class='st'>""</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; * Experiment with Sylvester Solver
 #&gt; * Absolute Error  : 5.12220783097157e-14
 #&gt; * Relative Error  : 1.26118222928684e-14</div><div class='input'>
 
@@ -206,7 +207,7 @@ we currently support square matrices only. This is a wrapper of <code>armadillo<
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
