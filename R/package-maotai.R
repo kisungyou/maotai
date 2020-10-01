@@ -1,10 +1,11 @@
 #' Tools for Matrix Algebra, Optimization and Inference
 #' 
 #' Matrix is an universal and sometimes primary object/unit in applied mathematics and statistics. We provide a number of algorithms for selected problems in optimization and statistical inference.
-#'
+#' 
 #' @docType package
 #' @name package-maotai
 #' @import Rdpack
+#' @noRd
 #' @importFrom dbscan dbscan
 #' @importFrom fastcluster hclust
 #' @importFrom nabor knn

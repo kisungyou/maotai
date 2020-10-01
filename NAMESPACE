@@ -3,6 +3,7 @@
 export(bmds)
 export(boot.mblock)
 export(boot.stationary)
+export(cayleymenger)
 export(checkdist)
 export(checkmetric)
 export(cmds)

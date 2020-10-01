@@ -13,6 +13,9 @@
     <loc>https://kyoustat.com/maotai/reference/boot.stationary.html</loc>
   </url>
   <url>
+    <loc>https://kyoustat.com/maotai/reference/cayleymenger.html</loc>
+  </url>
+  <url>
     <loc>https://kyoustat.com/maotai/reference/checkdist.html</loc>
   </url>
   <url>
@@ -53,9 +56,6 @@
   </url>
   <url>
     <loc>https://kyoustat.com/maotai/reference/nem.html</loc>
-  </url>
-  <url>
-    <loc>https://kyoustat.com/maotai/reference/package-maotai.html</loc>
   </url>
   <url>
     <loc>https://kyoustat.com/maotai/reference/pdeterminant.html</loc>
