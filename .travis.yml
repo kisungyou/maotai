@@ -8,6 +8,9 @@ r: release
 env:
   global: RGL_USE_NULL=TRUE
 
+before_install:
+  - pip install numpy scipy
+
 r_check_args: "--as-cran --install-args=--build"
 
 before_install:

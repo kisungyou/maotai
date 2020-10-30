@@ -1,3 +1,8 @@
+# maotai 0.1.8
+
+* Fixed a potential bug.
+* Added SMACOF implementation.
+
 # maotai 0.1.7
 
 * Fixed some minor bugs.

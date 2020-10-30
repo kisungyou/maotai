@@ -6,6 +6,7 @@
 #' @name package-maotai
 #' @import Rdpack
 #' @noRd
+#' @importFrom reticulate import py_install
 #' @importFrom dbscan dbscan
 #' @importFrom fastcluster hclust
 #' @importFrom nabor knn

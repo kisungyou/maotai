@@ -1,3 +1,6 @@
+## RETICULATE : global reference
+
+
 # .pkgenv <- new.env(parent = emptyenv())
 .onAttach <- function(...){
   ## Retrieve Year Information

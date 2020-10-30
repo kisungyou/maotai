@@ -16,6 +16,7 @@
 # 09. hidden_hclust        : FASTCLUSTER - hclust function
 # 10. hidden_dbscan        : DBSCAN      - dbscan function
 # 11. hidden_silhouette    : mimics that of cluster's silhouette
+# 12. hidden_mmds          : metric multidimensional scaling by SMACOF 
 
 
 
@@ -357,6 +358,34 @@ hidden_silhouette <- function(xdiss, label){
   output$global = base::mean(as.vector(hsil[,3]))
   return(output)
 }
+
+# 12. hidden_mmds          : metric multidimensional scaling by SMACOF  --------
+#' @keywords internal
+#' @noRd
+hidden_mmds <- function(x, ndim=2, maxiter=200, abstol=1e-5){
+  # Check Input and Transform
+  x    = hidden_checker(x)
+  ndim = round(ndim)
+  myiter = max(50, round(maxiter))
+  mytol  = max(100*.Machine$double.eps, as.double(abstol))
+  
+  # Run with Rcpp
+  return(cpp_mmds(x, ndim, myiter, mytol))
+}
+
+# X   = as.matrix(iris[,1:4])
+# lab = as.factor(iris[,5])
+# 
+# D    = stats::dist(X)
+# cmd2 = cmdscale(D, k=2)
+# mmdA = hidden_mmds(D, ndim=2, abstol=1e-2)
+# mmdB = hidden_mmds(D, ndim=2, abstol=1e-10)
+# 
+# par(mfrow=c(1,3), pty="s")
+# plot(cmd2, col=lab, main = "cmds")
+# plot(mmdA, col=lab, main="mmds-2")
+# plot(mmdB, col=lab, main="mmds-8")
+
 
 # # example -----------------------------------------------------------------
 # library(labdsv)

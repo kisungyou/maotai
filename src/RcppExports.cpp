@@ -227,6 +227,20 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// cpp_mmds
+arma::mat cpp_mmds(arma::mat& D, int ndim, int maxiter, double abstol);
+RcppExport SEXP _maotai_cpp_mmds(SEXP DSEXP, SEXP ndimSEXP, SEXP maxiterSEXP, SEXP abstolSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type D(DSEXP);
+    Rcpp::traits::input_parameter< int >::type ndim(ndimSEXP);
+    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
+    Rcpp::traits::input_parameter< double >::type abstol(abstolSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_mmds(D, ndim, maxiter, abstol));
+    return rcpp_result_gen;
+END_RCPP
+}
 // eval_gaussian
 double eval_gaussian(arma::vec x, arma::vec mu, arma::mat cov);
 RcppExport SEXP _maotai_eval_gaussian(SEXP xSEXP, SEXP muSEXP, SEXP covSEXP) {
@@ -300,6 +314,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_maotai_cpp_pdist", (DL_FUNC) &_maotai_cpp_pdist, 1},
     {"_maotai_cpp_geigen", (DL_FUNC) &_maotai_cpp_geigen, 2},
     {"_maotai_cpp_triangle", (DL_FUNC) &_maotai_cpp_triangle, 1},
+    {"_maotai_cpp_mmds", (DL_FUNC) &_maotai_cpp_mmds, 4},
     {"_maotai_eval_gaussian", (DL_FUNC) &_maotai_eval_gaussian, 3},
     {"_maotai_eval_gaussian_data", (DL_FUNC) &_maotai_eval_gaussian_data, 3},
     {"_maotai_eval_gmm_data", (DL_FUNC) &_maotai_eval_gmm_data, 4},
