@@ -1,8 +1,8 @@
-pandoc: 2.7.3
+pandoc: 2.11.2
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2020-10-30T22:22Z
+last_built: 2021-04-13T18:36Z
 urls:
   reference: https://kyoustat.com/maotai/reference
   article: https://kyoustat.com/maotai/articles

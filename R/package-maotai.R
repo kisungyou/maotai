@@ -6,10 +6,9 @@
 #' @name package-maotai
 #' @import Rdpack
 #' @noRd
-#' @importFrom reticulate import py_install
 #' @importFrom dbscan dbscan
 #' @importFrom fastcluster hclust
-#' @importFrom nabor knn
+#' @importFrom RANN nn2
 #' @importFrom cluster pam silhouette
 #' @importFrom stats as.dist knots ecdf rnorm runif quantile dist rgamma rgeom var cov
 #' @importFrom shapes procGPA

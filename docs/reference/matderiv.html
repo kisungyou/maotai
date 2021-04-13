@@ -85,7 +85,7 @@ ambient gradient. Use with care since it may accumulate numerical error." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">maotai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
       </span>
     </div>
 
@@ -101,19 +101,19 @@ ambient gradient. Use with care since it may accumulate numerical error." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://twitter.com/kyoustat">
-    <span class="fa fa-twitter"></span>
+    <span class="fas fa-twitter"></span>
      
   </a>
 </li>
 <li>
   <a href="https://github.com/kyoustat/maotai">
-    <span class="fa fa-github"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
 <li>
   <a href="../mailto:kyoustat@gmail.com">
-    <span class="fa fa-envelope"></span>
+    <span class="fas fa-envelope"></span>
      
   </a>
 </li>
@@ -167,9 +167,8 @@ ambient gradient. Use with care since it may accumulate numerical error.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Kincaid D, Cheney EW (2009).
-<em>Numerical analysis: mathematics of scientific computing</em>,  number 2, 3. ed edition.
-American Mathematical Society, Providence, RI.
-OCLC: 729930790.</p>
+<em>Numerical Analysis: Mathematics of Scientific Computing</em>,  number 2 in Pure and Applied Undergraduate Texts, 3. ed edition.
+American Mathematical Society, Providence, RI.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## function f(X) = &lt;a,Xb&gt; for two vectors 'a' and 'b'</span>
@@ -204,9 +203,9 @@ OCLC: 729930790.</p>
 <span class='va'>ntrue</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/shapes/man/shapes-internal.html'>norm</a></span><span class='op'>(</span><span class='va'>sol.true</span>,<span class='st'>"f"</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>'* Relative Errors in Frobenius Norm '</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; * Relative Errors in Frobenius Norm </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='st'>"*  h=1e-1   : "</span>,<span class='fu'><a href='https://rdrr.io/pkg/shapes/man/shapes-internal.html'>norm</a></span><span class='op'>(</span><span class='va'>sol.true</span><span class='op'>-</span><span class='va'>sol.num1</span>,<span class='st'>"f"</span><span class='op'>)</span><span class='op'>/</span><span class='va'>ntrue</span>,sep<span class='op'>=</span><span class='st'>""</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; *  h=1e-1   : 3.07730433571873e-15</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='st'>"*  h=1e-5   : "</span>,<span class='fu'><a href='https://rdrr.io/pkg/shapes/man/shapes-internal.html'>norm</a></span><span class='op'>(</span><span class='va'>sol.true</span><span class='op'>-</span><span class='va'>sol.num2</span>,<span class='st'>"f"</span><span class='op'>)</span><span class='op'>/</span><span class='va'>ntrue</span>,sep<span class='op'>=</span><span class='st'>""</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; *  h=1e-5   : 3.32204038195128e-11</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='st'>"*  h=1e-9   : "</span>,<span class='fu'><a href='https://rdrr.io/pkg/shapes/man/shapes-internal.html'>norm</a></span><span class='op'>(</span><span class='va'>sol.true</span><span class='op'>-</span><span class='va'>sol.num3</span>,<span class='st'>"f"</span><span class='op'>)</span><span class='op'>/</span><span class='va'>ntrue</span>,sep<span class='op'>=</span><span class='st'>""</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; *  h=1e-9   : 1.96478887059803e-08</div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; *  h=1e-1   : 4.67396328954143e-15</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='st'>"*  h=1e-5   : "</span>,<span class='fu'><a href='https://rdrr.io/pkg/shapes/man/shapes-internal.html'>norm</a></span><span class='op'>(</span><span class='va'>sol.true</span><span class='op'>-</span><span class='va'>sol.num2</span>,<span class='st'>"f"</span><span class='op'>)</span><span class='op'>/</span><span class='va'>ntrue</span>,sep<span class='op'>=</span><span class='st'>""</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; *  h=1e-5   : 3.88962937702061e-11</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='st'>"*  h=1e-9   : "</span>,<span class='fu'><a href='https://rdrr.io/pkg/shapes/man/shapes-internal.html'>norm</a></span><span class='op'>(</span><span class='va'>sol.true</span><span class='op'>-</span><span class='va'>sol.num3</span>,<span class='st'>"f"</span><span class='op'>)</span><span class='op'>/</span><span class='va'>ntrue</span>,sep<span class='op'>=</span><span class='st'>""</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; *  h=1e-9   : 2.23359797626045e-08</div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>

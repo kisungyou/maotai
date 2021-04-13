@@ -85,7 +85,7 @@ we currently support square matrices only. This is a wrapper of armadillo's sylv
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">maotai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
       </span>
     </div>
 
@@ -101,19 +101,19 @@ we currently support square matrices only. This is a wrapper of armadillo's sylv
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://twitter.com/kyoustat">
-    <span class="fa fa-twitter"></span>
+    <span class="fas fa-twitter"></span>
      
   </a>
 </li>
 <li>
   <a href="https://github.com/kyoustat/maotai">
-    <span class="fa fa-github"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
 <li>
   <a href="../mailto:kyoustat@gmail.com">
-    <span class="fa fa-envelope"></span>
+    <span class="fas fa-envelope"></span>
      
   </a>
 </li>
@@ -166,12 +166,11 @@ we currently support square matrices only. This is a wrapper of <code>armadillo<
     <p>a solution matrix \(X\) of size \((p\times p)\).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Sanderson C, Curtin R (2016-jun).
-&#8220;Armadillo: a template-based C++ library for linear algebra.&#8221;
-<em>The Journal of Open Source Software</em>, <b>1</b>.
-<a href='/home/kisung/Dropbox/VP. Packages/maotai/[Sanderson.2016] Armadillo.pdf'>/home/kisung/Dropbox/VP. Packages/maotai/[Sanderson.2016] Armadillo.pdf</a>.</p>
-<p>Eddelbuettel D, Sanderson C (2014-mar).
-&#8220;RcppArmadillo: Accelerating R with high-performance C++ linear algebra.&#8221;
+    <p>Sanderson C, Curtin R (2016).
+&#8220;Armadillo: A Template-Based C++ Library for Linear Algebra.&#8221;
+<em>The Journal of Open Source Software</em>, <b>1</b>(2), 26.</p>
+<p>Eddelbuettel D, Sanderson C (2014).
+&#8220;RcppArmadillo: Accelerating R with High-Performance C++ Linear Algebra.&#8221;
 <em>Computational Statistics and Data Analysis</em>, <b>71</b>, 1054--1063.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -189,8 +188,8 @@ we currently support square matrices only. This is a wrapper of <code>armadillo<
 <span class='va'>pm3</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='st'>"* Relative Error  : "</span>,<span class='fu'><a href='https://rdrr.io/pkg/shapes/man/shapes-internal.html'>norm</a></span><span class='op'>(</span><span class='va'>solX</span><span class='op'>-</span><span class='va'>X</span>,<span class='st'>"f"</span><span class='op'>)</span><span class='op'>/</span><span class='fu'><a href='https://rdrr.io/pkg/shapes/man/shapes-internal.html'>norm</a></span><span class='op'>(</span><span class='va'>X</span>,<span class='st'>"f"</span><span class='op'>)</span>,sep<span class='op'>=</span><span class='st'>""</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>pm1</span>,<span class='st'>"\n"</span>,<span class='va'>pm2</span>,<span class='st'>"\n"</span>,<span class='va'>pm3</span>,sep<span class='op'>=</span><span class='st'>""</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; * Experiment with Sylvester Solver
-#&gt; * Absolute Error  : 5.12220783097157e-14
-#&gt; * Relative Error  : 1.26118222928684e-14</div><div class='input'>
+#&gt; * Absolute Error  : 3.25927124179826e-14
+#&gt; * Relative Error  : 8.02492812909144e-15</div><div class='input'>
 
 </div></pre>
   </div>

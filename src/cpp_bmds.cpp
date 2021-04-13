@@ -222,7 +222,7 @@ Rcpp::List main_bmds(arma::mat D, arma::mat X0, double sigg0,
   double varratio = 0.0;
   
   // 3) iteration
-  int accept = 0;
+  // int accept = 0;
   for (int i=0;i<maxiter;i++){
     // 3-1. update lambdas
     for (int j=0;j<p;j++){ // compute sample variances for each coordinate

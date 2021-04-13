@@ -110,6 +110,6 @@ hidden_geigen <- function(A, B, normalize=TRUE){
 #' @noRd
 hidden_knn <- function(dat, nnbd=2, ...){
   nnbd = round(nnbd)
-  return(nabor::knn(dat, k=nnbd, ...))
+  return(RANN::nn2(dat, k=nnbd, ...))
 }
 

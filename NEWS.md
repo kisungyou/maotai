@@ -1,3 +1,7 @@
+# maotai 0.1.9
+
+* Replaced nearest neighbor search with `RANN` package.
+
 # maotai 0.1.8
 
 * Fixed a potential bug.
