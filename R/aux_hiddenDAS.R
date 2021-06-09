@@ -17,6 +17,7 @@
 # 10. hidden_dbscan        : DBSCAN      - dbscan function
 # 11. hidden_silhouette    : mimics that of cluster's silhouette
 # 12. hidden_mmds          : metric multidimensional scaling by SMACOF 
+# 13. hidden_PHATE         : return row-stochastic matrix & time stamp
 
 
 
@@ -373,6 +374,70 @@ hidden_mmds <- function(x, ndim=2, maxiter=200, abstol=1e-5){
   return(cpp_mmds(x, ndim, myiter, mytol))
 }
 
+
+
+# 13. hidden_PHATE --------------------------------------------------------
+#' @keywords internal
+#' @noRd
+hidden_PHATE <- function(x, nbdk=5, alpha=2){
+  # Check Input and Transform
+  x = hidden_checker(x) # now it's a matrix
+  n = base::nrow(x)
+  nbdk  = max(1, round(nbdk))
+  alpha = max(sqrt(.Machine$double.eps), as.double(alpha))
+  
+  # k-th nearest distance
+  nndist = rep(0,n)
+  for (i in 1:n){
+    tgt = as.vector(x[i,])
+    nndist[i] = tgt[order(tgt)[nbdk+1]]
+  }
+  
+  # Build Kernel Matrix
+  matK = array(1,c(n,n))
+  for (i in 1:(n-1)){
+    for (j in (i+1):n){
+      term1 = exp(-((x[i,j]/nndist[i])^(alpha)))
+      term2 = exp(-((x[i,j]/nndist[j])^(alpha)))
+      matK[i,j] <- matK[j,i] <- 0.5*(term1+term2)
+    }
+  }
+  vecD = base::rowSums(matK)
+  matP = base::diag(1/vecD)%*%matK
+  matA = base::diag(1/base::sqrt(vecD))%*%matK%*%base::diag(1/base::sqrt(vecD))
+  
+  # Eigenvalues and Von-Neumann Entropy
+  eigA  = eigen(matA)$values
+  eigA  = eigA[(eigA>0)]
+  vec.t = 1:1000
+  vec.H = rep(0,1000)
+  for (i in 1:1000){
+    eig.t  = eigA^i
+    eig.t  = eig.t/base::sum(eig.t)
+    term.t = -base::sum(eig.t*base::log(eig.t))
+    if (is.na(term.t)){
+      vec.t = vec.t[1:(i-1)]
+      vec.H = vec.H[1:(i-1)]
+      break
+    } else {
+      vec.H[i] = term.t
+    }
+  }
+  
+  # Optimal Stopping Criterion
+  Pout  = matP
+  opt.t = round(hidden_knee_clamped(vec.t, vec.H))
+  for (i in 1:(opt.t-1)){
+    Pout = Pout%*%matP
+  }
+  
+  # return the output
+  output = list()
+  output$P = Pout
+  output$t = opt.t
+  return(output)
+}
+
 # X   = as.matrix(iris[,1:4])
 # lab = as.factor(iris[,5])
 # 
@@ -401,4 +466,6 @@ hidden_mmds <- function(x, ndim=2, maxiter=200, abstol=1e-5){
 # plot(out.cmds, main="cmds")
 # plot(out.emds1, main="emds::closure")
 # plot(out.emds2, main="emds::gram")
+
+
 

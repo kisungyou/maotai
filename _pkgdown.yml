@@ -1,7 +1,7 @@
 # themes: https://bootswatch.com/ {flatly, united}
 # icons:  https://fontawesome.com/
 
-url: https://kyoustat.com/maotai
+url: https://kisungyou.com/maotai
 
 destination: docs
 
@@ -19,9 +19,9 @@ navbar:
       href: news/index.html
   right:
     - icon: fa-twitter
-      href: https://twitter.com/kyoustat
+      href: https://twitter.com/kisung_you
     - icon: fa-github
-      href: https://github.com/kyoustat/maotai
+      href: https://github.com/kisungyou/maotai
     - icon: fa-envelope
-      href: mailto:kyoustat@gmail.com
+      href: mailto:kisungyou@outlook.com
 

@@ -1,3 +1,7 @@
+# maotai 0.2.0
+
+* Change of maintainer's contact and website.
+
 # maotai 0.1.9
 
 * Replaced nearest neighbor search with `RANN` package.
@@ -13,7 +17,7 @@
 
 # maotai 0.1.6
 
-* NEWS reformatted and [package website](https://kyoustat.com/maotai/) is now available.
+* NEWS reformatted and [package website](https://kisungyou.com/maotai/) is now available.
   
 * Added functions : `checkdist()` and `checkmetric()`.
 

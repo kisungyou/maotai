@@ -2,14 +2,15 @@
 # these functions can be loaded using 'utils::getFromNamespace'
 # by the command 'getFromNamespace("function_name","maotai");
 # 
-# 01. hidden_pinv        : pseudo-inverse
-# 02. hidden_vech        : half vectorization including the diagonal.
-#     hidden_ivech         diagonal inclusion is also taken care. 
-# 03. hidden_lab2ind     : create an index list from a label vector
-#     hidden_ind2lab       given an index list, create a label vector
-# 04. hidden_subsetid    : generate split of the subset id
-# 05. hidden_geigen      : do 'geigen' operation; Decreasing order
+# 01. hidden_pinv         : pseudo-inverse
+# 02. hidden_vech         : half vectorization including the diagonal.
+#     hidden_ivech          diagonal inclusion is also taken care. 
+# 03. hidden_lab2ind      : create an index list from a label vector
+#     hidden_ind2lab        given an index list, create a label vector
+# 04. hidden_subsetid     : generate split of the subset id
+# 05. hidden_geigen       : do 'geigen' operation; Decreasing order
 # 06. hidden_knn
+# 07. hidden_knee_clamped : knee-point detection with clamped least squares - return idx
 
 
 # 01. hidden_pinv ---------------------------------------------------------
@@ -112,4 +113,43 @@ hidden_knn <- function(dat, nnbd=2, ...){
   nnbd = round(nnbd)
   return(RANN::nn2(dat, k=nnbd, ...))
 }
+
+
+# 07. hidden_knee_clamped -------------------------------------------------
+#' @keywords internal
+#' @noRd
+hidden_knee_clamped_basic <- function(x, y){
+  m = length(x)
+  c = x[1]
+  d = y[1]
+  a = x[m]
+  b = y[m]
+  
+  y2 = (((b-d)/(a-c))*(x-c))+d
+  return(sum((y-y2)^2))
+}
+#' @keywords internal
+#' @noRd
+hidden_knee_clamped <- function(x, y){
+  x = as.vector(x)
+  y = as.vector(y)
+  n = length(x)
+  if (n < 3){
+    stop("* knee point detection : length must be larger than 2.")
+  }
+  scores = rep(Inf, n)
+  for (i in 2:(n-1)){
+    x.left = x[1:i]
+    y.left = y[1:i]
+    
+    x.right = x[i:n]
+    y.right = y[i:n]
+    
+    term1 = hidden_knee_clamped_basic(x.left, y.left)
+    term2 = hidden_knee_clamped_basic(x.right, y.right)
+    scores[i] = term1+term2
+  }
+  return(which.min(scores)) # return the index of the minimal SSE's
+}
+
 

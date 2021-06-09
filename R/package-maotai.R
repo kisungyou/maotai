@@ -10,7 +10,7 @@
 #' @importFrom fastcluster hclust
 #' @importFrom RANN nn2
 #' @importFrom cluster pam silhouette
-#' @importFrom stats as.dist knots ecdf rnorm runif quantile dist rgamma rgeom var cov
+#' @importFrom stats as.dist knots ecdf rnorm runif quantile dist rgamma rgeom var cov lm
 #' @importFrom shapes procGPA
 #' @importFrom Rtsne Rtsne
 #' @importFrom utils packageVersion
