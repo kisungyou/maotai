@@ -6,6 +6,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // compute_SSR
 double compute_SSR(arma::mat& D, arma::mat& Delta);
 RcppExport SEXP _maotai_compute_SSR(SEXP DSEXP, SEXP DeltaSEXP) {
@@ -295,6 +300,18 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// src_construct_by_knn
+arma::sp_umat src_construct_by_knn(arma::umat& nn_idx, bool intersection);
+RcppExport SEXP _maotai_src_construct_by_knn(SEXP nn_idxSEXP, SEXP intersectionSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::umat& >::type nn_idx(nn_idxSEXP);
+    Rcpp::traits::input_parameter< bool >::type intersection(intersectionSEXP);
+    rcpp_result_gen = Rcpp::wrap(src_construct_by_knn(nn_idx, intersection));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_maotai_compute_SSR", (DL_FUNC) &_maotai_compute_SSR, 2},
@@ -319,6 +336,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_maotai_eval_gaussian_data", (DL_FUNC) &_maotai_eval_gaussian_data, 3},
     {"_maotai_eval_gmm_data", (DL_FUNC) &_maotai_eval_gmm_data, 4},
     {"_maotai_eval_gmm", (DL_FUNC) &_maotai_eval_gmm, 4},
+    {"_maotai_src_construct_by_knn", (DL_FUNC) &_maotai_src_construct_by_knn, 2},
     {NULL, NULL, 0}
 };
 

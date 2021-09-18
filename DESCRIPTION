@@ -10,6 +10,6 @@ Suggests: igraph
 Imports: Matrix, Rcpp, Rdpack, RSpectra, Rtsne, RANN, cluster, labdsv, shapes, stats, utils, fastcluster, dbscan
 LinkingTo: Rcpp, RcppArmadillo, RcppDist
 RdMacros: Rdpack
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 URL: https://github.com/kisungyou/maotai
 BugReports: https://github.com/kisungyou/maotai/issues

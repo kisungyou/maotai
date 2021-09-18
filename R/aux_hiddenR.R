@@ -11,6 +11,7 @@
 # 05. hidden_geigen       : do 'geigen' operation; Decreasing order
 # 06. hidden_knn
 # 07. hidden_knee_clamped : knee-point detection with clamped least squares - return idx
+# 08. hidden_knn_binary   : return a sparse binary matrix for Euclidean data excluding selfl dgCMatrix
 
 
 # 01. hidden_pinv ---------------------------------------------------------
@@ -152,4 +153,21 @@ hidden_knee_clamped <- function(x, y){
   return(which.min(scores)) # return the index of the minimal SSE's
 }
 
-
+# 08. hidden_knn_binary ---------------------------------------------------
+#     excluding self and return a binary sparse adjacency matrix
+#' @keywords internal
+#' @noRd
+hidden_knn_binary <- function(data, nnbd=1, construction=c("or","and")){
+  n = base::nrow(data)
+  nnbd = max(round(nnbd), 1)
+  construction = match.arg(construction)
+  if (all(construction=="and")){
+    intersect = TRUE
+  } else {
+    intersect = FALSE
+  }
+  
+  run_knn = RANN::nn2(data, k=nnbd+1)$nn.idx[,2:(nnbd+1)]-1 # -1 for C++ convention
+  run_res = src_construct_by_knn(run_knn, intersect)
+  return(run_res)
+}

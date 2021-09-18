@@ -89,3 +89,7 @@ eval_gmm <- function(x, mus, covs, weight) {
     .Call('_maotai_eval_gmm', PACKAGE = 'maotai', x, mus, covs, weight)
 }
 
+src_construct_by_knn <- function(nn_idx, intersection) {
+    .Call('_maotai_src_construct_by_knn', PACKAGE = 'maotai', nn_idx, intersection)
+}
+
