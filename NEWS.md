@@ -1,3 +1,7 @@
+# maotai 0.2.1
+
+* $k$-nearest neighbor search with sparse output is supported.
+
 # maotai 0.2.0
 
 * Change of maintainer's contact and website.
