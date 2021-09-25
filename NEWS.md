@@ -1,6 +1,6 @@
 # maotai 0.2.1
 
-* $k$-nearest neighbor search with sparse output is supported.
+* $k$-nearest neighbor search with sparse output is now supported.
 
 # maotai 0.2.0
 
