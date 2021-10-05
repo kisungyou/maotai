@@ -412,7 +412,7 @@ hidden_PHATE <- function(x, nbdk=5, alpha=2){
   vec.t = 1:1000
   vec.H = rep(0,1000)
   for (i in 1:1000){
-    eig.t  = eigA^i
+    eig.t  = (eigA^i) + (1e-7) # modified for zero-padding
     eig.t  = eig.t/base::sum(eig.t)
     term.t = -base::sum(eig.t*base::log(eig.t))
     if (is.na(term.t)){
