@@ -1,3 +1,7 @@
+# maotai 0.2.2
+
+* Metric multidimensional scaling now uses the original version of SMACOF algorithm written in `C++`.
+
 # maotai 0.2.1
 
 * $k$-nearest neighbor search with sparse output is now supported.

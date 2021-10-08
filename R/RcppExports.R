@@ -73,6 +73,10 @@ cpp_mmds <- function(D, ndim, maxiter, abstol) {
     .Call('_maotai_cpp_mmds', PACKAGE = 'maotai', D, ndim, maxiter, abstol)
 }
 
+src_smacof <- function(D, W, ndim, maxiter, abstol, use_gutman) {
+    .Call('_maotai_src_smacof', PACKAGE = 'maotai', D, W, ndim, maxiter, abstol, use_gutman)
+}
+
 eval_gaussian <- function(x, mu, cov) {
     .Call('_maotai_eval_gaussian', PACKAGE = 'maotai', x, mu, cov)
 }

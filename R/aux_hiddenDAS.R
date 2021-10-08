@@ -18,6 +18,7 @@
 # 11. hidden_silhouette    : mimics that of cluster's silhouette
 # 12. hidden_mmds          : metric multidimensional scaling by SMACOF 
 # 13. hidden_PHATE         : return row-stochastic matrix & time stamp
+# 14. hidden_smacof        : a generalized version of SMACOF with weights
 
 
 
@@ -361,17 +362,21 @@ hidden_silhouette <- function(xdiss, label){
 }
 
 # 12. hidden_mmds          : metric multidimensional scaling by SMACOF  --------
+#     note that from version 0.2.2, I"m using a version from the modern MDS book.
 #' @keywords internal
 #' @noRd
 hidden_mmds <- function(x, ndim=2, maxiter=200, abstol=1e-5){
   # Check Input and Transform
   x    = hidden_checker(x)
+  n    = base::nrow(x)
   ndim = round(ndim)
   myiter = max(50, round(maxiter))
   mytol  = max(100*.Machine$double.eps, as.double(abstol))
   
-  # Run with Rcpp
-  return(cpp_mmds(x, ndim, myiter, mytol))
+  WW = array(1,c(n,n))
+  return(as.matrix(src_smacof(x, WW, ndim, myiter, mytol, TRUE)$embed))
+  # # Run with Rcpp
+  # return(cpp_mmds(x, ndim, myiter, mytol))
 }
 
 
@@ -469,3 +474,41 @@ hidden_PHATE <- function(x, nbdk=5, alpha=2){
 
 
 
+# 14. hidden_smacof        : a generalized version of SMACOF with weights ======
+#     returns both {embed} and {stress}
+#' @keywords internal
+#' @export
+hidden_smacof <- function(D, W=NULL, ndim=2, maxiter=100, abstol=(1e-7)){
+  myiter  = round(maxiter)
+  mytol   = as.double(abstol)
+  myndim  = round(ndim)
+  
+  DD = hidden_checker(D) # now it's a matrix
+  nn = base::nrow(DD)
+  if (is.null(W)&&(length(W)==0)){
+    use.gutman = TRUE
+    WW = array(1,c(nn,nn))
+  } else {
+    use.gutmat = FALSE
+    WW = as.matrix(W)
+  }
+  
+  output = src_smacof(DD, WW, myndim, myiter, mytol, use.gutman)
+  return(output)
+}
+
+# fun_cmds   <- utils::getFromNamespace("hidden_cmds", "maotai")
+# fun_mmds   <- utils::getFromNamespace("hidden_mmds", "maotai")
+# fun_smacof <- utils::getFromNamespace("hidden_smacof", "maotai")
+# 
+# D   = stats::dist(as.matrix(iris[,1:4]))
+# lab = factor(iris[,5])
+# 
+# Yc = fun_cmds(D)$embed
+# Ym = fun_mmds(D, maxiter=500)
+# Ys = fun_smacof(D, maxiter=500)$embed
+# 
+# par(mfrow=c(1,3), pty="s")
+# plot(Yc, col=lab, pch=19, main="CMDS")
+# plot(Ym, col=lab, pch=19, main="MMDS")
+# plot(Ys, col=lab, pch=19, main="smacof")
