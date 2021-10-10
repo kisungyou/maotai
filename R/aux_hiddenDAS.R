@@ -477,7 +477,7 @@ hidden_PHATE <- function(x, nbdk=5, alpha=2){
 # 14. hidden_smacof        : a generalized version of SMACOF with weights ======
 #     returns both {embed} and {stress}
 #' @keywords internal
-#' @export
+#' @noRd
 hidden_smacof <- function(D, W=NULL, ndim=2, maxiter=100, abstol=(1e-7)){
   myiter  = round(maxiter)
   mytol   = as.double(abstol)
