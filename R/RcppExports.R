@@ -97,3 +97,11 @@ src_construct_by_knn <- function(nn_idx, intersection) {
     .Call('_maotai_src_construct_by_knn', PACKAGE = 'maotai', nn_idx, intersection)
 }
 
+src_gaussbary_2002R <- function(array3d, weight, maxiter, abstol) {
+    .Call('_maotai_src_gaussbary_2002R', PACKAGE = 'maotai', array3d, weight, maxiter, abstol)
+}
+
+src_gaussbary_2016A <- function(array3d, weight, maxiter, abstol) {
+    .Call('_maotai_src_gaussbary_2016A', PACKAGE = 'maotai', array3d, weight, maxiter, abstol)
+}
+

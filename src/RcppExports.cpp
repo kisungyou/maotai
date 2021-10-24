@@ -328,6 +328,34 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// src_gaussbary_2002R
+Rcpp::List src_gaussbary_2002R(arma::cube& array3d, arma::vec& weight, int maxiter, double abstol);
+RcppExport SEXP _maotai_src_gaussbary_2002R(SEXP array3dSEXP, SEXP weightSEXP, SEXP maxiterSEXP, SEXP abstolSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::cube& >::type array3d(array3dSEXP);
+    Rcpp::traits::input_parameter< arma::vec& >::type weight(weightSEXP);
+    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
+    Rcpp::traits::input_parameter< double >::type abstol(abstolSEXP);
+    rcpp_result_gen = Rcpp::wrap(src_gaussbary_2002R(array3d, weight, maxiter, abstol));
+    return rcpp_result_gen;
+END_RCPP
+}
+// src_gaussbary_2016A
+Rcpp::List src_gaussbary_2016A(arma::cube& array3d, arma::vec& weight, int maxiter, double abstol);
+RcppExport SEXP _maotai_src_gaussbary_2016A(SEXP array3dSEXP, SEXP weightSEXP, SEXP maxiterSEXP, SEXP abstolSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::cube& >::type array3d(array3dSEXP);
+    Rcpp::traits::input_parameter< arma::vec& >::type weight(weightSEXP);
+    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
+    Rcpp::traits::input_parameter< double >::type abstol(abstolSEXP);
+    rcpp_result_gen = Rcpp::wrap(src_gaussbary_2016A(array3d, weight, maxiter, abstol));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_maotai_compute_SSR", (DL_FUNC) &_maotai_compute_SSR, 2},
@@ -354,6 +382,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_maotai_eval_gmm_data", (DL_FUNC) &_maotai_eval_gmm_data, 4},
     {"_maotai_eval_gmm", (DL_FUNC) &_maotai_eval_gmm, 4},
     {"_maotai_src_construct_by_knn", (DL_FUNC) &_maotai_src_construct_by_knn, 2},
+    {"_maotai_src_gaussbary_2002R", (DL_FUNC) &_maotai_src_gaussbary_2002R, 4},
+    {"_maotai_src_gaussbary_2016A", (DL_FUNC) &_maotai_src_gaussbary_2016A, 4},
     {NULL, NULL, 0}
 };
 
