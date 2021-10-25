@@ -337,7 +337,7 @@ Rcpp::List cpp_pairwise_L2(arma::mat muA, arma::mat muB, arma::cube covA, arma::
   
   
   // matC : (N,M) cross of two mixtures
-  double matCval = 0.0;
+  // double matCval = 0.0;
   for (int i=0;i<N;i++){
     parvec1 = muA.row(i).t();
     for (int j=0;j<M;j++){

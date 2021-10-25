@@ -14,12 +14,12 @@ using namespace std;
  */
 
 arma::mat operation_B(arma::mat &DZ, arma::mat &D, arma::mat &W){
-  u_int N = DZ.n_rows;
+  int N = DZ.n_rows;
   arma::mat BZ(N,N,fill::zeros);
   
   // off-diagonals first
-  for (u_int i=0; i<(N-1); i++){
-    for (u_int j=(i+1); j<N; j++){
+  for (int i=0; i<(N-1); i++){
+    for (int j=(i+1); j<N; j++){
       if (DZ(i,j)!=0){
         BZ(i,j) = -W(i,j)*D(i,j)/DZ(i,j);
         BZ(j,i) = BZ(i,j);
@@ -29,7 +29,7 @@ arma::mat operation_B(arma::mat &DZ, arma::mat &D, arma::mat &W){
   
   // diagoanls
   arma::rowvec rowBZ(N,fill::zeros);
-  for (u_int i=0; i<N; i++){
+  for (int i=0; i<N; i++){
     rowBZ = BZ.row(i);
     BZ(i,i) = -arma::accu(rowBZ);
   }
@@ -38,7 +38,7 @@ arma::mat operation_B(arma::mat &DZ, arma::mat &D, arma::mat &W){
 }
 
 double compute_raw_stress(arma::mat &DZ, arma::mat &D, arma::mat &W){
-  u_int N = DZ.n_rows;
+  int N = DZ.n_rows;
   
   double output = 0.0;
   for (int i=0; i<(N-1); i++){
@@ -68,19 +68,19 @@ arma::mat init_by_cmds(arma::mat &D, int ndim){
 }
 
 arma::mat construct_Vinv_weighted(arma::mat &W){
-  u_int N = W.n_rows;
+  int N = W.n_rows;
   
   // compute V first
   arma::rowvec rowW(N,fill::zeros);
   arma::mat V(N,N,fill::zeros);
-  for (u_int i=0; i<(N-1); i++){
-    for (u_int j=(i+1); j<N; j++){
+  for (int i=0; i<(N-1); i++){
+    for (int j=(i+1); j<N; j++){
       V(i,j) = -W(i,j);
       V(j,i) = V(i,j);
     }
   }
   
-  for (u_int i=0; i<N; i++){
+  for (int i=0; i<N; i++){
     rowW = W.row(i); rowW(i) = 0.0;
     V(i,i) = arma::accu(rowW);
   }
@@ -94,14 +94,14 @@ arma::mat construct_Vinv_weighted(arma::mat &W){
 // [[Rcpp::export]]
 Rcpp::List src_smacof(arma::mat &D, arma::mat &W, int ndim, int maxiter, double abstol, bool use_gutman){
   // initialize via CMDS
-  u_int N = D.n_rows;
+  int N = D.n_rows;
   arma::mat old_X = init_by_cmds(D, ndim);
   arma::mat new_X(N, ndim, fill::zeros);
   
   arma::mat old_Xdist(N,N,fill::zeros);
   arma::mat new_Xdist(N,N,fill::zeros);
-  for (u_int i=0; i<(N-1); i++){
-    for (u_int j=(i+1); j<N; j++){
+  for (int i=0; i<(N-1); i++){
+    for (int j=(i+1); j<N; j++){
       old_Xdist(i,j) = arma::norm(old_X.row(i)-old_X.row(j), 2);
       old_Xdist(j,i) = old_Xdist(i,j);
     }
@@ -130,8 +130,8 @@ Rcpp::List src_smacof(arma::mat &D, arma::mat &W, int ndim, int maxiter, double 
       new_X = BZ*old_X/(static_cast<double>(N));
     }
     // compute the pairwise distance
-    for (u_int i=0; i<(N-1); i++){
-      for (u_int j=(i+1); j<N; j++){
+    for (int i=0; i<(N-1); i++){
+      for (int j=(i+1); j<N; j++){
         new_Xdist(i,j) = arma::norm(new_X.row(i)-new_X.row(j), 2);
         new_Xdist(j,i) = new_Xdist(i,j);
       }
