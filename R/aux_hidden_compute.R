@@ -2,10 +2,15 @@
 # 
 # (01) hidden_gaussbary_2002R
 #      - Ruschendorf, Uckelmann (2002) : On the n-coupling problem algorithm
+#
 # (02) hidden_gaussbary_2016A
 #      - Alvarez-Esteban et al (2016) : A fixed-point approach to barycenters in Wasserstein space
 #      - See Theorem 4.2 for the updating rules.
-
+#
+# (03) hidden_projsimplex_sorting : method by Wang and Carreira-Perpinan
+#      Held, P. Wolfe, and H. Crowder, “Validation of subgradient optimization,” Mathematical Programming, vol. 6, pp. 62–88, 1974
+#      (above is known by https://www.optimization-online.org/DB_FILE/2014/08/4498.pdf)
+#      url : https://eng.ucmerced.edu/people/wwang5/papers/SimplexProj.pdf
 
 
 # (01) hidden_gaussbary_2002R ---------------------------------------------
@@ -74,3 +79,34 @@ hidden_gaussbary_2016A <- function(array3d, weight, maxiter=50, abstol=(1e-8)){
 # 
 # microbenchmark(res_2002 = hidden_gaussbary_2002R(mycovs, myweight),
 #                res_2016 = hidden_gaussbary_2016A(mycovs, myweight))
+
+
+
+# (03) hidden_projsimplex_sorting ---------------------------------------------
+#' @keywords internal
+#' @noRd
+hidden_projsimplex_sorting <- function(input){
+  # preprocessing
+  y = as.vector(input)
+  D = length(y)
+  u = base::sort(y, decreasing = TRUE)
+  
+  # main part
+  uvec = rep(0,D)
+  for (j in 1:D){
+    uvec[j] = u[j] + (1/j)*(1-base::sum(u[1:j]))
+  }
+  rho = max(which(uvec > 0))
+  lbd = (1/rho)*(1 - base::sum(u[1:rho]))
+  
+  # finalize
+  x = pmax(y+lbd, 0)
+  return(x)
+}
+# xx = matrix(rnorm(1000*2), ncol=2)
+# yy = array(0,c(1000,2))
+# for (i in 1:1000){
+#   yy[i,] = hidden_projsimplex_13W(xx[i,])
+# }
+# plot(xx, main="scatter")
+# points(yy, pch=19, col="red")
