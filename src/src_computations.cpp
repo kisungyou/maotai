@@ -10,6 +10,7 @@ using namespace arma;
  * (01) src_construct_by_knn [hidden_knn_binary]
  * (02) src_gaussbary_2002R : Barycenter of Gaussian Covariances
  * (03) src_gaussbary_2016A : Barycenter of Gaussian Covariances
+ * (04) src_cov2corr        : use Wikipedia's formula
  */
 
 // (01) src_construct_by_knn [hidden_knn_binary] ===============================
@@ -64,7 +65,8 @@ Rcpp::List src_gaussbary_2002R(arma::cube &array3d, arma::vec &weight, int maxit
   
   double S_inc = 10000.0;
   arma::mat S_old = arma::mean(array3d, 2);
-  if (arma::rank(S_old) < p){
+  int S_old_rank = arma::rank(S_old);
+  if (S_old_rank < p){
     S_old.fill(0.0);
     for (int n=0; n<N; n++){
       S_old = arma::logmat_sympd(array3d.slice(n))/static_cast<double>(N);
@@ -112,7 +114,8 @@ Rcpp::List src_gaussbary_2016A(arma::cube &array3d, arma::vec &weight, int maxit
   
   double S_inc = 10000.0;
   arma::mat S_old = arma::mean(array3d, 2);
-  if (arma::rank(S_old) < p){
+  int S_old_rank = arma::rank(S_old);
+  if (S_old_rank < p){
     S_old.fill(0.0);
     for (int n=0; n<N; n++){
       S_old = arma::logmat_sympd(array3d.slice(n))/static_cast<double>(N);
@@ -156,4 +159,19 @@ Rcpp::List src_gaussbary_2016A(arma::cube &array3d, arma::vec &weight, int maxit
   // RETURN
   return(Rcpp::List::create(Rcpp::Named("mean")=S_old,
                             Rcpp::Named("iter")=itcount));
+}
+
+// (04) src_cov2corr ===========================================================
+// [[Rcpp::export]]
+arma::mat src_cov2corr(arma::mat &covmat){
+  int N = covmat.n_rows;
+  arma::mat precision = arma::inv_sympd(covmat);
+  arma::mat output(N,N,fill::ones);
+  for (int i=0; i<(N-1); i++){
+    for (int j=(i+1); j<N; j++){
+      output(i,j) = precision(i,j)/std::sqrt(precision(i,i)*precision(j,j));
+      output(j,i) = output(i,j);
+    }
+  }
+  return(output);
 }

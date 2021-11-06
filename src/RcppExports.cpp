@@ -356,6 +356,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// src_cov2corr
+arma::mat src_cov2corr(arma::mat& covmat);
+RcppExport SEXP _maotai_src_cov2corr(SEXP covmatSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type covmat(covmatSEXP);
+    rcpp_result_gen = Rcpp::wrap(src_cov2corr(covmat));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_maotai_compute_SSR", (DL_FUNC) &_maotai_compute_SSR, 2},
@@ -384,6 +395,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_maotai_src_construct_by_knn", (DL_FUNC) &_maotai_src_construct_by_knn, 2},
     {"_maotai_src_gaussbary_2002R", (DL_FUNC) &_maotai_src_gaussbary_2002R, 4},
     {"_maotai_src_gaussbary_2016A", (DL_FUNC) &_maotai_src_gaussbary_2016A, 4},
+    {"_maotai_src_cov2corr", (DL_FUNC) &_maotai_src_cov2corr, 1},
     {NULL, NULL, 0}
 };
 

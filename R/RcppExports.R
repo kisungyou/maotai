@@ -105,3 +105,7 @@ src_gaussbary_2016A <- function(array3d, weight, maxiter, abstol) {
     .Call('_maotai_src_gaussbary_2016A', PACKAGE = 'maotai', array3d, weight, maxiter, abstol)
 }
 
+src_cov2corr <- function(covmat) {
+    .Call('_maotai_src_cov2corr', PACKAGE = 'maotai', covmat)
+}
+
