@@ -1,5 +1,13 @@
 #' Convert Covariance into Partial Correlation Matrix
 #' 
+#' Given a covariance matrix, return a partial correlation matrix that has unit diagonals. 
+#' We strictly impose (and check) whether the given input is a symmetric matrix 
+#' of full-rank.
+#' 
+#' @param mat a \eqn{(p\times p)} covariance matrix.
+#' 
+#' @return a \eqn{(p\times p)} partial correlation matrix.
+#' 
 #' @examples 
 #' \donttest{
 #' # generate an empirical covariance scaled

@@ -6,8 +6,16 @@
 \usage{
 cov2pcorr(mat)
 }
+\arguments{
+\item{mat}{a \eqn{(p\times p)} covariance matrix.}
+}
+\value{
+a \eqn{(p\times p)} partial correlation matrix.
+}
 \description{
-Convert Covariance into Partial Correlation Matrix
+Given a covariance matrix, return a partial correlation matrix that has unit diagonals. 
+We strictly impose (and check) whether the given input is a symmetric matrix 
+of full-rank.
 }
 \examples{
 \donttest{

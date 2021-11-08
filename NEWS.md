@@ -1,3 +1,11 @@
+# maotai 0.2.4
+
+* `cov2corr()` and `cov2pcorr()` are added. 
+
+# maotai 0.2.3
+
+* A minor typo fixed.
+
 # maotai 0.2.2
 
 * Metric multidimensional scaling now uses the original version of SMACOF algorithm written in `C++`.

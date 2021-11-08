@@ -1,8 +1,12 @@
 #' Convert Covariance into Correlation Matrix
 #' 
+#' Given a covariance matrix, return a correlation matrix that has unit diagonals. 
+#' We strictly impose (and check) whether the given input is a symmetric matrix 
+#' of full-rank.
 #' 
+#' @param mat a \eqn{(p\times p)} covariance matrix.
 #' 
-#' 
+#' @return a \eqn{(p\times p)} correlation matrix.
 #' 
 #' @examples 
 #' \donttest{
