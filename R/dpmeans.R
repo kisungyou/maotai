@@ -78,7 +78,7 @@ dpmeans <- function(data, lambda=1, maxiter=1234, abstol=1e-6, permute.order=FAL
   
   ############################################################
   # Main Iteration
-  ss.old = compute.ss(data, labels, mu)
+  ss.old = compute.ss(data, labels, mu)+ k*lambda
   ss.new = 0
   for (iter in 1:maxiter){
     # 0. updating order of observations
@@ -129,8 +129,8 @@ dpmeans <- function(data, lambda=1, maxiter=1234, abstol=1e-6, permute.order=FAL
       }
     }
     
-    # 4. compute updated sum of squared errors
-    ss.new   = compute.ss(data, labels, mu)
+    # 4. compute DPMEANS objective function
+    ss.new   = compute.ss(data, labels, mu) + k*lambda
     ss.delta = ss.old-ss.new
     ss.old   = ss.new
     
