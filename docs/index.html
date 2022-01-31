@@ -25,6 +25,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -37,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">maotai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.4</span>
       </span>
     </div>
 
@@ -52,13 +54,13 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://twitter.com/kisung_you">
+  <a href="https://twitter.com/kisung_you" class="external-link">
     <span class="fa fa-twitter"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/kisungyou/maotai">
+  <a href="https://github.com/kisungyou/maotai" class="external-link">
     <span class="fa fa-github"></span>
      
   </a>
@@ -81,69 +83,79 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="tools-for-matrix-algebra-optimization-and-inference-problems" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#tools-for-matrix-algebra-optimization-and-inference-problems" class="anchor"></a>Tools for Matrix Algebra, Optimization and Inference Problems</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="tools-for-matrix-algebra-optimization-and-inference-problems">Tools for Matrix Algebra, Optimization and Inference Problems<a class="anchor" aria-label="anchor" href="#tools-for-matrix-algebra-optimization-and-inference-problems"></a>
+</h1></div>
 <!-- badges: start -->
 
-<p><strong>maotai</strong> is an R package whose name is an acronym for <strong>M</strong>atrix <strong>A</strong>lgebra, <strong>O</strong>p<strong>T</strong>imization, <strong>A</strong>nd <strong>I</strong>nference problems - though I can’t deny motivation from one of <a href="https://en.wikipedia.org/wiki/Maotai">my father’s favorite</a> for the namesake. More detailed introduction will be added later.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>Install the latest release from <a href="https://CRAN.R-project.org/package=maotai">CRAN</a> with:</p>
+<p><strong>maotai</strong> is an R package whose name is an acronym for <strong>M</strong>atrix <strong>A</strong>lgebra, <strong>O</strong>p<strong>T</strong>imization, <strong>A</strong>nd <strong>I</strong>nference problems - though I can’t deny motivation from one of <a href="https://en.wikipedia.org/wiki/Maotai" class="external-link">my father’s favorite</a> for the namesake. More detailed introduction will be added later.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>Install the latest release from <a href="https://CRAN.R-project.org/package=maotai" class="external-link">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"maotai"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"maotai"</span><span class="op">)</span></code></pre></div>
 <p>or the up-to-date development version from github:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"kisungyou/maotai"</span><span class="op">)</span></code></pre></div>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"kisungyou/maotai"</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=maotai">https://​cloud.r-project.org/​package=maotai</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/kisungyou/maotai/">https://​github.com/​kisungyou/​maotai/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/kisungyou/maotai/issues">https://​github.com/​kisungyou/​maotai/​issues</a>
-</li>
-</ul>
-</div>
-<div class="license">
-<h2>License</h2>
-<ul class="list-unstyled">
-<li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>Kisung You <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-8584-459X" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="https://cloud.r-project.org/package=maotai" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/kisungyou/maotai/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/kisungyou/maotai/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="license">
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://travis-ci.org/kisungyou/maotai"><img src="https://travis-ci.org/kisungyou/maotai.svg?branch=master" alt="Travis build status"></a></li>
-<li><a href="https://CRAN.R-project.org/package=maotai"><img src="https://www.r-pkg.org/badges/version/maotai" alt="CRAN status"></a></li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing maotai</a></li>
+</ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>Kisung You <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-8584-459X" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://travis-ci.org/kisungyou/maotai" class="external-link"><img src="https://travis-ci.org/kisungyou/maotai.svg?branch=master" alt="Travis build status"></a></li>
+<li><a href="https://CRAN.R-project.org/package=maotai" class="external-link"><img src="https://www.r-pkg.org/badges/version/maotai" alt="CRAN status"></a></li>
+</ul>
+</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Kisung You.</p>
+  <p></p>
+<p>Developed by Kisung You.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -151,6 +163,8 @@
 
   
 
+
+  
 
   </body>
 </html>

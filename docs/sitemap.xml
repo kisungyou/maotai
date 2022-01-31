@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://kisungyou.com/maotai/404.html</loc>
+  </url>
+  <url>
+    <loc>https://kisungyou.com/maotai/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://kisungyou.com/maotai/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://kisungyou.com/maotai/authors.html</loc>
+  </url>
+  <url>
     <loc>https://kisungyou.com/maotai/index.html</loc>
+  </url>
+  <url>
+    <loc>https://kisungyou.com/maotai/news/index.html</loc>
   </url>
   <url>
     <loc>https://kisungyou.com/maotai/reference/bmds.html</loc>
@@ -25,6 +40,12 @@
     <loc>https://kisungyou.com/maotai/reference/cmds.html</loc>
   </url>
   <url>
+    <loc>https://kisungyou.com/maotai/reference/cov2corr.html</loc>
+  </url>
+  <url>
+    <loc>https://kisungyou.com/maotai/reference/cov2pcorr.html</loc>
+  </url>
+  <url>
     <loc>https://kisungyou.com/maotai/reference/dpmeans.html</loc>
   </url>
   <url>
@@ -35,6 +56,9 @@
   </url>
   <url>
     <loc>https://kisungyou.com/maotai/reference/epmeans.html</loc>
+  </url>
+  <url>
+    <loc>https://kisungyou.com/maotai/reference/index.html</loc>
   </url>
   <url>
     <loc>https://kisungyou.com/maotai/reference/kmeanspp.html</loc>
