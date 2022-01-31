@@ -19,6 +19,7 @@
 # 12. hidden_mmds          : metric multidimensional scaling by SMACOF 
 # 13. hidden_PHATE         : return row-stochastic matrix & time stamp
 # 14. hidden_smacof        : a generalized version of SMACOF with weights
+# 15. hidden_hydra         : Hyperbolic Distance Recovery and Approximation
 
 
 
@@ -512,3 +513,88 @@ hidden_smacof <- function(D, W=NULL, ndim=2, maxiter=100, abstol=(1e-7)){
 # plot(Yc, col=lab, pch=19, main="CMDS")
 # plot(Ym, col=lab, pch=19, main="MMDS")
 # plot(Ys, col=lab, pch=19, main="smacof")
+
+
+
+
+# 15. hidden_hydra --------------------------------------------------------
+#     note that 'iso.adjust=TRUE' is a direct application of the algorithm
+#     as stated in the paper. For 2-dimensional embedding, 'FALSE' is default 
+#     in the 'hydra' package's implementation.
+#' @keywords internal
+#' @noRd
+hidden_hydra <- function(distobj, ndim=2, kappa=1, iso.adjust=TRUE){
+  # preprocess
+  D     = as.matrix(distobj)
+  n     = base::nrow(D)
+  dim   = round(ndim)
+  kappa = base::max(base::sqrt(.Machine$double.eps), as.double(kappa))
+  A     = base::cosh(base::sqrt(kappa)*D)
+  
+  # eigen-decomposition : 100 dimensions
+  if (n < 100){ 
+    # regular 'base::eigen'
+    eigA = base::eigen(A, TRUE)
+    
+    # top vector
+    x0 = sqrt(eigA$values[1])*as.vector(eigA$vectors[,1])
+    if (x0[1] < 0){
+      x0 = -x0
+    }
+    
+    # others
+    bot_vals = eigA$values[(n-dim+1):n]
+    bot_vecs = eigA$vectors[,(n-dim+1):n]
+  } else {
+    # or use 'RSpectra::eigs_sym'
+    eig_top = RSpectra::eigs_sym(A, 1,    which="LA")
+    eig_bot = RSpectra::eigs_sym(A, ndim, which="SA")
+    
+    # top vector
+    x0 = sqrt(eig_top$values)*as.vector(eig_top$vectors)
+    if (x0[1] < 0){
+      x0 = -x0
+    }
+    # others
+    bot_vecs = eig_bot$vectors
+    bot_vals = eig_bot$values
+  }
+  
+  # component : radial
+  x_min  = base::min(x0)
+  radial = sqrt((x0-x_min)/(x0+x_min))
+  
+  # component : directional
+  if (iso.adjust){
+    X_last      = bot_vecs%*%diag(sqrt(pmax(-bot_vals,0)))
+    sqnorms     = base::apply(X_last, 1, function(x) 1/sqrt(sum(x^2)))
+    directional = base::diag(sqnorms)%*%X_last
+    
+  } else {
+    sqnorms     = base::apply(bot_vecs, 1, function(x) 1/sqrt(sum(x^2)))
+    directional = base::diag(sqnorms)%*%bot_vecs
+  }
+
+  # return the output
+  return(list(radial=radial, directional=directional))
+}
+
+# library(hydra)
+# data(karate)
+# D = as.dist(karate$distance)
+# 
+# X = as.matrix(iris[,1:4])
+# D = stats::dist(X)
+# Y = factor(iris[,5])
+# 
+# run_hydra = hydra(as.matrix(D), equi.adj =-1, alpha = 1, curvature = 5)
+# my_hydra  = hidden_hydra(D, kappa=5, iso.adjust = FALSE)
+# 
+# X1 = cbind(run_hydra$r*cos(run_hydra$theta), run_hydra$r*sin(run_hydra$theta))
+# X2 = diag(my_hydra$radial)%*%my_hydra$directional
+# 
+# par(mfrow=c(1,3), pty="s")
+# plot(run_hydra)
+# plot(X1, pch=19, xlim=c(-1,1), ylim=c(-1,1), col=Y, main="HYDRA package")
+# plot(X2, pch=19, xlim=c(-1,1), ylim=c(-1,1), col=Y, main="my implementation")
+
