@@ -7,6 +7,9 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/maotai)](https://CRAN.R-project.org/package=maotai)
+[![R-CMD-check](https://github.com/kisungyou/maotai/workflows/R-CMD-check/badge.svg)](https://github.com/kisungyou/maotai/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/kisungyou/maotai/branch/master/graph/badge.svg)](https://app.codecov.io/gh/kisungyou/maotai?branch=master)
 <!-- badges: end -->
 
 **maotai** is an R package whose name is an acronym for **M**atrix
