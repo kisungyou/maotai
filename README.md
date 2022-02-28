@@ -5,8 +5,6 @@
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.org/kisungyou/maotai.svg?branch=master)](https://travis-ci.org/kisungyou/maotai)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/maotai)](https://CRAN.R-project.org/package=maotai)
 <!-- badges: end -->

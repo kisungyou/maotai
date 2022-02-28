@@ -15,8 +15,8 @@ knitr::opts_chunk$set(
 # Tools for Matrix Algebra, Optimization and Inference Problems
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/kisungyou/maotai.svg?branch=master)](https://travis-ci.org/kisungyou/maotai)
 [![CRAN status](https://www.r-pkg.org/badges/version/maotai)](https://CRAN.R-project.org/package=maotai)
+[![R-CMD-check](https://github.com/kisungyou/maotai/workflows/R-CMD-check/badge.svg)](https://github.com/kisungyou/maotai/actions)
 <!-- badges: end -->
 
 

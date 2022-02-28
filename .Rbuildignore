@@ -1,8 +1,8 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^\.travis\.yml$
 ^README\.Rmd$
 ^LICENSE\.md$
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^\.github$
