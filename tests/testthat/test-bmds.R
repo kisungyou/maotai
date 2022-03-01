@@ -1,6 +1,6 @@
 library(maotai)
 
-test_that("Bayesian MDS works", {
+test_that("Bayesian MDS", {
   myn = 10
   myp = 3
   
