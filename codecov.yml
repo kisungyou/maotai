@@ -8,6 +8,9 @@ cache: packages
 
 after_success:
   - Rscript -e 'covr:::codecov()'
+  
+codecov:
+  token: 61035265-e1f0-4fc7-8aa7-0eba009d6146
 
 coverage:
   status:
