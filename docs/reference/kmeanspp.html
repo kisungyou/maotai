@@ -26,7 +26,7 @@ by assigning points to the nearest points."><!-- mathjax --><script src="https:/
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">maotai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.5</span>
       </span>
     </div>
 
@@ -77,19 +77,24 @@ by assigning points to the nearest points.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">kmeanspp</span><span class="op">(</span><span class="va">data</span>, k <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">kmeanspp</span><span class="op">(</span><span class="va">data</span>, k <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>an \((n\times p)\) matrix whose rows are observations.</p></dd>
+
+
 <dt>k</dt>
 <dd><p>the number of clusters.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a length-\(n\) vector of class labels.</p>
+    
+
+<p>a length-\(n\) vector of class labels.</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -100,33 +105,33 @@ In <em>In Proceedings of the 18th Annual ACM-SIAM Symposium on Discrete Algorith
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## use simple example of iris dataset</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> </span>
-<span class="r-in"><span class="va">mydata</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">mycol</span>  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">5</span><span class="op">]</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## find the low-dimensional embedding for visualization</span></span>
-<span class="r-in"><span class="va">my2d</span> <span class="op">=</span> <span class="fu"><a href="cmds.html">cmds</a></span><span class="op">(</span><span class="va">mydata</span>, ndim<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">$</span><span class="va">embed</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## apply 'kmeanspp' with different numbers of k's.</span></span>
-<span class="r-in"><span class="va">k2</span> <span class="op">=</span> <span class="fu">kmeanspp</span><span class="op">(</span><span class="va">mydata</span>, k<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">k3</span> <span class="op">=</span> <span class="fu">kmeanspp</span><span class="op">(</span><span class="va">mydata</span>, k<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">k4</span> <span class="op">=</span> <span class="fu">kmeanspp</span><span class="op">(</span><span class="va">mydata</span>, k<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">k5</span> <span class="op">=</span> <span class="fu">kmeanspp</span><span class="op">(</span><span class="va">mydata</span>, k<span class="op">=</span><span class="fl">5</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">k6</span> <span class="op">=</span> <span class="fu">kmeanspp</span><span class="op">(</span><span class="va">mydata</span>, k<span class="op">=</span><span class="fl">6</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## visualize</span></span>
-<span class="r-in"><span class="va">opar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>no.readonly<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">my2d</span>, col<span class="op">=</span><span class="va">k2</span>, main<span class="op">=</span><span class="st">"k=2"</span>, pch<span class="op">=</span><span class="fl">19</span>, cex<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">my2d</span>, col<span class="op">=</span><span class="va">k3</span>, main<span class="op">=</span><span class="st">"k=3"</span>, pch<span class="op">=</span><span class="fl">19</span>, cex<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">my2d</span>, col<span class="op">=</span><span class="va">k4</span>, main<span class="op">=</span><span class="st">"k=4"</span>, pch<span class="op">=</span><span class="fl">19</span>, cex<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">my2d</span>, col<span class="op">=</span><span class="va">k5</span>, main<span class="op">=</span><span class="st">"k=5"</span>, pch<span class="op">=</span><span class="fl">19</span>, cex<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">my2d</span>, col<span class="op">=</span><span class="va">k6</span>, main<span class="op">=</span><span class="st">"k=6"</span>, pch<span class="op">=</span><span class="fl">19</span>, cex<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">my2d</span>, col<span class="op">=</span><span class="va">mycol</span>, main<span class="op">=</span><span class="st">"true cluster"</span>, pch<span class="op">=</span><span class="fl">19</span>, cex<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## use simple example of iris dataset</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> </span></span>
+<span class="r-in"><span><span class="va">mydata</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mycol</span>  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">5</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## find the low-dimensional embedding for visualization</span></span></span>
+<span class="r-in"><span><span class="va">my2d</span> <span class="op">=</span> <span class="fu"><a href="cmds.html">cmds</a></span><span class="op">(</span><span class="va">mydata</span>, ndim<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">$</span><span class="va">embed</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## apply 'kmeanspp' with different numbers of k's.</span></span></span>
+<span class="r-in"><span><span class="va">k2</span> <span class="op">=</span> <span class="fu">kmeanspp</span><span class="op">(</span><span class="va">mydata</span>, k<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">k3</span> <span class="op">=</span> <span class="fu">kmeanspp</span><span class="op">(</span><span class="va">mydata</span>, k<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">k4</span> <span class="op">=</span> <span class="fu">kmeanspp</span><span class="op">(</span><span class="va">mydata</span>, k<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">k5</span> <span class="op">=</span> <span class="fu">kmeanspp</span><span class="op">(</span><span class="va">mydata</span>, k<span class="op">=</span><span class="fl">5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">k6</span> <span class="op">=</span> <span class="fu">kmeanspp</span><span class="op">(</span><span class="va">mydata</span>, k<span class="op">=</span><span class="fl">6</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## visualize</span></span></span>
+<span class="r-in"><span><span class="va">opar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>no.readonly<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">my2d</span>, col<span class="op">=</span><span class="va">k2</span>, main<span class="op">=</span><span class="st">"k=2"</span>, pch<span class="op">=</span><span class="fl">19</span>, cex<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">my2d</span>, col<span class="op">=</span><span class="va">k3</span>, main<span class="op">=</span><span class="st">"k=3"</span>, pch<span class="op">=</span><span class="fl">19</span>, cex<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">my2d</span>, col<span class="op">=</span><span class="va">k4</span>, main<span class="op">=</span><span class="st">"k=4"</span>, pch<span class="op">=</span><span class="fl">19</span>, cex<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">my2d</span>, col<span class="op">=</span><span class="va">k5</span>, main<span class="op">=</span><span class="st">"k=5"</span>, pch<span class="op">=</span><span class="fl">19</span>, cex<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">my2d</span>, col<span class="op">=</span><span class="va">k6</span>, main<span class="op">=</span><span class="st">"k=6"</span>, pch<span class="op">=</span><span class="fl">19</span>, cex<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">my2d</span>, col<span class="op">=</span><span class="va">mycol</span>, main<span class="op">=</span><span class="st">"true cluster"</span>, pch<span class="op">=</span><span class="fl">19</span>, cex<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="kmeanspp-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">opar</span><span class="op">)</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">opar</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -141,7 +146,7 @@ In <em>In Proceedings of the 18th Annual ACM-SIAM Symposium on Discrete Algorith
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

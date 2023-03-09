@@ -69,6 +69,10 @@ cpp_triangle <- function(D) {
     .Call('_maotai_cpp_triangle', PACKAGE = 'maotai', D)
 }
 
+cpp_metricdepth <- function(D) {
+    .Call('_maotai_cpp_metricdepth', PACKAGE = 'maotai', D)
+}
+
 cpp_mmds <- function(D, ndim, maxiter, abstol) {
     .Call('_maotai_cpp_mmds', PACKAGE = 'maotai', D, ndim, maxiter, abstol)
 }

@@ -21,6 +21,7 @@ using namespace arma;
  * 11. cpp_pdist       : compute pairwise distance
  * 12. cpp_geigen      : do 'geigen' pairwise eigendecomposition
  * 13. cpp_triangle    : check triangle inequality
+ * 14. cpp_metricdepth : c++ for computing metric depth
  */
 
 ///////////////////////////////////////////////////////////////////
@@ -393,6 +394,7 @@ arma::mat cpp_pdist(arma::mat X){
 
 ///////////////////////////////////////////////////////////////////
 // 12. cpp_geigen
+///////////////////////////////////////////////////////////////////
 // [[Rcpp::export]]
 Rcpp::List cpp_geigen(arma::mat& A, arma::mat& B){
   arma::cx_vec eigval;
@@ -405,6 +407,7 @@ Rcpp::List cpp_geigen(arma::mat& A, arma::mat& B){
 
 ///////////////////////////////////////////////////////////////////
 // 13. cpp_triangle
+///////////////////////////////////////////////////////////////////
 // [[Rcpp::export]]
 bool cpp_triangle(arma::mat& D){
   int N = D.n_rows;
@@ -423,4 +426,42 @@ bool cpp_triangle(arma::mat& D){
     }
   }
   return(true);
+}
+
+///////////////////////////////////////////////////////////////////
+// 14. cpp_metricdepth
+///////////////////////////////////////////////////////////////////
+// [[Rcpp::export]]
+arma::vec cpp_metricdepth(arma::mat &D){
+  int N = D.n_rows;
+  double n = static_cast<double>(N);
+  
+  double counter = 0.0;
+  double divider = (n*(n-1.0))/2.0;
+  arma::vec output(N,fill::zeros);
+  arma::vec record2(2,fill::zeros);
+  
+  // iterate
+  for (int k=0; k<N; k++){
+    // reset the counter
+    counter = 0.0;
+    
+    // inner loop
+    for (int i=0; i<(N-1); i++){
+      record2.fill(0.0);
+      record2(0) = D(i,k);
+      for (int j=(i+1); j<N; j++){
+        record2(1) = D(j,k);
+        if (D(i,j) > record2.max()){
+          counter += 1.0;
+        }
+      }
+    }
+    
+    // assign
+    output(k) = counter/divider;
+  }
+  
+  // return
+  return(output);
 }

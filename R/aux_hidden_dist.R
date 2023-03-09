@@ -19,7 +19,8 @@
 # 12. hidden_mmds          : metric multidimensional scaling by SMACOF 
 # 13. hidden_PHATE         : return row-stochastic matrix & time stamp
 # 14. hidden_smacof        : a generalized version of SMACOF with weights
-# 15. hidden_hydra         : Hyperbolic Distance Recovery and Approximation
+# 15. hidden_hydra         : Hyperbolic Distance Recovery and Approximation\
+# 16. hidden_metricdepth   : compute the metric depth
 
 
 
@@ -598,3 +599,14 @@ hidden_hydra <- function(distobj, ndim=2, kappa=1, iso.adjust=TRUE){
 # plot(X1, pch=19, xlim=c(-1,1), ylim=c(-1,1), col=Y, main="HYDRA package")
 # plot(X2, pch=19, xlim=c(-1,1), ylim=c(-1,1), col=Y, main="my implementation")
 
+
+
+# 16. hidden_metricdepth --------------------------------------------------
+#' @keywords internal
+#' @noRd
+hidden_metricdepth <- function(distobj){
+  # intermediate assignment
+  D = as.matrix(distobj)
+  # compute
+  return(as.vector(cpp_metricdepth(D)))
+}

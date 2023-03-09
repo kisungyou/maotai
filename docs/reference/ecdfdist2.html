@@ -24,7 +24,7 @@ simplicity, we only take an input of ecdf objects from stats package."><!-- math
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">maotai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.5</span>
       </span>
     </div>
 
@@ -73,23 +73,32 @@ simplicity, we only take an input of <code><a href="https://rdrr.io/r/stats/ecdf
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ecdfdist2</span><span class="op">(</span><span class="va">elist1</span>, <span class="va">elist2</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"KS"</span>, <span class="st">"Lp"</span>, <span class="st">"Wasserstein"</span><span class="op">)</span>, p <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ecdfdist2</span><span class="op">(</span><span class="va">elist1</span>, <span class="va">elist2</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"KS"</span>, <span class="st">"Lp"</span>, <span class="st">"Wasserstein"</span><span class="op">)</span>, p <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>elist1</dt>
 <dd><p>a length \(M\) list of <code>ecdf</code> objects.</p></dd>
+
+
 <dt>elist2</dt>
 <dd><p>a length \(N\) list of <code>ecdf</code> objects.</p></dd>
+
+
 <dt>method</dt>
 <dd><p>name of the distance/dissimilarity measure. Case insensitive.</p></dd>
+
+
 <dt>p</dt>
 <dd><p>exponent for <code>Lp</code> or <code>Wasserstein</code> distance.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>an \((M\times N)\) matrix of pairwise distances.</p>
+    
+
+<p>an \((M\times N)\) matrix of pairwise distances.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -98,34 +107,34 @@ simplicity, we only take an input of <code><a href="https://rdrr.io/r/stats/ecdf
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="co">## toy example</span></span>
-<span class="r-in"><span class="co">#  first list : 10 of random and uniform distributions</span></span>
-<span class="r-in"><span class="va">mylist1</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span><span class="op">{</span> <span class="va">mylist1</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">=</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/ecdf.html" class="external-link">ecdf</a></span><span class="op">(</span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span>, sd<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">}</span></span>
-<span class="r-in"><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">11</span><span class="op">:</span><span class="fl">20</span><span class="op">)</span><span class="op">{</span><span class="va">mylist1</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">=</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/ecdf.html" class="external-link">ecdf</a></span><span class="op">(</span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">50</span>, min<span class="op">=</span><span class="op">-</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">#  second list : 15 uniform and random distributions</span></span>
-<span class="r-in"><span class="va">mylist2</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">15</span><span class="op">)</span><span class="op">{</span> <span class="va">mylist2</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">=</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/ecdf.html" class="external-link">ecdf</a></span><span class="op">(</span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">50</span>, min<span class="op">=</span><span class="op">-</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">}</span></span>
-<span class="r-in"><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">16</span><span class="op">:</span><span class="fl">30</span><span class="op">)</span><span class="op">{</span><span class="va">mylist2</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">=</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/ecdf.html" class="external-link">ecdf</a></span><span class="op">(</span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span>, sd<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## compute Kolmogorov-Smirnov distance</span></span>
-<span class="r-in"><span class="va">dm2ks</span> <span class="op">=</span> <span class="fu">ecdfdist2</span><span class="op">(</span><span class="va">mylist1</span>, <span class="va">mylist2</span>, method<span class="op">=</span><span class="st">"KS"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">dm2lp</span> <span class="op">=</span> <span class="fu">ecdfdist2</span><span class="op">(</span><span class="va">mylist1</span>, <span class="va">mylist2</span>, method<span class="op">=</span><span class="st">"lp"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">dm2wa</span> <span class="op">=</span> <span class="fu">ecdfdist2</span><span class="op">(</span><span class="va">mylist1</span>, <span class="va">mylist2</span>, method<span class="op">=</span><span class="st">"wasserstein"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">nrs</span>   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">dm2ks</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## visualize</span></span>
-<span class="r-in"><span class="va">opar</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>no.readonly<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span>, pty<span class="op">=</span><span class="st">"s"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/image.html" class="external-link">image</a></span><span class="op">(</span><span class="va">dm2ks</span><span class="op">[</span>,<span class="va">nrs</span><span class="op">:</span><span class="fl">1</span><span class="op">]</span>, axes<span class="op">=</span><span class="cn">FALSE</span>, main<span class="op">=</span><span class="st">"Kolmogorov-Smirnov"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/image.html" class="external-link">image</a></span><span class="op">(</span><span class="va">dm2lp</span><span class="op">[</span>,<span class="va">nrs</span><span class="op">:</span><span class="fl">1</span><span class="op">]</span>, axes<span class="op">=</span><span class="cn">FALSE</span>, main<span class="op">=</span><span class="st">"L2"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/image.html" class="external-link">image</a></span><span class="op">(</span><span class="va">dm2wa</span><span class="op">[</span>,<span class="va">nrs</span><span class="op">:</span><span class="fl">1</span><span class="op">]</span>, axes<span class="op">=</span><span class="cn">FALSE</span>, main<span class="op">=</span><span class="st">"Wasserstein"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="co">## toy example</span></span></span>
+<span class="r-in"><span><span class="co">#  first list : 10 of random and uniform distributions</span></span></span>
+<span class="r-in"><span><span class="va">mylist1</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span><span class="op">{</span> <span class="va">mylist1</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">=</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/ecdf.html" class="external-link">ecdf</a></span><span class="op">(</span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span>, sd<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">11</span><span class="op">:</span><span class="fl">20</span><span class="op">)</span><span class="op">{</span><span class="va">mylist1</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">=</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/ecdf.html" class="external-link">ecdf</a></span><span class="op">(</span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">50</span>, min<span class="op">=</span><span class="op">-</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#  second list : 15 uniform and random distributions</span></span></span>
+<span class="r-in"><span><span class="va">mylist2</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">15</span><span class="op">)</span><span class="op">{</span> <span class="va">mylist2</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">=</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/ecdf.html" class="external-link">ecdf</a></span><span class="op">(</span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">50</span>, min<span class="op">=</span><span class="op">-</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">16</span><span class="op">:</span><span class="fl">30</span><span class="op">)</span><span class="op">{</span><span class="va">mylist2</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">=</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/ecdf.html" class="external-link">ecdf</a></span><span class="op">(</span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span>, sd<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## compute Kolmogorov-Smirnov distance</span></span></span>
+<span class="r-in"><span><span class="va">dm2ks</span> <span class="op">=</span> <span class="fu">ecdfdist2</span><span class="op">(</span><span class="va">mylist1</span>, <span class="va">mylist2</span>, method<span class="op">=</span><span class="st">"KS"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dm2lp</span> <span class="op">=</span> <span class="fu">ecdfdist2</span><span class="op">(</span><span class="va">mylist1</span>, <span class="va">mylist2</span>, method<span class="op">=</span><span class="st">"lp"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dm2wa</span> <span class="op">=</span> <span class="fu">ecdfdist2</span><span class="op">(</span><span class="va">mylist1</span>, <span class="va">mylist2</span>, method<span class="op">=</span><span class="st">"wasserstein"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">nrs</span>   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">dm2ks</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## visualize</span></span></span>
+<span class="r-in"><span><span class="va">opar</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>no.readonly<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span>, pty<span class="op">=</span><span class="st">"s"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/image.html" class="external-link">image</a></span><span class="op">(</span><span class="va">dm2ks</span><span class="op">[</span>,<span class="va">nrs</span><span class="op">:</span><span class="fl">1</span><span class="op">]</span>, axes<span class="op">=</span><span class="cn">FALSE</span>, main<span class="op">=</span><span class="st">"Kolmogorov-Smirnov"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/image.html" class="external-link">image</a></span><span class="op">(</span><span class="va">dm2lp</span><span class="op">[</span>,<span class="va">nrs</span><span class="op">:</span><span class="fl">1</span><span class="op">]</span>, axes<span class="op">=</span><span class="cn">FALSE</span>, main<span class="op">=</span><span class="st">"L2"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/image.html" class="external-link">image</a></span><span class="op">(</span><span class="va">dm2wa</span><span class="op">[</span>,<span class="va">nrs</span><span class="op">:</span><span class="fl">1</span><span class="op">]</span>, axes<span class="op">=</span><span class="cn">FALSE</span>, main<span class="op">=</span><span class="st">"Wasserstein"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="ecdfdist2-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">opar</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># }</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">opar</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -140,7 +149,7 @@ simplicity, we only take an input of <code><a href="https://rdrr.io/r/stats/ecdf
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

@@ -1,3 +1,7 @@
+# maotai 0.2.5
+
+* `metricdepth()` added.
+
 # maotai 0.2.4
 
 * `cov2corr()` and `cov2pcorr()` are added. 
@@ -24,7 +28,6 @@
 
 # maotai 0.1.8
 
-* Fixed a potential bug.
 * Added SMACOF implementation.
 
 # maotai 0.1.7
@@ -47,11 +50,9 @@
 
 # maotai 0.1.4
 
-## Bug fixes
+* <mark>bug fix</mark> : Armadillo type-casting errors are fixed.
 
-* Armadillo type-casting errors are fixed.
-
-* example visualization `par` settings are corrected.
+* <mark>bux fix</mark> : example visualization `par` settings are corrected.
 
 
 # maotai 0.1.3  

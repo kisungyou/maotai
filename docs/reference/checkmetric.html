@@ -25,7 +25,7 @@ four axioms to make itself a semimetric, which are (1) \(d_{ii} = 0\), (2) \(d_{
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">maotai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.5</span>
       </span>
     </div>
 
@@ -75,17 +75,20 @@ four axioms to make itself a semimetric, which are (1) \(d_{ii} = 0\), (2) \(d_{
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">checkmetric</span><span class="op">(</span><span class="va">d</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">checkmetric</span><span class="op">(</span><span class="va">d</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>d</dt>
 <dd><p><code>"dist"</code> object or \((N\times N)\) matrix of pairwise distances.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a logical; <code>TRUE</code> if it satisfies metric property, <code>FALSE</code> otherwise.</p>
+    
+
+<p>a logical; <code>TRUE</code> if it satisfies metric property, <code>FALSE</code> otherwise.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -94,20 +97,20 @@ four axioms to make itself a semimetric, which are (1) \(d_{ii} = 0\), (2) \(d_{
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Let's use L2 distance matrix of iris dataset</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">dx</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># perturb d(i,j) </span></span>
-<span class="r-in"><span class="va">dy</span> <span class="op">=</span> <span class="va">dx</span>  </span>
-<span class="r-in"><span class="va">dy</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">dy</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># run the algorithm</span></span>
-<span class="r-in"><span class="fu">checkmetric</span><span class="op">(</span><span class="va">dx</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Let's use L2 distance matrix of iris dataset</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dx</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># perturb d(i,j) </span></span></span>
+<span class="r-in"><span><span class="va">dy</span> <span class="op">=</span> <span class="va">dx</span>  </span></span>
+<span class="r-in"><span><span class="va">dy</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">dy</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># run the algorithm</span></span></span>
+<span class="r-in"><span><span class="fu">checkmetric</span><span class="op">(</span><span class="va">dx</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
-<span class="r-in"><span class="fu">checkmetric</span><span class="op">(</span><span class="va">dy</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">checkmetric</span><span class="op">(</span><span class="va">dy</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -122,7 +125,7 @@ four axioms to make itself a semimetric, which are (1) \(d_{ii} = 0\), (2) \(d_{
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

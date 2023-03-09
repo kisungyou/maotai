@@ -26,7 +26,7 @@ ambient gradient. Use with care since it may accumulate numerical error."><!-- m
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">maotai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.5</span>
       </span>
     </div>
 
@@ -77,21 +77,28 @@ ambient gradient. Use with care since it may accumulate numerical error.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">matderiv</span><span class="op">(</span><span class="va">fn</span>, <span class="va">x</span>, h <span class="op">=</span> <span class="fl">0.001</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">matderiv</span><span class="op">(</span><span class="va">fn</span>, <span class="va">x</span>, h <span class="op">=</span> <span class="fl">0.001</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>fn</dt>
 <dd><p>a function that takes a matrix of size \((n\times p)\) and returns a scalar value.</p></dd>
+
+
 <dt>x</dt>
 <dd><p>an \((n\times p)\) matrix where the gradient is to be computed.</p></dd>
+
+
 <dt>h</dt>
 <dd><p>step size for centered difference scheme.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>an approximate numerical gradient matrix of size \((n\times p)\).</p>
+    
+
+<p>an approximate numerical gradient matrix of size \((n\times p)\).</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -102,47 +109,47 @@ American Mathematical Society, Providence, RI.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## function f(X) = &lt;a,Xb&gt; for two vectors 'a' and 'b'</span></span>
-<span class="r-in"><span class="co">#  derivative w.r.t X is ab'</span></span>
-<span class="r-in"><span class="co">#  take an example of (5x5) symmetric positive definite matrix</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">#  problem settings</span></span>
-<span class="r-in"><span class="va">a</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">b</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">ftn</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">{</span></span>
-<span class="r-in">  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">as.vector</a></span><span class="op">(</span><span class="va">X</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span><span class="va">b</span><span class="op">)</span><span class="op">*</span><span class="va">a</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span>       <span class="co"># function to be taken derivative</span></span>
-<span class="r-in"><span class="va">myX</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">25</span><span class="op">)</span>,nrow<span class="op">=</span><span class="fl">5</span><span class="op">)</span>  <span class="co"># point where derivative is evaluated</span></span>
-<span class="r-in"><span class="va">myX</span> <span class="op">&lt;-</span> <span class="va">myX</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">myX</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># main computation</span></span>
-<span class="r-in"><span class="va">sol.true</span> <span class="op">&lt;-</span> <span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/outer.html" class="external-link">outer</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">sol.num1</span> <span class="op">&lt;-</span> <span class="fu">matderiv</span><span class="op">(</span><span class="va">ftn</span>, <span class="va">myX</span>, h<span class="op">=</span><span class="fl">1e-1</span><span class="op">)</span> <span class="co"># step size : 1e-1</span></span>
-<span class="r-in"><span class="va">sol.num2</span> <span class="op">&lt;-</span> <span class="fu">matderiv</span><span class="op">(</span><span class="va">ftn</span>, <span class="va">myX</span>, h<span class="op">=</span><span class="fl">1e-5</span><span class="op">)</span> <span class="co">#             1e-3</span></span>
-<span class="r-in"><span class="va">sol.num3</span> <span class="op">&lt;-</span> <span class="fu">matderiv</span><span class="op">(</span><span class="va">ftn</span>, <span class="va">myX</span>, h<span class="op">=</span><span class="fl">1e-9</span><span class="op">)</span> <span class="co">#             1e-5</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## visualize/print the results</span></span>
-<span class="r-in"><span class="va">expar</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>no.readonly<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>,pty<span class="op">=</span><span class="st">"s"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/image.html" class="external-link">image</a></span><span class="op">(</span><span class="va">sol.true</span>, main<span class="op">=</span><span class="st">"true solution"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/image.html" class="external-link">image</a></span><span class="op">(</span><span class="va">sol.num1</span>, main<span class="op">=</span><span class="st">"h=1e-1"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/image.html" class="external-link">image</a></span><span class="op">(</span><span class="va">sol.num2</span>, main<span class="op">=</span><span class="st">"h=1e-5"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/image.html" class="external-link">image</a></span><span class="op">(</span><span class="va">sol.num3</span>, main<span class="op">=</span><span class="st">"h=1e-9"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## function f(X) = &lt;a,Xb&gt; for two vectors 'a' and 'b'</span></span></span>
+<span class="r-in"><span><span class="co">#  derivative w.r.t X is ab'</span></span></span>
+<span class="r-in"><span><span class="co">#  take an example of (5x5) symmetric positive definite matrix</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#  problem settings</span></span></span>
+<span class="r-in"><span><span class="va">a</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">b</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ftn</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">as.vector</a></span><span class="op">(</span><span class="va">X</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span><span class="va">b</span><span class="op">)</span><span class="op">*</span><span class="va">a</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span>       <span class="co"># function to be taken derivative</span></span></span>
+<span class="r-in"><span><span class="va">myX</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">25</span><span class="op">)</span>,nrow<span class="op">=</span><span class="fl">5</span><span class="op">)</span>  <span class="co"># point where derivative is evaluated</span></span></span>
+<span class="r-in"><span><span class="va">myX</span> <span class="op">&lt;-</span> <span class="va">myX</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">myX</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># main computation</span></span></span>
+<span class="r-in"><span><span class="va">sol.true</span> <span class="op">&lt;-</span> <span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/outer.html" class="external-link">outer</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sol.num1</span> <span class="op">&lt;-</span> <span class="fu">matderiv</span><span class="op">(</span><span class="va">ftn</span>, <span class="va">myX</span>, h<span class="op">=</span><span class="fl">1e-1</span><span class="op">)</span> <span class="co"># step size : 1e-1</span></span></span>
+<span class="r-in"><span><span class="va">sol.num2</span> <span class="op">&lt;-</span> <span class="fu">matderiv</span><span class="op">(</span><span class="va">ftn</span>, <span class="va">myX</span>, h<span class="op">=</span><span class="fl">1e-5</span><span class="op">)</span> <span class="co">#             1e-3</span></span></span>
+<span class="r-in"><span><span class="va">sol.num3</span> <span class="op">&lt;-</span> <span class="fu">matderiv</span><span class="op">(</span><span class="va">ftn</span>, <span class="va">myX</span>, h<span class="op">=</span><span class="fl">1e-9</span><span class="op">)</span> <span class="co">#             1e-5</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## visualize/print the results</span></span></span>
+<span class="r-in"><span><span class="va">expar</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>no.readonly<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>,pty<span class="op">=</span><span class="st">"s"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/image.html" class="external-link">image</a></span><span class="op">(</span><span class="va">sol.true</span>, main<span class="op">=</span><span class="st">"true solution"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/image.html" class="external-link">image</a></span><span class="op">(</span><span class="va">sol.num1</span>, main<span class="op">=</span><span class="st">"h=1e-1"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/image.html" class="external-link">image</a></span><span class="op">(</span><span class="va">sol.num2</span>, main<span class="op">=</span><span class="st">"h=1e-5"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/image.html" class="external-link">image</a></span><span class="op">(</span><span class="va">sol.num3</span>, main<span class="op">=</span><span class="st">"h=1e-9"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="matderiv-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">expar</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="va">ntrue</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/shapes/man/shapes-internal.html" class="external-link">norm</a></span><span class="op">(</span><span class="va">sol.true</span>,<span class="st">"f"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">'* Relative Errors in Frobenius Norm '</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">expar</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="va">ntrue</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/norm.html" class="external-link">norm</a></span><span class="op">(</span><span class="va">sol.true</span>,<span class="st">"f"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">'* Relative Errors in Frobenius Norm '</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Relative Errors in Frobenius Norm </span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"*  h=1e-1   : "</span>,<span class="fu"><a href="https://rdrr.io/pkg/shapes/man/shapes-internal.html" class="external-link">norm</a></span><span class="op">(</span><span class="va">sol.true</span><span class="op">-</span><span class="va">sol.num1</span>,<span class="st">"f"</span><span class="op">)</span><span class="op">/</span><span class="va">ntrue</span>,sep<span class="op">=</span><span class="st">""</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> *  h=1e-1   : 3.56880207616763e-15</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"*  h=1e-5   : "</span>,<span class="fu"><a href="https://rdrr.io/pkg/shapes/man/shapes-internal.html" class="external-link">norm</a></span><span class="op">(</span><span class="va">sol.true</span><span class="op">-</span><span class="va">sol.num2</span>,<span class="st">"f"</span><span class="op">)</span><span class="op">/</span><span class="va">ntrue</span>,sep<span class="op">=</span><span class="st">""</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> *  h=1e-5   : 2.98975305994691e-11</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"*  h=1e-9   : "</span>,<span class="fu"><a href="https://rdrr.io/pkg/shapes/man/shapes-internal.html" class="external-link">norm</a></span><span class="op">(</span><span class="va">sol.true</span><span class="op">-</span><span class="va">sol.num3</span>,<span class="st">"f"</span><span class="op">)</span><span class="op">/</span><span class="va">ntrue</span>,sep<span class="op">=</span><span class="st">""</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> *  h=1e-9   : 2.3288984075043e-08</span>
-<span class="r-in"><span class="co"># }</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"*  h=1e-1   : "</span>,<span class="fu"><a href="https://rdrr.io/r/base/norm.html" class="external-link">norm</a></span><span class="op">(</span><span class="va">sol.true</span><span class="op">-</span><span class="va">sol.num1</span>,<span class="st">"f"</span><span class="op">)</span><span class="op">/</span><span class="va">ntrue</span>,sep<span class="op">=</span><span class="st">""</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *  h=1e-1   : 3.64027191452883e-15</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"*  h=1e-5   : "</span>,<span class="fu"><a href="https://rdrr.io/r/base/norm.html" class="external-link">norm</a></span><span class="op">(</span><span class="va">sol.true</span><span class="op">-</span><span class="va">sol.num2</span>,<span class="st">"f"</span><span class="op">)</span><span class="op">/</span><span class="va">ntrue</span>,sep<span class="op">=</span><span class="st">""</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *  h=1e-5   : 3.28951213604145e-11</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"*  h=1e-9   : "</span>,<span class="fu"><a href="https://rdrr.io/r/base/norm.html" class="external-link">norm</a></span><span class="op">(</span><span class="va">sol.true</span><span class="op">-</span><span class="va">sol.num3</span>,<span class="st">"f"</span><span class="op">)</span><span class="op">/</span><span class="va">ntrue</span>,sep<span class="op">=</span><span class="st">""</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *  h=1e-9   : 1.94739722524033e-08</span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -157,7 +164,7 @@ American Mathematical Society, Providence, RI.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

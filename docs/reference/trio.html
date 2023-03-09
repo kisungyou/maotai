@@ -28,7 +28,7 @@ since it's an easier proxy with faster computation."><!-- mathjax --><script src
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">maotai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.5</span>
       </span>
     </div>
 
@@ -81,37 +81,52 @@ since it's an easier proxy with faster computation.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">trio</span><span class="op">(</span>
-  <span class="va">A</span>,
-  <span class="va">B</span>,
-  <span class="va">C</span>,
-  dim <span class="op">=</span> <span class="fl">2</span>,
-  method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2003Guo"</span>, <span class="st">"2007Wang"</span>, <span class="st">"2009Jia"</span>, <span class="st">"2012Ngo"</span><span class="op">)</span>,
-  maxiter <span class="op">=</span> <span class="fl">1000</span>,
-  eps <span class="op">=</span> <span class="fl">1e-10</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">trio</span><span class="op">(</span></span>
+<span>  <span class="va">A</span>,</span>
+<span>  <span class="va">B</span>,</span>
+<span>  <span class="va">C</span>,</span>
+<span>  dim <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2003Guo"</span>, <span class="st">"2007Wang"</span>, <span class="st">"2009Jia"</span>, <span class="st">"2012Ngo"</span><span class="op">)</span>,</span>
+<span>  maxiter <span class="op">=</span> <span class="fl">1000</span>,</span>
+<span>  eps <span class="op">=</span> <span class="fl">1e-10</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>A</dt>
 <dd><p>a \((p\times p)\) symmetric matrix in the numerator term.</p></dd>
+
+
 <dt>B</dt>
 <dd><p>a \((p\times p)\) symmetric matrix in the denomiator term.</p></dd>
+
+
 <dt>C</dt>
 <dd><p>a \((p\times p)\) symmetric constraint matrix. If not provided, it is set as identical matrix automatically.</p></dd>
+
+
 <dt>dim</dt>
 <dd><p>an integer for target dimension. It can be considered as the number of loadings.</p></dd>
+
+
 <dt>method</dt>
 <dd><p>the name of algorithm to be used. Default is <code>2003Guo</code>.</p></dd>
+
+
 <dt>maxiter</dt>
 <dd><p>maximum number of iterations to be performed.</p></dd>
+
+
 <dt>eps</dt>
 <dd><p>stopping criterion for iterative algorithms.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a named list containing</p><dl><dt>V</dt>
+    
+
+<p>a named list containing</p><dl><dt>V</dt>
 <dd><p>a \((p\times dim)\) projection matrix.</p></dd>
 
 <dt>tr.val</dt>
@@ -137,40 +152,40 @@ In <em>2007 IEEE Conference on Computer Vision and Pattern Recognition</em>, 1--
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## simple test</span></span>
-<span class="r-in"><span class="co">#  problem setting</span></span>
-<span class="r-in"><span class="va">p</span> <span class="op">=</span> <span class="fl">5</span></span>
-<span class="r-in"><span class="va">mydim</span> <span class="op">=</span> <span class="fl">2</span></span>
-<span class="r-in"><span class="va">A</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">p</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>,nrow<span class="op">=</span><span class="va">p</span><span class="op">)</span>; <span class="va">A</span><span class="op">=</span><span class="va">A</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">B</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">p</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>,nrow<span class="op">=</span><span class="va">p</span><span class="op">)</span>; <span class="va">B</span><span class="op">=</span><span class="va">B</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">B</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">C</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">#  approximate solution via determinant ratio problem formulation</span></span>
-<span class="r-in"><span class="va">eigAB</span>  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/eigen.html" class="external-link">eigen</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/solve.html" class="external-link">solve</a></span><span class="op">(</span><span class="va">B</span>,<span class="va">A</span><span class="op">)</span><span class="op">)</span> </span>
-<span class="r-in"><span class="va">V</span>      <span class="op">=</span> <span class="va">eigAB</span><span class="op">$</span><span class="va">vectors</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="va">mydim</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">eigval</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">V</span><span class="op">)</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span><span class="va">A</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span><span class="va">V</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">V</span><span class="op">)</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span><span class="va">B</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span><span class="va">V</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">#  solve using 4 algorithms</span></span>
-<span class="r-in"><span class="va">m12</span> <span class="op">=</span> <span class="fu">trio</span><span class="op">(</span><span class="va">A</span>,<span class="va">B</span>,dim<span class="op">=</span><span class="va">mydim</span>, method<span class="op">=</span><span class="st">"2012Ngo"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">m09</span> <span class="op">=</span> <span class="fu">trio</span><span class="op">(</span><span class="va">A</span>,<span class="va">B</span>,dim<span class="op">=</span><span class="va">mydim</span>, method<span class="op">=</span><span class="st">"2009Jia"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">m07</span> <span class="op">=</span> <span class="fu">trio</span><span class="op">(</span><span class="va">A</span>,<span class="va">B</span>,dim<span class="op">=</span><span class="va">mydim</span>, method<span class="op">=</span><span class="st">"2007Wang"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">m03</span> <span class="op">=</span> <span class="fu">trio</span><span class="op">(</span><span class="va">A</span>,<span class="va">B</span>,dim<span class="op">=</span><span class="va">mydim</span>, method<span class="op">=</span><span class="st">"2003Guo"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">#  print the results</span></span>
-<span class="r-in"><span class="va">line1</span> <span class="op">=</span> <span class="st">'* Evaluation of the cost function'</span></span>
-<span class="r-in"><span class="va">line2</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"* approx. via determinant : "</span>,<span class="va">eigval</span>,sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">line3</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"* trio by 2012Ngo         : "</span>,<span class="va">m12</span><span class="op">$</span><span class="va">tr.val</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">line4</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"* trio by 2009Jia         : "</span>,<span class="va">m09</span><span class="op">$</span><span class="va">tr.val</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">line5</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"* trio by 2007Wang        : "</span>,<span class="va">m07</span><span class="op">$</span><span class="va">tr.val</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">line6</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"* trio by 2003Guo         : "</span>,<span class="va">m03</span><span class="op">$</span><span class="va">tr.val</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">line1</span>,<span class="st">"\n"</span>,<span class="va">line2</span>,<span class="st">"\n"</span>,<span class="va">line3</span>,<span class="st">"\n"</span>,<span class="va">line4</span>,<span class="st">"\n"</span>,<span class="va">line5</span>,<span class="st">"\n"</span>,<span class="va">line6</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## simple test</span></span></span>
+<span class="r-in"><span><span class="co">#  problem setting</span></span></span>
+<span class="r-in"><span><span class="va">p</span> <span class="op">=</span> <span class="fl">5</span></span></span>
+<span class="r-in"><span><span class="va">mydim</span> <span class="op">=</span> <span class="fl">2</span></span></span>
+<span class="r-in"><span><span class="va">A</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">p</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>,nrow<span class="op">=</span><span class="va">p</span><span class="op">)</span>; <span class="va">A</span><span class="op">=</span><span class="va">A</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">B</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">p</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>,nrow<span class="op">=</span><span class="va">p</span><span class="op">)</span>; <span class="va">B</span><span class="op">=</span><span class="va">B</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">B</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">C</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#  approximate solution via determinant ratio problem formulation</span></span></span>
+<span class="r-in"><span><span class="va">eigAB</span>  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/eigen.html" class="external-link">eigen</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/solve.html" class="external-link">solve</a></span><span class="op">(</span><span class="va">B</span>,<span class="va">A</span><span class="op">)</span><span class="op">)</span> </span></span>
+<span class="r-in"><span><span class="va">V</span>      <span class="op">=</span> <span class="va">eigAB</span><span class="op">$</span><span class="va">vectors</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="va">mydim</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">eigval</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">V</span><span class="op">)</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span><span class="va">A</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span><span class="va">V</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">V</span><span class="op">)</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span><span class="va">B</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span><span class="va">V</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#  solve using 4 algorithms</span></span></span>
+<span class="r-in"><span><span class="va">m12</span> <span class="op">=</span> <span class="fu">trio</span><span class="op">(</span><span class="va">A</span>,<span class="va">B</span>,dim<span class="op">=</span><span class="va">mydim</span>, method<span class="op">=</span><span class="st">"2012Ngo"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">m09</span> <span class="op">=</span> <span class="fu">trio</span><span class="op">(</span><span class="va">A</span>,<span class="va">B</span>,dim<span class="op">=</span><span class="va">mydim</span>, method<span class="op">=</span><span class="st">"2009Jia"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">m07</span> <span class="op">=</span> <span class="fu">trio</span><span class="op">(</span><span class="va">A</span>,<span class="va">B</span>,dim<span class="op">=</span><span class="va">mydim</span>, method<span class="op">=</span><span class="st">"2007Wang"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">m03</span> <span class="op">=</span> <span class="fu">trio</span><span class="op">(</span><span class="va">A</span>,<span class="va">B</span>,dim<span class="op">=</span><span class="va">mydim</span>, method<span class="op">=</span><span class="st">"2003Guo"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#  print the results</span></span></span>
+<span class="r-in"><span><span class="va">line1</span> <span class="op">=</span> <span class="st">'* Evaluation of the cost function'</span></span></span>
+<span class="r-in"><span><span class="va">line2</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"* approx. via determinant : "</span>,<span class="va">eigval</span>,sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">line3</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"* trio by 2012Ngo         : "</span>,<span class="va">m12</span><span class="op">$</span><span class="va">tr.val</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">line4</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"* trio by 2009Jia         : "</span>,<span class="va">m09</span><span class="op">$</span><span class="va">tr.val</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">line5</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"* trio by 2007Wang        : "</span>,<span class="va">m07</span><span class="op">$</span><span class="va">tr.val</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">line6</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"* trio by 2003Guo         : "</span>,<span class="va">m03</span><span class="op">$</span><span class="va">tr.val</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">line1</span>,<span class="st">"\n"</span>,<span class="va">line2</span>,<span class="st">"\n"</span>,<span class="va">line3</span>,<span class="st">"\n"</span>,<span class="va">line4</span>,<span class="st">"\n"</span>,<span class="va">line5</span>,<span class="st">"\n"</span>,<span class="va">line6</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Evaluation of the cost function </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  * approx. via determinant : 62.9280570683325 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  * trio by 2012Ngo         : 64.4459133937557 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  * trio by 2009Jia         : 64.4459133937557 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  * trio by 2007Wang        : 64.4459133937556 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  * trio by 2003Guo         : 64.4459133937556</span>
-<span class="r-in"></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  * approx. via determinant : 65.1323250523116 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  * trio by 2012Ngo         : 69.1591403709408 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  * trio by 2009Jia         : 69.1591403709407 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  * trio by 2007Wang        : 69.1591403709409 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  * trio by 2003Guo         : 69.1591403709407</span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -185,7 +200,7 @@ In <em>2007 IEEE Conference on Computer Vision and Pattern Recognition</em>, 1--
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

@@ -232,6 +232,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// cpp_metricdepth
+arma::vec cpp_metricdepth(arma::mat& D);
+RcppExport SEXP _maotai_cpp_metricdepth(SEXP DSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type D(DSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_metricdepth(D));
+    return rcpp_result_gen;
+END_RCPP
+}
 // cpp_mmds
 arma::mat cpp_mmds(arma::mat& D, int ndim, int maxiter, double abstol);
 RcppExport SEXP _maotai_cpp_mmds(SEXP DSEXP, SEXP ndimSEXP, SEXP maxiterSEXP, SEXP abstolSEXP) {
@@ -386,6 +397,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_maotai_cpp_pdist", (DL_FUNC) &_maotai_cpp_pdist, 1},
     {"_maotai_cpp_geigen", (DL_FUNC) &_maotai_cpp_geigen, 2},
     {"_maotai_cpp_triangle", (DL_FUNC) &_maotai_cpp_triangle, 1},
+    {"_maotai_cpp_metricdepth", (DL_FUNC) &_maotai_cpp_metricdepth, 1},
     {"_maotai_cpp_mmds", (DL_FUNC) &_maotai_cpp_mmds, 4},
     {"_maotai_src_smacof", (DL_FUNC) &_maotai_src_smacof, 6},
     {"_maotai_eval_gaussian", (DL_FUNC) &_maotai_eval_gaussian, 3},
