@@ -33,6 +33,7 @@
 /home/kisung/Desktop/maotai/R/obsolete_distgmm.R="496714B7"
 /home/kisung/Desktop/maotai/R/package-maotai.R="A1622B52"
 /home/kisung/Desktop/maotai/R/pdeterminant.R="94499C65"
+/home/kisung/Desktop/maotai/R/rotationS2.R="FACA63C5"
 /home/kisung/Desktop/maotai/R/shortestpath.R="AA7331C0"
 /home/kisung/Desktop/maotai/R/sylvester.R="FA9C48C0"
 /home/kisung/Desktop/maotai/R/trio.R="C07BB88"
@@ -52,3 +53,4 @@
 /home/kisung/Desktop/maotai/src/src_computations.cpp="4D30262E"
 /home/kisung/Desktop/maotai/tests/testthat/test-bmds.R="CDDF44BB"
 /home/kisung/Desktop/maotai/tests/testthat/test-cov2funcs.R="2AA89168"
+/home/kisung/Desktop/rotation_S2.R="5892AF60"

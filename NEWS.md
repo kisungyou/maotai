@@ -1,6 +1,6 @@
 # maotai 0.2.5
 
-* `metricdepth()` added.
+* `metricdepth()` and `rotationS2()` added.
 
 # maotai 0.2.4
 

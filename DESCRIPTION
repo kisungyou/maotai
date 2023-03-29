@@ -10,7 +10,7 @@ Suggests:
     covr,
     igraph,
     testthat (>= 3.0.0)
-Imports: Matrix, Rcpp, Rdpack, RSpectra, Rtsne, RANN, cluster, labdsv, shapes, stats, utils, fastcluster, dbscan
+Imports: Matrix, Rcpp, Rdpack, RSpectra, Rtsne, RANN, cluster, labdsv, shapes, stats, utils, fastcluster, dbscan, pracma
 LinkingTo: Rcpp, RcppArmadillo, RcppDist
 RdMacros: Rdpack
 RoxygenNote: 7.2.3
