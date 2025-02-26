@@ -3,7 +3,7 @@
 #' This is a fast implementation of Floyd-Warshall algorithm to find the
 #' shortest path in a pairwise sense using \code{RcppArmadillo}. A logical input
 #' is also accepted. The given matrix should contain pairwise distance values \eqn{d_{i,j}} where 
-#' \eqn{0} means there exists no path for node \eqn{i} and {j}.
+#' \eqn{0} means there exists no path for node \eqn{i} and \eqn{j}.
 #'
 #' @param dist either an \eqn{(n\times n)} matrix or a \code{dist} class object.
 #' 
