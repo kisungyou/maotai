@@ -1,3 +1,7 @@
+# maotai 0.2.6
+
+* New functions are added for Wasserstein-like geometry of von Mises-Fisher distributions.
+
 # maotai 0.2.5
 
 * `metricdepth()` and `rotationS2()` added.

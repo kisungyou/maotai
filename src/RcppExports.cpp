@@ -11,6 +11,41 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// sphere_dist
+double sphere_dist(arma::rowvec vecx, arma::rowvec vecy);
+RcppExport SEXP _maotai_sphere_dist(SEXP vecxSEXP, SEXP vecySEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::rowvec >::type vecx(vecxSEXP);
+    Rcpp::traits::input_parameter< arma::rowvec >::type vecy(vecySEXP);
+    rcpp_result_gen = Rcpp::wrap(sphere_dist(vecx, vecy));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_WL_normalise
+arma::mat cpp_WL_normalise(arma::mat& X);
+RcppExport SEXP _maotai_cpp_WL_normalise(SEXP XSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_WL_normalise(X));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_WL_weighted_mean
+arma::rowvec cpp_WL_weighted_mean(arma::mat& X, arma::vec& weights);
+RcppExport SEXP _maotai_cpp_WL_weighted_mean(SEXP XSEXP, SEXP weightsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    Rcpp::traits::input_parameter< arma::vec& >::type weights(weightsSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_WL_weighted_mean(X, weights));
+    return rcpp_result_gen;
+END_RCPP
+}
 // compute_SSR
 double compute_SSR(arma::mat& D, arma::mat& Delta);
 RcppExport SEXP _maotai_compute_SSR(SEXP DSEXP, SEXP DeltaSEXP) {
@@ -380,6 +415,9 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_maotai_sphere_dist", (DL_FUNC) &_maotai_sphere_dist, 2},
+    {"_maotai_cpp_WL_normalise", (DL_FUNC) &_maotai_cpp_WL_normalise, 1},
+    {"_maotai_cpp_WL_weighted_mean", (DL_FUNC) &_maotai_cpp_WL_weighted_mean, 2},
     {"_maotai_compute_SSR", (DL_FUNC) &_maotai_compute_SSR, 2},
     {"_maotai_compute_stress", (DL_FUNC) &_maotai_compute_stress, 2},
     {"_maotai_main_bmds", (DL_FUNC) &_maotai_main_bmds, 9},

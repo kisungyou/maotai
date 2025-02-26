@@ -17,7 +17,7 @@
   packageStartupMessage("**  - Tools for Matrix Algebra, Optimization and Inference Problems")
   packageStartupMessage("**")
   packageStartupMessage("** Version    : ",this.version,"      (",this.year,")",sep="")
-  packageStartupMessage("** Maintainer : Kisung You (kisungyou@outlook.com)")
+  packageStartupMessage("** Maintainer : Kisung You (kisung.you@outlook.com)")
   packageStartupMessage("** Website    : https://www.kisungyou.com/maotai")
   packageStartupMessage("**")
   packageStartupMessage("** Please share any bugs or suggestions to the maintainer.")

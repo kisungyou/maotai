@@ -1,8 +1,8 @@
 #' Tools for Matrix Algebra, Optimization and Inference
 #' 
-#' Matrix is an universal and sometimes primary object/unit in applied mathematics and statistics. We provide a number of algorithms for selected problems in optimization and statistical inference.
+#' A matrix is an universal and sometimes primary object/unit in applied mathematics and statistics. We provide a number of algorithms for selected problems in optimization and statistical inference.
 #' 
-#' @docType package
+#' @keywords internal
 #' @name package-maotai
 #' @import Rdpack
 #' @noRd
@@ -19,7 +19,7 @@
 #' @importFrom Matrix rankMatrix
 #' @importFrom Rcpp evalCpp
 #' @useDynLib maotai
-NULL
+"_PACKAGE"
 # pack <- "maotai"
 # path <- find.package(pack)
 # system(paste(shQuote(file.path(R.home("bin"), "R")),
