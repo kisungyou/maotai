@@ -98,8 +98,9 @@ WLbarycenter <- function(means, concentrations, weights=NULL){
   output_mean = as.vector(cpp_WL_weighted_mean(data_X, data_weights))
   
   # concentration
-  kappa_tmp    = base::sum(data_weights/sqrt(data_kappa))
-  kappa_output = 1/(kappa_tmp*kappa_tmp) 
+  w_sum = base::sum(data_weights)
+  kappa_tmp = base::sum(data_weights/sqrt(data_kappa))
+  kappa_output = (w_sum/kappa_tmp)^2
   
   ###############################################
   # Return

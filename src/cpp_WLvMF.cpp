@@ -64,32 +64,45 @@ arma::mat cpp_WL_normalise(arma::mat& X){
 }
 
 // weighted mean computation
+// // [[Rcpp::export]]
+// arma::rowvec cpp_WL_weighted_mean(arma::mat& X, arma::vec& weights){
+//   int N = X.n_rows;
+//   int d = X.n_cols;
+//   
+//   arma::rowvec Sold = arma::mean(X, 0);
+//   double Sinc = 0.0;
+//   Sold = Sold/arma::norm(Sold,2);
+//   arma::rowvec distvec(N,fill::zeros);
+//   arma::rowvec Snew(d,fill::zeros);
+//   arma::rowvec Stmp(d,fill::zeros);
+//   
+//   for (int it=0; it<1000; it++){
+//     // reset the temporary gradient 
+//     Stmp.fill(0.0);
+//     for (int n=0; n<N; n++){
+//       Stmp += 2.0*weights(n)*sphere_log(Sold, X.row(n));
+//     }
+//     Snew = sphere_exp(Sold, Stmp, 1.0);
+//     Sinc = arma::norm(Sold-Snew,2);
+//     Sold = Snew;
+//     
+//     if (Sinc < 1e-7){
+//       break;
+//     }
+//   }
+//   
+//   return(Sold);
+// }
 // [[Rcpp::export]]
 arma::rowvec cpp_WL_weighted_mean(arma::mat& X, arma::vec& weights){
   int N = X.n_rows;
   int d = X.n_cols;
   
-  arma::rowvec Sold = arma::mean(X, 0);
-  double Sinc = 0.0;
-  Sold = Sold/arma::norm(Sold,2);
-  arma::rowvec distvec(N,fill::zeros);
-  arma::rowvec Snew(d,fill::zeros);
-  arma::rowvec Stmp(d,fill::zeros);
-  
-  for (int it=0; it<1000; it++){
-    // reset the temporary gradient 
-    Stmp.fill(0.0);
-    for (int n=0; n<N; n++){
-      Stmp += 2.0*weights(n)*sphere_log(Sold, X.row(n));
-    }
-    Snew = sphere_exp(Sold, Stmp, 1.0);
-    Sinc = arma::norm(Sold-Snew,2);
-    Sold = Snew;
-    
-    if (Sinc < 1e-7){
-      break;
-    }
+  arma::rowvec Sout(d, fill::zeros);
+  for (int n=0; n<N; n++){
+    Sout += (weights(n)/arma::accu(weights))*X.row(n);
   }
   
-  return(Sold);
+  arma::rowvec Sfin = Sout/arma::norm(Sout, 2);
+  return(Sfin);
 }
