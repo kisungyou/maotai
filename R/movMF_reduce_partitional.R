@@ -101,7 +101,7 @@ movMF_reduce_partitional <- function(means, concentrations, weights, target.num=
   }
   
   # for each indices, compute the barycenter
-  new_means = array(0,c(par_target_num, base::nrow(data_means)))
+  new_means = array(0,c(par_target_num, base::ncol(data_means)))
   new_concentrations = rep(0, par_target_num)
   new_weights = rep(0, par_target_num)
   
