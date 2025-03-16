@@ -65,14 +65,31 @@ movMF_reduce_partitional <- function(means, concentrations, weights, target.num=
       pdist_mat[i,j] <- pdist_mat[j,i] <- sqrt((term1*term1) + term2sq)
     }
   }
-  pdist_obj <- stats::as.dist(pdist_mat)
+  
   
   # clustering
   if (par_clustering=="hclust"){
-    clust_obj <- fastcluster::hclust(pdist_obj, method="single")
+    # old approach: directly apply clustering
+    #   pdist_obj <- stats::as.dist(pdist_mat)
+    #   clust_obj <- fastcluster::hclust(pdist_obj, method="single")
+    
+    # apply weighting scheme
+    weighted_dist_mat <- pdist_mat*sqrt(outer(data_weights, data_weights, "*"))
+    weighted_dist <- stats::as.dist(weighted_dist_mat)
+    
+    # cut the tree
+    clust_obj <- cluster::agnes(weighted_dist, method="single")
     obtained_clust <- stats::cutree(clust_obj, k=par_target_num)
   } else {
-    clust_obj <- cluster::pam(pdist_obj, k=par_target_num)
+    # old approach: directly apply clustering
+    #   pdist_obj <- stats::as.dist(pdist_mat)
+    #   clust_obj <- cluster::pam(pdist_obj, k=par_target_num)
+    
+    # apply weighting scheme
+    weighted_dist_mat <- pdist_mat*outer(data_weights, data_weights)
+    clust_obj <- cluster::pam(weighted_dist_mat, 
+                              k=par_target_num,
+                              diss = TRUE)
     obtained_clust <- clust_obj$clustering
   }
   
@@ -116,7 +133,6 @@ movMF_reduce_partitional <- function(means, concentrations, weights, target.num=
                 weights=new_weights)
   return(output)
 }
-
 
 # # simple example
 # # data matrix normalized
