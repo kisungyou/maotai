@@ -11,6 +11,7 @@ using namespace arma;
  * (02) src_gaussbary_2002R : Barycenter of Gaussian Covariances
  * (03) src_gaussbary_2016A : Barycenter of Gaussian Covariances
  * (04) src_cov2corr        : use Wikipedia's formula
+ * (05) src_leida           : compute relevant quantities for leida 
  */
 
 // (01) src_construct_by_knn [hidden_knn_binary] ===============================
@@ -174,4 +175,52 @@ arma::mat src_cov2corr(arma::mat &covmat){
     }
   }
   return(output);
+}
+
+// (05) src_leida ==============================================================
+// [[Rcpp::export]]
+Rcpp::List src_leida(const arma::mat& phase){
+  // parameters and initialize
+  int par_T = phase.n_rows;
+  int par_N = phase.n_cols;
+  arma::mat V(par_T, par_N, arma::fill::zeros);
+  
+  // iterate
+  arma::rowvec phi(par_N,fill::zeros);
+  arma::mat dPhi(par_N, par_N, fill::zeros);
+  arma::mat iPL(par_N, par_N, fill::zeros);
+  for (int t=0; t<par_T; t++){
+    // reset
+    phi.fill(0.0);
+    dPhi.fill(0.0);
+    iPL.fill(0.0);
+    
+    // start
+    phi  = phase.row(t);
+    dPhi = arma::repmat(phi, par_N, 1) - arma::repmat(phi.t(), 1, par_N);
+    iPL  = arma::cos(dPhi);
+    
+    arma::vec eigval;
+    arma::mat eigvec;
+    arma::eig_sym(eigval, eigvec, iPL);  // ascending order
+    arma::vec v = eigvec.col(par_N-1);   // leading one
+    if (v(0) < 0){                       // sign fix
+      v = -v;
+    }
+    V.row(t) = v.t();
+  }
+  
+  // FCD matrices - cosine similarity
+  arma::mat Vnorm = arma::normalise(V, 2, 1);         // row‑norm
+  arma::mat Fcos  = Vnorm * Vnorm.t();                // T×T
+  
+  // FCD matrix - correlation
+  arma::mat Vc  = V.each_row() - arma::mean(V, 1).t();
+  arma::mat Vz  = Vc.each_row() / arma::stddev(V, 0, 1).t();
+  arma::mat Fcor = (Vz * Vz.t()) / (par_N - 1);           // T×T
+  
+  // return
+  return(Rcpp::List::create(Rcpp::Named("V")       = V,
+                            Rcpp::Named("FCD_cos") = Fcos,
+                            Rcpp::Named("FCD_cor") = Fcor));
 }

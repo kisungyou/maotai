@@ -125,3 +125,7 @@ src_cov2corr <- function(covmat) {
     .Call('_maotai_src_cov2corr', PACKAGE = 'maotai', covmat)
 }
 
+src_leida <- function(phase) {
+    .Call('_maotai_src_leida', PACKAGE = 'maotai', phase)
+}
+

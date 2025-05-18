@@ -13,11 +13,12 @@
 #' @importFrom stats as.dist knots ecdf rnorm runif quantile dist rgamma rgeom var cov lm
 #' @importFrom shapes procGPA
 #' @importFrom Rtsne Rtsne
-#' @importFrom pracma cross
+#' @importFrom pracma cross detrend
 #' @importFrom utils packageVersion
 #' @importFrom RSpectra eigs
 #' @importFrom Matrix rankMatrix
 #' @importFrom Rcpp evalCpp
+#' @importFrom gsignal hilbert butter filtfilt
 #' @useDynLib maotai
 "_PACKAGE"
 # pack <- "maotai"

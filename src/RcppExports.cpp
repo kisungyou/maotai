@@ -413,6 +413,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// src_leida
+Rcpp::List src_leida(const arma::mat& phase);
+RcppExport SEXP _maotai_src_leida(SEXP phaseSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type phase(phaseSEXP);
+    rcpp_result_gen = Rcpp::wrap(src_leida(phase));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_maotai_sphere_dist", (DL_FUNC) &_maotai_sphere_dist, 2},
@@ -446,6 +457,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_maotai_src_gaussbary_2002R", (DL_FUNC) &_maotai_src_gaussbary_2002R, 4},
     {"_maotai_src_gaussbary_2016A", (DL_FUNC) &_maotai_src_gaussbary_2016A, 4},
     {"_maotai_src_cov2corr", (DL_FUNC) &_maotai_src_cov2corr, 1},
+    {"_maotai_src_leida", (DL_FUNC) &_maotai_src_leida, 1},
     {NULL, NULL, 0}
 };
 

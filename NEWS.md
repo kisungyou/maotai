@@ -1,6 +1,7 @@
 # maotai 0.2.6
 
-* New functions are added for Wasserstein-like geometry of von Mises-Fisher distributions.
+* New functions for Wasserstein-like geometry of von Mises-Fisher distributions.
+* `LEiDA()` added for computational neuroscience application.
 
 # maotai 0.2.5
 
