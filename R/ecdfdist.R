@@ -4,9 +4,10 @@
 #' simplicity, we only take an input of \code{\link[stats]{ecdf}} objects from \pkg{stats} package. 
 #' 
 #' @param elist a length \eqn{N} list of \code{ecdf} objects.
-#' @param method name of the distance/dissimilarity measure. Case insensitive.
+#' @param method name of the distance/dissimilarity measure. Case insensitive (default: \code{ks}).
 #' @param p exponent for \code{Lp} or \code{Wasserstein} distance. 
-#' @param as.dist a logical; \code{TRUE} to return \code{dist} object, \code{FALSE} to return an \eqn{(N\times N)} symmetric matrix of pairwise distances.
+#' @param as.dist a logical; \code{TRUE} to return \code{dist} object, \code{FALSE} to return an \eqn{(N\times N)} symmetric matrix of pairwise distances (default: \code{FALSE}).
+#' @param useR a logical; \code{TRUE} to use R implementation, \code{FALSE} to use C++ implementation (default: \code{TRUE}).
 #' 
 #' @return either \code{dist} object of an \eqn{(N\times N)} symmetric matrix of pairwise distances by \code{as.dist} argument.
 #' 
@@ -35,7 +36,7 @@
 #' }
 #' 
 #' @export
-ecdfdist <- function(elist, method=c("KS","Lp","Wasserstein"), p=2, as.dist=FALSE){
+ecdfdist <- function(elist, method=c("KS","Lp","Wasserstein"), p=2, as.dist=FALSE, useR=TRUE){
   ###############################################
   # Preprocessing
   if (!elist_check(elist)){
@@ -51,10 +52,17 @@ ecdfdist <- function(elist, method=c("KS","Lp","Wasserstein"), p=2, as.dist=FALS
   
   ###############################################
   # Computation
-  output = switch(mymethod, 
-                  "ks"          = dist_ks(elist),
-                  "wasserstein" = dist_wasserstein(elist, myp),
-                  "lp"          = dist_lp(elist, myp))
+  if (as.logical(useR)){
+    output = switch(mymethod, 
+                    "ks"          = dist_ks(elist),
+                    "wasserstein" = dist_wasserstein(elist, myp),
+                    "lp"          = dist_lp(elist, myp))
+  } else {
+    output = switch(mymethod, 
+                    "ks"          = fast_dist_ks(elist),
+                    "wasserstein" = fast_dist_wasserstein(elist, myp),
+                    "lp"          = fast_dist_lp(elist, myp))
+  }
   
   ###############################################
   # Report
@@ -149,3 +157,63 @@ dist_wasserstein <- function(elist, p){
 }
 
 ## wasserstein : http://www-users.math.umn.edu/~bobko001/preprints/2016_BL_Order.statistics_Revised.version.pdf
+
+#' @keywords internal
+#' @noRd
+fast_dist_ks <- function(elist){
+  trflist <- elist_fform(elist)        # returns list(tseq, fval=list of numeric)
+  FF <- do.call(cbind, trflist$fval)   # L x N
+  cpp_dist_ks(FF)
+}
+
+#' @keywords internal
+#' @noRd
+fast_dist_lp <- function(elist, p){
+  trflist <- elist_fform(elist)
+  tseq <- as.numeric(trflist$tseq)
+  FF <- do.call(cbind, trflist$fval)
+  cpp_dist_lp(tseq, FF, p)
+}
+
+#' @keywords internal
+#' @noRd
+fast_dist_wasserstein <- function(elist, p){
+  nlist <- length(elist)
+  qseq  <- base::seq(from = 1e-6, to = 1 - 1e-6, length.out = 8128L)
+  # columns are quantiles for each ecdf on qseq
+  Q <- vapply(elist,
+              function(f) as.numeric(stats::quantile(f, qseq, names = FALSE)),
+              numeric(length(qseq)))
+  Q <- as.matrix(Q)                    # Lq x N
+  cpp_dist_wasserstein(qseq, Q, p)
+}
+
+
+
+
+
+
+
+
+
+# ## toy example : random and uniform distributions
+# n_test = 200
+# n_half = round(n_test/2)
+# mylist = vector("list", length=n_test)
+# for (i in 1:n_half){
+#   mylist[[i]] = stats::ecdf(stats::rnorm(500, sd=2))
+# }
+# for (i in (n_half+1):n_test){
+#   mylist[[i]] = stats::ecdf(stats::runif(500, min=-5))
+# }
+# 
+# # compute Kolmogorov-Smirnov distance
+# microbenchmark::microbenchmark(
+#   R_ks = ecdfdist(mylist, method="KS"),
+#   R_lp = ecdfdist(mylist, method="Lp", p=2),
+#   R_wt = ecdfdist(mylist, method="Wasserstein", p=2),
+#   C_ks = ecdfdist(mylist, method="KS", useR=FALSE),
+#   C_lp = ecdfdist(mylist, method="Lp", p=2, useR=FALSE),
+#   C_wt = ecdfdist(mylist, method="Wasserstein", p=2, useR=FALSE),
+#   times=3
+# )

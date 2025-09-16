@@ -85,6 +85,18 @@ cpp_metricdepth <- function(D) {
     .Call('_maotai_cpp_metricdepth', PACKAGE = 'maotai', D)
 }
 
+cpp_dist_ks <- function(F) {
+    .Call('_maotai_cpp_dist_ks', PACKAGE = 'maotai', F)
+}
+
+cpp_dist_lp <- function(t, F, p) {
+    .Call('_maotai_cpp_dist_lp', PACKAGE = 'maotai', t, F, p)
+}
+
+cpp_dist_wasserstein <- function(q, Q, p) {
+    .Call('_maotai_cpp_dist_wasserstein', PACKAGE = 'maotai', q, Q, p)
+}
+
 cpp_mmds <- function(D, ndim, maxiter, abstol) {
     .Call('_maotai_cpp_mmds', PACKAGE = 'maotai', D, ndim, maxiter, abstol)
 }

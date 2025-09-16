@@ -278,6 +278,43 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// cpp_dist_ks
+arma::mat cpp_dist_ks(const arma::mat& F);
+RcppExport SEXP _maotai_cpp_dist_ks(SEXP FSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type F(FSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_dist_ks(F));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_dist_lp
+arma::mat cpp_dist_lp(const arma::vec& t, const arma::mat& F, double p);
+RcppExport SEXP _maotai_cpp_dist_lp(SEXP tSEXP, SEXP FSEXP, SEXP pSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type t(tSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type F(FSEXP);
+    Rcpp::traits::input_parameter< double >::type p(pSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_dist_lp(t, F, p));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_dist_wasserstein
+arma::mat cpp_dist_wasserstein(const arma::vec& q, const arma::mat& Q, double p);
+RcppExport SEXP _maotai_cpp_dist_wasserstein(SEXP qSEXP, SEXP QSEXP, SEXP pSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type q(qSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type Q(QSEXP);
+    Rcpp::traits::input_parameter< double >::type p(pSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_dist_wasserstein(q, Q, p));
+    return rcpp_result_gen;
+END_RCPP
+}
 // cpp_mmds
 arma::mat cpp_mmds(arma::mat& D, int ndim, int maxiter, double abstol);
 RcppExport SEXP _maotai_cpp_mmds(SEXP DSEXP, SEXP ndimSEXP, SEXP maxiterSEXP, SEXP abstolSEXP) {
@@ -447,6 +484,9 @@ static const R_CallMethodDef CallEntries[] = {
     {"_maotai_cpp_geigen", (DL_FUNC) &_maotai_cpp_geigen, 2},
     {"_maotai_cpp_triangle", (DL_FUNC) &_maotai_cpp_triangle, 1},
     {"_maotai_cpp_metricdepth", (DL_FUNC) &_maotai_cpp_metricdepth, 1},
+    {"_maotai_cpp_dist_ks", (DL_FUNC) &_maotai_cpp_dist_ks, 1},
+    {"_maotai_cpp_dist_lp", (DL_FUNC) &_maotai_cpp_dist_lp, 3},
+    {"_maotai_cpp_dist_wasserstein", (DL_FUNC) &_maotai_cpp_dist_wasserstein, 3},
     {"_maotai_cpp_mmds", (DL_FUNC) &_maotai_cpp_mmds, 4},
     {"_maotai_src_smacof", (DL_FUNC) &_maotai_src_smacof, 6},
     {"_maotai_eval_gaussian", (DL_FUNC) &_maotai_eval_gaussian, 3},

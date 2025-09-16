@@ -4,16 +4,24 @@
 \alias{ecdfdist}
 \title{Distance Measures between Multiple Empirical Cumulative Distribution Functions}
 \usage{
-ecdfdist(elist, method = c("KS", "Lp", "Wasserstein"), p = 2, as.dist = FALSE)
+ecdfdist(
+  elist,
+  method = c("KS", "Lp", "Wasserstein"),
+  p = 2,
+  as.dist = FALSE,
+  useR = TRUE
+)
 }
 \arguments{
 \item{elist}{a length \eqn{N} list of \code{ecdf} objects.}
 
-\item{method}{name of the distance/dissimilarity measure. Case insensitive.}
+\item{method}{name of the distance/dissimilarity measure. Case insensitive (default: \code{ks}).}
 
 \item{p}{exponent for \code{Lp} or \code{Wasserstein} distance.}
 
-\item{as.dist}{a logical; \code{TRUE} to return \code{dist} object, \code{FALSE} to return an \eqn{(N\times N)} symmetric matrix of pairwise distances.}
+\item{as.dist}{a logical; \code{TRUE} to return \code{dist} object, \code{FALSE} to return an \eqn{(N\times N)} symmetric matrix of pairwise distances (default: \code{FALSE}).}
+
+\item{useR}{a logical; \code{TRUE} to use R implementation, \code{FALSE} to use C++ implementation (default: \code{TRUE}).}
 }
 \value{
 either \code{dist} object of an \eqn{(N\times N)} symmetric matrix of pairwise distances by \code{as.dist} argument.

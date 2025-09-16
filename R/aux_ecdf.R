@@ -30,8 +30,7 @@ elist_fform <- function(elist){
   }
   mint = min(allknots[,1]) - 0.01
   maxt = max(allknots[,2]) + 0.01
-  ssize = min((maxt-mint)/1000, 0.001)
-  tseq  = seq(mint, maxt, by=ssize)
+  tseq  = seq(mint, maxt, length.out=1000)
   # return the list of y values
   outY = list()
   for (i in 1:nlist){
