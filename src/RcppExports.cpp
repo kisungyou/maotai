@@ -315,6 +315,96 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// lp_ecdf_distance
+double lp_ecdf_distance(const arma::vec& x, const arma::vec& y, double p);
+RcppExport SEXP _maotai_lp_ecdf_distance(SEXP xSEXP, SEXP ySEXP, SEXP pSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type y(ySEXP);
+    Rcpp::traits::input_parameter< double >::type p(pSEXP);
+    rcpp_result_gen = Rcpp::wrap(lp_ecdf_distance(x, y, p));
+    return rcpp_result_gen;
+END_RCPP
+}
+// ks_ecdf_distance
+double ks_ecdf_distance(const arma::vec& x, const arma::vec& y);
+RcppExport SEXP _maotai_ks_ecdf_distance(SEXP xSEXP, SEXP ySEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type y(ySEXP);
+    rcpp_result_gen = Rcpp::wrap(ks_ecdf_distance(x, y));
+    return rcpp_result_gen;
+END_RCPP
+}
+// lp_ecdf_distance_matrix
+arma::mat lp_ecdf_distance_matrix(const arma::field<arma::vec>& samples, double p);
+RcppExport SEXP _maotai_lp_ecdf_distance_matrix(SEXP samplesSEXP, SEXP pSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::field<arma::vec>& >::type samples(samplesSEXP);
+    Rcpp::traits::input_parameter< double >::type p(pSEXP);
+    rcpp_result_gen = Rcpp::wrap(lp_ecdf_distance_matrix(samples, p));
+    return rcpp_result_gen;
+END_RCPP
+}
+// lp_ecdf_distance_to_reference
+arma::vec lp_ecdf_distance_to_reference(const arma::field<arma::vec>& samples, const arma::vec& reference, double p);
+RcppExport SEXP _maotai_lp_ecdf_distance_to_reference(SEXP samplesSEXP, SEXP referenceSEXP, SEXP pSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::field<arma::vec>& >::type samples(samplesSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type reference(referenceSEXP);
+    Rcpp::traits::input_parameter< double >::type p(pSEXP);
+    rcpp_result_gen = Rcpp::wrap(lp_ecdf_distance_to_reference(samples, reference, p));
+    return rcpp_result_gen;
+END_RCPP
+}
+// wasserstein_p_unweighted
+double wasserstein_p_unweighted(const arma::vec& x, const arma::vec& y, double p);
+RcppExport SEXP _maotai_wasserstein_p_unweighted(SEXP xSEXP, SEXP ySEXP, SEXP pSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type y(ySEXP);
+    Rcpp::traits::input_parameter< double >::type p(pSEXP);
+    rcpp_result_gen = Rcpp::wrap(wasserstein_p_unweighted(x, y, p));
+    return rcpp_result_gen;
+END_RCPP
+}
+// wasserstein_p_weighted
+double wasserstein_p_weighted(const arma::vec& x, arma::vec wx, const arma::vec& y, arma::vec wy, double p);
+RcppExport SEXP _maotai_wasserstein_p_weighted(SEXP xSEXP, SEXP wxSEXP, SEXP ySEXP, SEXP wySEXP, SEXP pSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type wx(wxSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type y(ySEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type wy(wySEXP);
+    Rcpp::traits::input_parameter< double >::type p(pSEXP);
+    rcpp_result_gen = Rcpp::wrap(wasserstein_p_weighted(x, wx, y, wy, p));
+    return rcpp_result_gen;
+END_RCPP
+}
+// wasserstein_p_distance_matrix
+arma::mat wasserstein_p_distance_matrix(const arma::field<arma::vec>& samples, double p);
+RcppExport SEXP _maotai_wasserstein_p_distance_matrix(SEXP samplesSEXP, SEXP pSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::field<arma::vec>& >::type samples(samplesSEXP);
+    Rcpp::traits::input_parameter< double >::type p(pSEXP);
+    rcpp_result_gen = Rcpp::wrap(wasserstein_p_distance_matrix(samples, p));
+    return rcpp_result_gen;
+END_RCPP
+}
 // cpp_mmds
 arma::mat cpp_mmds(arma::mat& D, int ndim, int maxiter, double abstol);
 RcppExport SEXP _maotai_cpp_mmds(SEXP DSEXP, SEXP ndimSEXP, SEXP maxiterSEXP, SEXP abstolSEXP) {
@@ -487,6 +577,13 @@ static const R_CallMethodDef CallEntries[] = {
     {"_maotai_cpp_dist_ks", (DL_FUNC) &_maotai_cpp_dist_ks, 1},
     {"_maotai_cpp_dist_lp", (DL_FUNC) &_maotai_cpp_dist_lp, 3},
     {"_maotai_cpp_dist_wasserstein", (DL_FUNC) &_maotai_cpp_dist_wasserstein, 3},
+    {"_maotai_lp_ecdf_distance", (DL_FUNC) &_maotai_lp_ecdf_distance, 3},
+    {"_maotai_ks_ecdf_distance", (DL_FUNC) &_maotai_ks_ecdf_distance, 2},
+    {"_maotai_lp_ecdf_distance_matrix", (DL_FUNC) &_maotai_lp_ecdf_distance_matrix, 2},
+    {"_maotai_lp_ecdf_distance_to_reference", (DL_FUNC) &_maotai_lp_ecdf_distance_to_reference, 3},
+    {"_maotai_wasserstein_p_unweighted", (DL_FUNC) &_maotai_wasserstein_p_unweighted, 3},
+    {"_maotai_wasserstein_p_weighted", (DL_FUNC) &_maotai_wasserstein_p_weighted, 5},
+    {"_maotai_wasserstein_p_distance_matrix", (DL_FUNC) &_maotai_wasserstein_p_distance_matrix, 2},
     {"_maotai_cpp_mmds", (DL_FUNC) &_maotai_cpp_mmds, 4},
     {"_maotai_src_smacof", (DL_FUNC) &_maotai_src_smacof, 6},
     {"_maotai_eval_gaussian", (DL_FUNC) &_maotai_eval_gaussian, 3},

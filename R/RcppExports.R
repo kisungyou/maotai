@@ -97,6 +97,34 @@ cpp_dist_wasserstein <- function(q, Q, p) {
     .Call('_maotai_cpp_dist_wasserstein', PACKAGE = 'maotai', q, Q, p)
 }
 
+lp_ecdf_distance <- function(x, y, p = 2.0) {
+    .Call('_maotai_lp_ecdf_distance', PACKAGE = 'maotai', x, y, p)
+}
+
+ks_ecdf_distance <- function(x, y) {
+    .Call('_maotai_ks_ecdf_distance', PACKAGE = 'maotai', x, y)
+}
+
+lp_ecdf_distance_matrix <- function(samples, p = 2.0) {
+    .Call('_maotai_lp_ecdf_distance_matrix', PACKAGE = 'maotai', samples, p)
+}
+
+lp_ecdf_distance_to_reference <- function(samples, reference, p = 2.0) {
+    .Call('_maotai_lp_ecdf_distance_to_reference', PACKAGE = 'maotai', samples, reference, p)
+}
+
+wasserstein_p_unweighted <- function(x, y, p = 2.0) {
+    .Call('_maotai_wasserstein_p_unweighted', PACKAGE = 'maotai', x, y, p)
+}
+
+wasserstein_p_weighted <- function(x, wx, y, wy, p = 2.0) {
+    .Call('_maotai_wasserstein_p_weighted', PACKAGE = 'maotai', x, wx, y, wy, p)
+}
+
+wasserstein_p_distance_matrix <- function(samples, p = 2.0) {
+    .Call('_maotai_wasserstein_p_distance_matrix', PACKAGE = 'maotai', samples, p)
+}
+
 cpp_mmds <- function(D, ndim, maxiter, abstol) {
     .Call('_maotai_cpp_mmds', PACKAGE = 'maotai', D, ndim, maxiter, abstol)
 }

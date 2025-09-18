@@ -3,6 +3,27 @@
 # 02. check_symm     : if a square, symmetric matrix
 # 03. check_datalist : if a list of same-dimensional data
 # 04. check_datamat  : if a matrix without weird values
+# 05. check_veclist  : if a list of numeric vectors
+
+
+# 05. check_veclist -------------------------------------------------------
+#' @keywords internal
+#' @noRd
+check_veclist <- function(input_list){
+  # check all are vectors
+  cond1 = unlist(lapply(input_list, is.vector))
+  if (any(isFALSE(cond1))){
+    return(FALSE)
+  }
+  
+  # check all are numeric
+  cond2 = unlist(lapply(input_list, is.numeric))
+  if (any(isFALSE(cond2))){
+    return(FALSE)
+  }
+  
+  return(TRUE)
+}
 
 
 
