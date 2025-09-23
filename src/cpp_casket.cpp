@@ -172,7 +172,7 @@ arma::vec dat2centers(arma::rowvec data, arma::mat &centers){
 // [[Rcpp::export]]
 arma::mat cpp_sylvester(arma::mat A, arma::mat B, arma::mat C){
   arma::mat solution;
-  arma::syl(solution,A,B,C);
+  arma::sylvester(solution,A,B,C);
   return(solution);
 }
 
@@ -180,7 +180,7 @@ arma::mat cpp_sylvester(arma::mat A, arma::mat B, arma::mat C){
 arma::mat solve_lyapunov(arma::mat A, arma::mat B, arma::mat C){
   // simply solve it !
   arma::mat solution;
-  arma::syl(solution, A, B, C);
+  arma::sylvester(solution, A, B, C);
   return(solution);
 }
 
