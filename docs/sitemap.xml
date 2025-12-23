@@ -1,105 +1,47 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www.kisungyou.com/maotai/404.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/index.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/bmds.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/boot.mblock.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/boot.stationary.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/cayleymenger.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/checkdist.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/checkmetric.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/cmds.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/cov2corr.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/cov2pcorr.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/dpmeans.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/ecdfdist.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/ecdfdist2.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/epmeans.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/kmeanspp.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/lgpa.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/lyapunov.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/matderiv.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/metricdepth.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/mmd2test.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/nef.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/nem.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/pdeterminant.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/shortestpath.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/sylvester.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/trio.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/tsne.html</loc>
-  </url>
-  <url>
-    <loc>https://www.kisungyou.com/maotai/reference/weiszfeld.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://www.kisungyou.com/maotai/404.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/LICENSE-text.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/LICENSE.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/authors.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/index.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/news/index.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/LEiDA.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/WLbarycenter.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/WLmedian.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/WLpdist.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/bmds.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/boot.mblock.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/boot.stationary.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/cayleymenger.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/checkdist.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/checkmetric.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/cmds.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/cov2corr.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/cov2pcorr.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/dpmeans.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/ecdfdist.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/ecdfdist2.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/ecdfdistS.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/epmeans.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/index.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/kmeanspp.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/lgpa.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/lyapunov.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/matderiv.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/metricdepth.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/mmd2test.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/movMF_convert.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/movMF_info.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/movMF_reduce_greedy.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/movMF_reduce_partitional.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/nef.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/nem.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/pdeterminant.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/rotationS2.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/shortestpath.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/sylvester.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/trio.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/tsne.html</loc></url>
+<url><loc>https://www.kisungyou.com/maotai/reference/weiszfeld.html</loc></url>
 </urlset>
+

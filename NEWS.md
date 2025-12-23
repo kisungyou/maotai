@@ -1,3 +1,7 @@
+# maotai 0.3.0
+
+* Replaced deprecated routines in `C++` components.
+
 # maotai 0.2.6
 
 * New functions for Wasserstein-like geometry of von Mises-Fisher distributions.

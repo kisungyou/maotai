@@ -11,6 +11,29 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// bwp_project_gaussians_rcpp
+Rcpp::List bwp_project_gaussians_rcpp(const arma::mat& M, const arma::cube& Sigma, const int d, const int max_iter, const double step_init, const double tol_grad, const double tol_obj, const double eps, const bool verbose, const double armijo_c, const double armijo_beta, const int ls_max, const double ls_min_step);
+RcppExport SEXP _maotai_bwp_project_gaussians_rcpp(SEXP MSEXP, SEXP SigmaSEXP, SEXP dSEXP, SEXP max_iterSEXP, SEXP step_initSEXP, SEXP tol_gradSEXP, SEXP tol_objSEXP, SEXP epsSEXP, SEXP verboseSEXP, SEXP armijo_cSEXP, SEXP armijo_betaSEXP, SEXP ls_maxSEXP, SEXP ls_min_stepSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type M(MSEXP);
+    Rcpp::traits::input_parameter< const arma::cube& >::type Sigma(SigmaSEXP);
+    Rcpp::traits::input_parameter< const int >::type d(dSEXP);
+    Rcpp::traits::input_parameter< const int >::type max_iter(max_iterSEXP);
+    Rcpp::traits::input_parameter< const double >::type step_init(step_initSEXP);
+    Rcpp::traits::input_parameter< const double >::type tol_grad(tol_gradSEXP);
+    Rcpp::traits::input_parameter< const double >::type tol_obj(tol_objSEXP);
+    Rcpp::traits::input_parameter< const double >::type eps(epsSEXP);
+    Rcpp::traits::input_parameter< const bool >::type verbose(verboseSEXP);
+    Rcpp::traits::input_parameter< const double >::type armijo_c(armijo_cSEXP);
+    Rcpp::traits::input_parameter< const double >::type armijo_beta(armijo_betaSEXP);
+    Rcpp::traits::input_parameter< const int >::type ls_max(ls_maxSEXP);
+    Rcpp::traits::input_parameter< const double >::type ls_min_step(ls_min_stepSEXP);
+    rcpp_result_gen = Rcpp::wrap(bwp_project_gaussians_rcpp(M, Sigma, d, max_iter, step_init, tol_grad, tol_obj, eps, verbose, armijo_c, armijo_beta, ls_max, ls_min_step));
+    return rcpp_result_gen;
+END_RCPP
+}
 // sphere_dist
 double sphere_dist(arma::rowvec vecx, arma::rowvec vecy);
 RcppExport SEXP _maotai_sphere_dist(SEXP vecxSEXP, SEXP vecySEXP) {
@@ -86,6 +109,24 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
     Rcpp::traits::input_parameter< arma::vec >::type betas(betasSEXP);
     rcpp_result_gen = Rcpp::wrap(main_bmds(D, X0, sigg0, a, alpha, maxiter, constant, verbose, betas));
+    return rcpp_result_gen;
+END_RCPP
+}
+// caml_frechet_mean
+Rcpp::List caml_frechet_mean(const Rcpp::List& Y_list_R, const arma::vec& w, int maxit, double tol, double step0, double c1, double beta, bool verbose);
+RcppExport SEXP _maotai_caml_frechet_mean(SEXP Y_list_RSEXP, SEXP wSEXP, SEXP maxitSEXP, SEXP tolSEXP, SEXP step0SEXP, SEXP c1SEXP, SEXP betaSEXP, SEXP verboseSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::List& >::type Y_list_R(Y_list_RSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type w(wSEXP);
+    Rcpp::traits::input_parameter< int >::type maxit(maxitSEXP);
+    Rcpp::traits::input_parameter< double >::type tol(tolSEXP);
+    Rcpp::traits::input_parameter< double >::type step0(step0SEXP);
+    Rcpp::traits::input_parameter< double >::type c1(c1SEXP);
+    Rcpp::traits::input_parameter< double >::type beta(betaSEXP);
+    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
+    rcpp_result_gen = Rcpp::wrap(caml_frechet_mean(Y_list_R, w, maxit, tol, step0, c1, beta, verbose));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -553,12 +594,14 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_maotai_bwp_project_gaussians_rcpp", (DL_FUNC) &_maotai_bwp_project_gaussians_rcpp, 13},
     {"_maotai_sphere_dist", (DL_FUNC) &_maotai_sphere_dist, 2},
     {"_maotai_cpp_WL_normalise", (DL_FUNC) &_maotai_cpp_WL_normalise, 1},
     {"_maotai_cpp_WL_weighted_mean", (DL_FUNC) &_maotai_cpp_WL_weighted_mean, 2},
     {"_maotai_compute_SSR", (DL_FUNC) &_maotai_compute_SSR, 2},
     {"_maotai_compute_stress", (DL_FUNC) &_maotai_compute_stress, 2},
     {"_maotai_main_bmds", (DL_FUNC) &_maotai_main_bmds, 9},
+    {"_maotai_caml_frechet_mean", (DL_FUNC) &_maotai_caml_frechet_mean, 8},
     {"_maotai_aux_shortestpath", (DL_FUNC) &_maotai_aux_shortestpath, 1},
     {"_maotai_cppsub_2007Wang", (DL_FUNC) &_maotai_cppsub_2007Wang, 7},
     {"_maotai_gradF", (DL_FUNC) &_maotai_gradF, 3},
