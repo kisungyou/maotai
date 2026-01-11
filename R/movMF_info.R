@@ -15,6 +15,7 @@
 #' \item{loglkd}{the log-likelihood of the data.}
 #' \item{AIC}{the Akaike information criterion.}
 #' \item{BIC}{the Bayesian information criterion.}
+#' \item{HQIC}{the Hannan-Quinn information criterion.}
 #' }
 #' 
 #' @export
@@ -80,8 +81,9 @@ movMF_info <- function(data, means, concentrations, weights){
   
   # information criteria
   df <- (par_k - 1) + par_k*((par_p-1)+1)
-  out_aic <- -2*out_loglkd + 2*df
+  out_aic <- -2*out_loglkd + 2*df # df = k for wikipedia documentation
   out_bic <- -2*out_loglkd + base::log(par_n)*df
+  out_hqic <- -2*out_loglkd + base::log(base::log(par_n))*2*df
   
   ###############################################
   # RETURN
@@ -91,6 +93,7 @@ movMF_info <- function(data, means, concentrations, weights){
   output$loglkd <- out_loglkd
   output$AIC <- out_aic 
   output$BIC <- out_bic
+  output$HQIC <- out_hqic
   
   return(output)
 }

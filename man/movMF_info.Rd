@@ -22,6 +22,7 @@ a named list containing \describe{
 \item{loglkd}{the log-likelihood of the data.}
 \item{AIC}{the Akaike information criterion.}
 \item{BIC}{the Bayesian information criterion.}
+\item{HQIC}{the Hannan-Quinn information criterion.}
 }
 }
 \description{
