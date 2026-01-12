@@ -122,7 +122,6 @@ aux_vmf_density <- function(x, mu, kappa){
     densities[i] <- base::exp(kappa*base::sum(as.vector(x[i,])*mu))*c_p_kappa
   }
   return(densities)
-  
 }
 
 # # simple example

@@ -11,7 +11,6 @@
 #' @importFrom RANN nn2
 #' @importFrom cluster pam silhouette agnes
 #' @importFrom stats as.dist knots ecdf rnorm runif quantile dist rgamma rgeom var cov lm
-#' @importFrom shapes procGPA
 #' @importFrom Rtsne Rtsne
 #' @importFrom pracma cross detrend
 #' @importFrom utils packageVersion
